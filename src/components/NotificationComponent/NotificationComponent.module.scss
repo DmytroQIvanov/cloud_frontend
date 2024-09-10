@@ -1,0 +1,72 @@
+.notificationComponent{
+  position: fixed;
+  top: 55px;
+  right: 30px;
+  width: max-content;
+  z-index: 10000;
+  //background-color: rgba(21, 21, 21, 0.71);
+  //border-radius: 10px;
+  //padding: 10px;
+  transition-duration: .3s ;
+
+  &_container{
+
+    display: flex;
+    flex-direction: column;
+    transition-duration: .3s;
+    gap: 10px;
+  }
+  &_item{
+    //width: 220px;
+    //height: 90px;
+    border-radius: 10px;
+    background-color: rgba(41, 40, 40, 0.85);
+    padding: 12px;
+    position: relative;
+    box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
+
+    &_cross{
+      position: absolute;
+      top:5px;
+      right: 5px;
+      cursor: pointer;
+    }
+    &_red{
+      border-bottom: 5px solid #772727;
+
+    }
+    &_green{
+      border-bottom: 5px solid #25b09b ;
+
+    }
+    &_yellow{
+      border-bottom: 5px solid #a5892b;
+
+    }
+    &_blue{
+      border-bottom: 5px solid #365580;
+
+    }
+    display: flex;
+    transition-duration: .6s ;
+    //height: 0px;
+
+    min-width: 220px;
+    min-height: 75px;
+    //transform: translateY(0px) scaleY(1);
+    &__active{
+      opacity: 100%;
+      visibility: visible;
+      transition-duration: .6s ;
+    }
+    &__inactive{
+      //transform: translateY(-40px) scaleY(0);
+
+      //min-height: 0px;
+      //height: 0px;
+      opacity: 0%;
+      visibility: hidden;
+      transition-duration: .6s ;
+    }
+  }
+}

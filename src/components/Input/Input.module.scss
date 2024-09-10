@@ -1,0 +1,23 @@
+.input{
+  position: relative;
+  &_container{
+    display: flex;
+    width: 100%;
+    position: relative;
+  }
+  input{
+    padding: 7px;
+    background-color: #424242;
+    box-shadow: none;
+    border-radius: 12px;
+    border: none;
+    font-size: 15px;
+      &:focus {
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        outline: none;
+      }
+
+
+  }
+}

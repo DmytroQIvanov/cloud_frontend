@@ -1,0 +1,41 @@
+.header{
+  width:auto;
+  &_container{
+    background-color: #151515;
+    border-bottom: 2px solid white;
+    width: 100%;
+    height: 70px;
+    padding: 10px;
+    //margin: 10px;
+    display: flex;
+    position: fixed;
+    top: 0px;
+    z-index: 100;
+
+
+  }
+  &_mockContainer{
+    height: 70px;
+    padding: 10px;
+    //margin: 10px;
+    visibility: hidden;
+    width: 100%;
+  }
+  &_leftLinks{
+    display: flex;
+    margin: auto 0px auto auto;
+    &_link{
+      height: 100%;
+      width: 100%;
+      padding: 12px 20px;
+      font-size: 18px;
+      transition-duration: 0.3s;
+      &:hover{
+        background-color: #ffffff;
+        color: black;
+        transition-duration: 0.3s;
+      }
+
+    }
+  }
+}

@@ -1,0 +1,78 @@
+.file{
+  &_container{
+    width: 335px;
+    border: 2px solid rgba(255, 255, 255, 0.89);
+    position: relative;
+    transition-duration: .2s;
+    background-color: black;
+    cursor: pointer;
+    z-index: 10;
+    //box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 20px 0px rgba(87,87,87,0.5);
+    transform: scale(1.0);
+
+    &:hover{
+      transition-duration: .8s;
+      transform: scale(1.1);
+      z-index: 12;
+
+      .file_controlPanel_container{
+        width: 100%;
+        transform: translateX(11%);
+        transition-duration: .8s;
+        //padding: 2px 4px;
+        &_deleteButton{
+          //overflow: hidden;
+          opacity: 1;
+          display: flex;
+        }
+
+      }
+    }
+  }
+  &_controlPanel{
+
+
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    &_container{
+      display: flex;
+
+      text-align: center;
+      transform: translateX(0%);
+      overflow: hidden;
+
+      height: 40px;
+      width: 0%;
+      padding: 0px 0px;
+      border: 2px solid  white;
+      background-color: white;
+      color: black;
+      margin:auto 0 auto auto;
+      transition-duration: .9s;
+
+      &_button{
+        padding: 2px 4px;
+      }
+      &_deleteButton{
+        padding: 6px 10px;
+        transition-duration: .3s;
+        color: black;
+        cursor: pointer;
+        margin: auto;
+        opacity: 0;
+        display: none;
+        width: auto;
+
+        &:hover {
+          color: white;
+          //transition-delay: 0s ;
+
+          transition-duration: .3s;
+          background-color: #d32828;
+        }
+      }
+    }
+  }
+}

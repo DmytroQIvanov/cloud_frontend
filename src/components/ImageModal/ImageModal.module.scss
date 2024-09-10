@@ -1,0 +1,81 @@
+.imageModal{
+  position: fixed;
+  z-index: 10000;
+  transition-duration: .3s;
+  //background-color: #d32828;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  &_container{
+    transition-duration: .9s;
+
+    //position: relative;
+
+  }
+  &_background{
+    //backdrop-filter: blur(4px);
+
+    background-color: rgba(60, 60, 60, 0.25);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+    transition-duration: .7s;
+
+
+  }
+  &_image{
+    //background-color: #d32828;
+    width: fit-content ;
+    height: 90vh;
+    transition-duration: .3s;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+  }
+  &_cross{
+
+    width: 30px;
+    height: 30px;
+    //background-color: aqua;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+
+  }
+  &__active{
+    transition-duration: .9s;
+    opacity: 1;
+    visibility: visible;
+    //display: flex;
+    backdrop-filter: blur(4px);
+    transition-delay: 1s;
+
+
+  }
+  &__inactive{
+    backdrop-filter: blur(0px);
+
+    transition-duration: .9s;
+    visibility: hidden;
+    opacity: 0;
+    //display: none;
+  }
+  &_loader{
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+  }
+
+}
