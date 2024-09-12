@@ -1,0 +1,10 @@
+@mixin borderWidth{
+
+  width: 70%;
+  margin: auto;
+  display: flex;
+
+  @media (max-width: 600px) {
+    width: 96%;
+  }
+}

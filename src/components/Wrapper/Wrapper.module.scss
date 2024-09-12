@@ -1,0 +1,9 @@
+@import "../../app/Styles/mixins";
+
+.wrapper{
+  @include borderWidth;
+  &_children{
+    min-height: 80vh;
+  }
+
+}

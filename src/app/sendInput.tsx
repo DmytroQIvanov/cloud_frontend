@@ -43,7 +43,7 @@ const SendInput = ({ onSend }: any) => {
     } catch (error) {
       console.error("Error enhancing image:", error);
     }
-    if (response.data.linkCode) {
+    if (response && response.data.linkCode) {
       const resp = await axios(
         `${process.env.BACKEND_DOMAIN}/link/${response.data.linkCode}`,
         {},

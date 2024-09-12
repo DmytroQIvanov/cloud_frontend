@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { addNotification } from "@/app/GlobalRedux/Features/notificationSlice";
 import Image from "next/image";
 import fullScreenSvg from "../../../public/fullscreen-svgrepo-com.svg";
+import ImageModal from "@/components/ImageModal/ImageModal";
+import { deleteFile } from "@/app/GlobalRedux/Features/fileSlice";
 const File = ({ file, fileUrl, handleChangeModalFile, blurHash }: any) => {
   const dispatch = useDispatch();
 
@@ -69,7 +71,9 @@ const File = ({ file, fileUrl, handleChangeModalFile, blurHash }: any) => {
           <div className={styles.file_controlPanel_container}>
             <div
               style={{ margin: "auto", height: "fit-content", display: "flex" }}
-              onClick={() => {}}
+              onClick={() => {
+                handleChangeModalFile({ active: true, newFile: fileUrl });
+              }}
             >
               <Image
                 src={fullScreenSvg}
@@ -82,6 +86,7 @@ const File = ({ file, fileUrl, handleChangeModalFile, blurHash }: any) => {
             <div
               className={styles.file_controlPanel_container_deleteButton}
               onClick={() => {
+                dispatch(deleteFile({ id: file.id }));
                 onDelete();
               }}
             >

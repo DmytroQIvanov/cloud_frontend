@@ -11,12 +11,22 @@
     position: fixed;
     top: 0px;
     z-index: 100;
+    @media (max-width: 600px) {
+      font-size: 12px;
+      a{
+        font-size: 12px;
+
+
+      }
+    }
 
 
   }
   &_mockContainer{
     height: 70px;
     padding: 10px;
+    display: flex;
+    content: " ";
     //margin: 10px;
     visibility: hidden;
     width: 100%;
@@ -24,6 +34,7 @@
   &_leftLinks{
     display: flex;
     margin: auto 0px auto auto;
+
     &_link{
       height: 100%;
       width: 100%;

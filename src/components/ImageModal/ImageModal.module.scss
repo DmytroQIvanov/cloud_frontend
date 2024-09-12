@@ -1,14 +1,14 @@
 .imageModal{
   position: fixed;
   z-index: 10000;
-  transition-duration: .3s;
+  //transition-duration: .3s;
   //background-color: #d32828;
   top: 0px;
   left: 0px;
   width: 100vw;
   height: 100vh;
   &_container{
-    transition-duration: .9s;
+    //transition-duration: .3s;
 
     //position: relative;
 
@@ -23,14 +23,16 @@
     top: 0px;
     left: 0px;
     z-index: -1;
-    transition-duration: .7s;
-
+    transition-duration: .3s;
+    opacity: 0;
+    &_active{opacity: 1}
+    &_inactive{opacity: 0}
 
   }
   &_image{
     //background-color: #d32828;
-    width: fit-content ;
-    height: 90vh;
+    width: 95vw;
+    height: 95vh;
     transition-duration: .3s;
     z-index: 10;
     left: 0;
@@ -52,7 +54,7 @@
 
   }
   &__active{
-    transition-duration: .9s;
+    transition-duration: .3s;
     opacity: 1;
     visibility: visible;
     //display: flex;
@@ -64,7 +66,7 @@
   &__inactive{
     backdrop-filter: blur(0px);
 
-    transition-duration: .9s;
+    transition-duration: .3s;
     visibility: hidden;
     opacity: 0;
     //display: none;

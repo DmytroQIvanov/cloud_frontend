@@ -6,7 +6,7 @@ export interface FileState {
   fileData: any;
 }
 const initialState: FileState = {
-  fileData: {},
+  fileData: { files: [] },
 };
 
 export const fileSlice = createSlice({
@@ -16,9 +16,15 @@ export const fileSlice = createSlice({
     getFile: (state, action) => {
       state.fileData = action.payload;
     },
+
+    deleteFile: (state, action) => {
+      state.fileData.files = state.fileData.files.filter(
+        (elem: any) => elem.id !== action.payload.id,
+      );
+    },
   },
 });
 
-export const { getFile } = fileSlice.actions;
+export const { getFile, deleteFile } = fileSlice.actions;
 
 export default fileSlice.reducer;

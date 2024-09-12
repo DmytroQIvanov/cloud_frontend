@@ -6,9 +6,11 @@ import Head from "next/head";
 import NotificationController from "@/components/NotificationComponent/NotificationController";
 import { onCreateNotificationDTO } from "@/components/NotificationComponent/NotificationTypes";
 import { IWrapperProp } from "@/components/Wrapper/WrapperTypes";
+import styles from "./Wrapper.module.scss";
+import FileInput from "@/components/FileInput/FileInput";
 
 const Wrapper = (props: IWrapperProp) => {
-  const { header = true, bottom = true, metaData, children } = props;
+  const { header = true, bottom = true, metaData, children, fileInput } = props;
   const { NotificationContainer, onCreateNotification } =
     NotificationController();
   return (
@@ -22,7 +24,23 @@ const Wrapper = (props: IWrapperProp) => {
       {NotificationContainer}
       {/*<NotificationContainer/>*/}
       <div id={"myPortal"} />
-      {children}
+      {fileInput && false && (
+        <div
+          style={{
+            position: "fixed",
+            right: "20px",
+            bottom: "20px",
+            zIndex: "100",
+          }}
+        >
+          <FileInput fileOutDrop />
+        </div>
+      )}
+      <div className={styles.wrapper}>
+        <div style={{ width: "100%" }} className={styles.wrapper_children}>
+          {children}
+        </div>
+      </div>
       {/*{children && children({ onCreateNotification })}*/}
       {bottom && <Bottom />}
     </div>

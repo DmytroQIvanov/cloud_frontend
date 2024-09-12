@@ -47,7 +47,8 @@ const ControlBlock = () => {
           copyF
         />
 
-        <CustomInput placeholder={"Пароль"} />
+        <CustomInput placeholder={"Пароль"} disabled />
+        <CustomInput placeholder={"Поділитись з...(e-mail)"} disabled />
         <div style={{ display: "flex", lineHeight: "2", gap: "5px" }}>
           Завантажити усе <Image src={DownloadSvg} alt={"download"} />
         </div>

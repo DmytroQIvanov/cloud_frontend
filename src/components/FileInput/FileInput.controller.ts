@@ -5,15 +5,20 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { addNotification } from "@/app/GlobalRedux/Features/notificationSlice";
 import styles from "@/components/FileInput/FileInput.module.scss";
+import { getFile } from "@/app/GlobalRedux/Features/fileSlice";
 const FileInputController = ({ onSend }: any) => {
   const param = useParams();
   const router = useRouter();
   const dispatch = useDispatch();
+  const controller = new AbortController();
 
   const [imgInterval, setImgInterval] = useState(1);
   const [dragStarted, setDragStarted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const inputRef = useRef(null);
+  const [loadingStatus, setLoadingStatus] = useState([
+    { progress: 0, bytes: 0 },
+  ]);
+  const inputRef: any = useRef(null);
 
   useEffect(() => {
     setInterval(() => {
@@ -24,7 +29,7 @@ const FileInputController = ({ onSend }: any) => {
   const handleImageUpload = async (files: any) => {
     const formData = new FormData();
 
-    Array.from(files).map((elem) => {
+    Array.from(files).map((elem: any) => {
       formData.append("file", elem);
     });
 
@@ -34,7 +39,22 @@ const FileInputController = ({ onSend }: any) => {
       response = await axios.post(
         `${process.env.BACKEND_DOMAIN}/link/add-file?id=${param.id}`,
         formData,
+        {
+          signal: controller.signal,
+
+          onUploadProgress: (progressEvent) => {
+            console.log(progressEvent.loaded);
+            console.log(progressEvent);
+            setLoadingStatus([
+              {
+                progress: progressEvent.progress || 0,
+                bytes: progressEvent.bytes,
+              },
+            ]);
+          },
+        },
       );
+      controller.abort("dddddddd");
       // Handle the enhanced image response here
       console.log("Enhanced image:", response.data);
       if (response.data.newLink) {
@@ -57,11 +77,12 @@ const FileInputController = ({ onSend }: any) => {
 
       console.error("Error enhancing image:", error);
     }
-    if (response.data.linkCode) {
+    if (response && response.data.linkCode) {
       const resp = await axios(
         `${process.env.BACKEND_DOMAIN}/link/${response.data.linkCode}`,
         {},
       );
+      dispatch(getFile(resp.data));
 
       onSend && onSend(resp.data);
     }
@@ -100,6 +121,7 @@ const FileInputController = ({ onSend }: any) => {
       setLoading,
       handleImageUpload,
       dragObj,
+      controller,
     },
     states: {
       imgInterval,
@@ -107,6 +129,7 @@ const FileInputController = ({ onSend }: any) => {
       router,
       param,
       loading,
+      loadingStatus,
     },
     refs: {
       inputRef,

@@ -3,6 +3,7 @@ export interface IWrapperProp {
   bottom?: boolean;
   metaData?: { title?: string };
   children: React.ReactNode;
+  fileInput?: boolean;
   //     {
   //   onCreateNotification: (
   //     onCreateNotification: onCreateNotificationDTO,

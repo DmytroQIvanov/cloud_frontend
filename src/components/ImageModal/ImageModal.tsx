@@ -9,13 +9,13 @@ const FileModalController = () => {
   const [image, setImage] = useState<any>();
   const [modalActive, setModalActive] = useState(false);
   const [loading, setLoading] = useState(false);
-  const handleChangeFile = ({
-    newFile,
-    state,
-  }: {
-    newFile: any;
-    state: boolean;
-  }): void => {
+  const handleChangeFile = (
+    { newFile, state }: any,
+    //                               {
+    //   newFile: any;
+    //   state: boolean;
+    // }
+  ): void => {
     newFile && setImage(newFile);
     setLoading(true);
     setModalActive(state || !modalActive);
@@ -46,7 +46,7 @@ const FileModalController = () => {
                 // }}
               >
                 <div
-                  className={styles.imageModal_background}
+                  className={`${styles.imageModal_background} `}
                   onClick={() => {
                     handleChangeFile((prevState: any) => {
                       return {
@@ -86,8 +86,8 @@ const FileModalController = () => {
                       sizes="100vw"
                       style={{
                         width: "100%",
-                        height: "auto",
-                        objectFit: "cover",
+                        height: "100%",
+                        objectFit: "contain",
                       }}
                     />
                     {loading && (
@@ -104,7 +104,7 @@ const FileModalController = () => {
                       <div
                         className={styles.imageModal_cross}
                         onClick={() =>
-                          handleChangeFile((prevState) => {
+                          handleChangeFile((prevState: any) => {
                             return {
                               ...prevState,
                               state: false,

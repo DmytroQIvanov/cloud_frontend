@@ -5,6 +5,7 @@ import Link from "next/link";
 import Ukraine from "../../../public/ukraine-flag-icon.svg";
 
 const links = [
+  { link: "/", title: "Home" },
   { link: "/acticles", title: "Acticles" },
   { link: "/pricing", title: "Pricing" },
   { link: "/account", title: "Account" },
@@ -16,7 +17,7 @@ const Header = () => {
       <div className={styles.header_container}>
         <div style={{ display: "flex" }}>
           <Link href={"/"} style={{ margin: "auto 10px auto auto" }}>
-            Company Name
+            Quantic Files
           </Link>
           <Image
             src={Ukraine}
