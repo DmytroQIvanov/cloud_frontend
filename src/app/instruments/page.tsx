@@ -15,17 +15,17 @@ const Instruments = () => {
           borderRadius: "15px",
         }}
       >
-        <Link
-          href={"/instruments/resize-image"}
-          // style={{
-          //   border: "2px solid white",
-          // }}
-        >
-          Стиснути зображення
-        </Link>{" "}
-        <Link href={"/instruments/compress-image"}>
-          Змінити розмір зображення
-        </Link>
+        {/*<Link*/}
+        {/*  href={"/instruments/resize-image"}*/}
+        {/*  // style={{*/}
+        {/*  //   border: "2px solid white",*/}
+        {/*  // }}*/}
+        {/*>*/}
+        {/*  Стиснути зображення*/}
+        {/*</Link>{" "}*/}
+        {/*<Link href={"/instruments/compress-image"}>*/}
+        {/*  Змінити розмір зображення*/}
+        {/*</Link>*/}
         <Link href={"/instruments/your-ip"}>Дізнатись IP</Link>
       </div>
 

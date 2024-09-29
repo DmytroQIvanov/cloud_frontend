@@ -11,7 +11,7 @@ import { handleSideBar } from "@/app/GlobalRedux/Features/sideBarSlice";
 export const links = [
   { link: "/", title: "Домашня", key: 1 },
   { link: "/links", title: "Посилання", key: 2 },
-  { link: "/acticles", title: "Статті", key: 3 },
+  // { link: "/acticles", title: "Статті", key: 3 },
   // { link: "/your-links", title: "Ваші лінки", key: 2 },
   // { link: "/image-compress", title: "Стиснути зображення", key: 3 },
   // { link: "/image-convert", title: "Змінити розширення" },
