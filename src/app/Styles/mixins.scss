@@ -1,10 +1,19 @@
 @mixin borderWidth{
 
-  width: 70%;
+  width: 73%;
   margin: auto;
   display: flex;
 
   @media (max-width: 600px) {
     width: 96%;
   }
+}
+
+@mixin defaultElem{
+
+  width: 100%;
+  background-color: #2e2c3e;
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 10px;
 }

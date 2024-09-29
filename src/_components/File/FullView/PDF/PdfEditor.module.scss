@@ -1,0 +1,86 @@
+.pdfEditor {
+  display: flex;
+  flex-direction: column;
+
+  margin: auto;
+  width: max-content;
+  min-width: 100%;
+  position: relative;
+  &_navPanel{
+
+    //position: absolute;
+    position: fixed;
+    justify-content: center;
+    left: 0px;
+    //top:0px;
+    z-index: 1;
+    background-color: rgba(62, 62, 62, 0.71);
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    @media (max-width: 600px) {
+      padding: 10px;
+      font-size: 12px;
+      text-align: center;
+    }
+    &_background{
+      display: flex;
+      width: 100%;
+      height: 60px;
+      content: " ";
+
+    }
+  }
+  &_editor{
+    margin: auto;
+    &_NextPage{
+      position: absolute;
+      right: -150px;
+      top: 60px;
+
+      filter: blur(2px);
+      top: 60px;
+      transform: scale(0.5);
+      opacity: 0%;
+      transition-duration: .3s;
+      display: none;
+      @media (max-width: 600px) {
+
+      }
+      &__active{
+
+        filter: blur(0px);
+        right: 0px;
+        transform: scale(1);
+        opacity: 100%;
+      }
+    }
+    &_LastPage{
+      position: absolute;
+      left: -150px;
+      filter: blur(2px);
+      top: 60px;
+      transform: scale(0.5);
+      opacity: 0%;
+      transition-duration: .3s;
+      display: none;
+
+      &__active{
+        filter: blur(0px);
+        left: 0px;
+        transform: scale(1);
+        opacity: 100%;
+
+      }
+
+    }
+  }
+  &_editorVertical{
+    margin: auto;
+    &_page{
+      margin-bottom: 10px;
+    }
+
+  }
+}

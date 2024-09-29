@@ -1,0 +1,31 @@
+.scrollTrigger{
+  position: relative;
+  display: flex;
+  &_inactiveRight{
+    transition-duration: .5s;
+    opacity: 0;
+    //position: absolute;
+    //left: -20px;
+    //width: max-content;
+    transform: translate(200px);
+
+  }
+  &_inactiveLeft{
+    transition-duration: .7s;
+    opacity: 0;
+    //position: absolute;
+    //left: -20px;
+    transform: translate(-200px);
+    //width: max-content;
+
+  }
+
+  &_active{
+    transition-duration: .5s;
+    opacity: 1;
+    //width: max-content;
+    transform: translate(0px);
+    //position: absolute;
+    //left: 0px;
+  }
+}

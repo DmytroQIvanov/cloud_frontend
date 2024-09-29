@@ -5,34 +5,43 @@ import axios from "axios";
 import SendInput from "@/app/sendInput";
 import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
-import File from "@/components/File/File";
-import FileModalController from "@/components/ImageModal/ImageModal";
+import File from "@/_components/File/File";
+import FileModalController from "@/_components/ImageModal/ImageModal";
 import { usePathname } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import HorizontalFile from "@/components/File/Horizontal/HorizontalFile";
-import FileInput from "@/components/FileInput/FileInput";
-import ControlBlock from "@/components/ControlBlock/ControlBlock";
+import HorizontalFile from "@/_components/File/Horizontal/HorizontalFile";
+import FileInput from "@/_components/FileInput/FileInput";
+import ControlBlock from "@/_components/ControlBlock/ControlBlock";
 import { getFile } from "@/app/GlobalRedux/Features/fileSlice";
 import styles from "./FileList.module.scss";
-import OptionsBar from "@/components/OptionsBar/OptionsBar";
+import OptionsBar from "@/_components/Wrapper/OptionsBar/OptionsBar";
 import { RootState } from "@/app/GlobalRedux/store";
+import GoogleAdsense from "@/_components/GoogleAdsense/GoogleAdsense";
+import NavComponent from "../_components/Wrapper/NavComponent";
 
 const FileList = () => {
   const pathname = usePathname();
   const dispatch = useDispatch();
   const files = useSelector((state: RootState) => state.files.fileData);
+  const viewType = useSelector(
+    (select: RootState) => select.sideBar.fileListViewType,
+  );
   const params = useParams();
   const route = useRouter();
+  console.log("files,11", files);
   // const [files, setFiles] = useState<any>();
 
   useEffect(() => {
+    let userID = JSON.parse(`${localStorage.getItem("user")}`)?.id || "";
     if (params?.id) {
-      axios(`${process.env.BACKEND_DOMAIN}/link/${params.id}`)
+      axios(`${process.env.BACKEND_DOMAIN}/link/${params.id}?userId=${userID}`)
         .then((value) => {
           if (!value.data) {
             route.push("/");
           }
-          dispatch(getFile(value.data));
+          console.log("value.data", value.data);
+          // dispatch(getFile({ payload: value.data }));
+          dispatch(getFile({ data: value.data }));
           // setFiles(value.data);
         })
         .catch(() => {
@@ -59,36 +68,33 @@ const FileList = () => {
         }
       }
     >
+      <GoogleAdsense pId={"7249338276563886"} />
       <div className={styles.fileList_FirstBlock}>
         <ControlBlock />
-        <FileInput />
+        {files.author && <FileInput />}
       </div>
-      {/*<input type={"checkbox"} />*/}
-      {/*<input type={"password"} placeholder={"Password"} />*/}
-      {/*<input value={window.location.href} />*/}
-      {/*<input placeholder={"Email"} />*/}
-      {/*<button onClick={() => onChangeFileViewType("Hor")}>Hor</button>*/}
-      {/*<button onClick={() => onChangeFileViewType("Box")}>Box</button>*/}
       {/*{fileViewType}*/}
-
       {/*<CustomInput placeholder={"Test value"} />*/}
       <OptionsBar />
-      <div className={styles.fileList_List}>
+      <div
+        className={`${viewType === "block" ? styles.fileList_List : styles.fileList_HorizontalList}`}
+      >
         {files &&
           files.files.length > 0 &&
           files.files.map((file: any, i: number) => {
             return (
               <div key={file.id}>
-                {true ? (
+                {viewType === "block" ? (
                   <File
-                    fileUrl={file.url.image_url}
+                    files={files}
+                    // fileUrl={file.url.image_url}
                     file={file}
                     blurHash={file.blurHash}
                     handleChangeModalFile={handleChangeFile}
                   />
                 ) : (
                   <HorizontalFile
-                    fileUrl={file.url.image_url}
+                    // fileUrl={file.url.image_url}
                     file={file}
                     blurHash={file.blurHash}
                     handleChangeModalFile={handleChangeFile}

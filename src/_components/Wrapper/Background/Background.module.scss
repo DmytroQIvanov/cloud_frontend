@@ -1,0 +1,27 @@
+@keyframes test {
+  0% {
+    transform: translateY(0px) translateX(0px) rotateX(32deg) rotateY(19deg);
+  }
+  100% {
+    //transform: translateY(-900px) translateX(600px) rotateX(32deg) rotateY(19deg);
+    transform: translateY(-1400px) translateX(600px) rotateX(32deg) rotateY(19deg);
+  }
+}
+.background {
+  position: fixed;
+  z-index: -1;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  filter: blur(4px) brightness(0.43);
+  &_img {
+    position: absolute;
+    bottom: -100px;
+    transform: rotateX(32deg) rotateY(19deg);
+    animation-play-state: running;
+    animation-name: test;
+    animation-duration: 50s;
+    //&__active{transform: translateY(100px)}
+    //&__inactive{transform: translateY(0px)}
+  }
+}

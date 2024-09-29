@@ -4,9 +4,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export interface FileState {
   fileData: any;
+  loading: boolean;
 }
 const initialState: FileState = {
   fileData: { files: [] },
+  loading: true,
 };
 
 export const fileSlice = createSlice({
@@ -14,7 +16,10 @@ export const fileSlice = createSlice({
   initialState,
   reducers: {
     getFile: (state, action) => {
-      state.fileData = action.payload;
+      console.log("test133", state.fileData);
+      console.log("test133Payload", action.payload);
+      state.fileData = action.payload.data;
+      state.loading = false;
     },
 
     deleteFile: (state, action) => {

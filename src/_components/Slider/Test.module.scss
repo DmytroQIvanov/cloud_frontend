@@ -1,0 +1,208 @@
+//@import "../../mixins";
+//@import "../../Styles";
+//@import "../../screens";
+@mixin shadow {
+  box-shadow: 5px 5px 5px 4px rgba(37, 37, 37, 0.77);
+}
+.mainHomeBlock {
+  min-height: 88.5vh;
+  position: relative;
+
+  &_container {
+    width: 100%;
+    min-height: max-content;
+    display: flex;
+    flex-direction: column;
+    //height: calc(100vh - 165px);
+    &Main {
+      max-width: 90%;
+      width: 100%;
+      z-index: 1;
+      //width: 0px 30%;
+      margin: 0px auto;
+      display: grid;
+      grid-template-columns: 60% 40%;
+      height: 100%;
+      &_postContainer {
+        //height: 100px;
+        //width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-right: 30px;
+        background-color: rgba(35, 35, 35, 0.85);
+        overflow: hidden;
+        border-radius: 20px;
+        box-shadow: 5px 5px 5px 4px rgba(37, 37, 37, 0.77);
+      }
+      &_post {
+        width: 100%;
+        //width: 80%;
+        //display: flex;
+        position: relative;
+        height: 100%;
+        img {
+          border-radius: 15px;
+          display: flex;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          position: absolute;
+        }
+        &Content {
+          border-radius: 15px;
+          z-index: 1;
+          color: rgba(255, 255, 255, 0.79);
+          //width: 95%;
+          height: 100%;
+          background: linear-gradient(
+                          180deg,
+                          rgba(255, 255, 255, 0) 51%,
+                          rgba(0, 0, 0, 0.72) 84%
+          );
+          display: flex;
+          flex-direction: column;
+          position: relative;
+        }
+      }
+      &_text {
+        color: rgba(255, 255, 255, 0.78);
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+        &Title {
+          text-align: center;
+          //background-color: rgba(90, 108, 90, 0.73);
+          background-color: rgba(35, 35, 35, 0.85);
+          width: 100%;
+          height: 50px;
+          padding: 10px 0px;
+          margin: 0;
+          border-radius: 20px 20px 0px 0px;
+          @include shadow;
+        }
+        &Description {
+          text-align: center;
+          //background-color: rgba(90, 108, 90, 0.73);
+          background-color: rgba(35, 35, 35, 0.85);
+          //width: 100%;
+          height: max-content;
+          padding: 15px;
+          border-radius: 0px 0px 20px 20px;
+          font-size: 19px;
+          @include shadow;
+          min-height: 320px;
+          display: flex;
+          flex-direction: column;
+        }
+      }
+      &_supportBtn {
+        width: 80%;
+        margin: auto auto 10px auto;
+        padding: 15px 10px;
+        border-radius: 10px;
+        transition-duration: 0.3s;
+        cursor: pointer;
+
+        background-color: brown;
+        border: 2px solid white;
+        color: white;
+        &:hover {
+          color: black;
+          border: 2px solid red;
+          background-color: white;
+        }
+      }
+
+      &_buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: min-content;
+        gap: 20px;
+
+        &Elem {
+          background-color: rgba(90, 108, 90, 0.73);
+          width: 180px;
+          height: 180px;
+          padding: 10px;
+          border-radius: 20px;
+          display: flex;
+          h1 {
+            color: white;
+            text-align: center;
+            margin: auto;
+            height: max-content;
+            width: max-content;
+          }
+          @include shadow;
+          div {
+            //border: 2px solid white;
+            width: 100%;
+            height: 100%;
+            margin: auto;
+          }
+        }
+      }
+    }
+    &_backgroundImg {
+      width: 100%;
+      height: 91vh;
+      object-fit: cover;
+      position: absolute;
+      //top: -10px;
+      z-index: 0;
+    }
+    h1 {
+      //z-index: 1;
+    }
+  }
+  &_subheaderMock {
+    height: 170px;
+    width: 100%;
+    display: flex;
+  }
+  @media screen and (max-width: 600px) {
+    &_container {
+      &Main {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 50% 50%;
+        position: relative;
+        //height: 80%;
+        &_postContainer {
+          position: relative;
+          display: flex;
+          width: 100%;
+          height: 100%;
+        }
+        &_text {
+          margin-top: 10px;
+          gap: 8px;
+          height: 100%;
+          &Title {
+            font-size: 22px;
+            height: max-content;
+          }
+          &Description {
+            font-size: 18px;
+            min-height: auto;
+            padding: 16px 10px;
+
+            //height:100%;
+            //height: 60%;
+          }
+        }
+        &_supportBtn {
+          font-size: 16px;
+          padding: 5px;
+          margin-top: 10px;
+        }
+      }
+    }
+
+    &_subheaderMock {
+      height: 80px;
+      width: 100%;
+      display: flex;
+    }
+  }
+}

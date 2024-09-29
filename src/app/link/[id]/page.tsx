@@ -2,6 +2,8 @@
 import React from "react";
 import { useParams } from "next/navigation";
 import FileList from "@/app/FileList";
+import Wrapper from "@/_components/Wrapper/Wrapper";
+import Background from "@/_components/Wrapper/Background/Background";
 // import { useRouter } from "next/router";
 
 const Test = () => {
@@ -10,9 +12,13 @@ const Test = () => {
   // const router = useRouter();
 
   return (
+    // <Wrapper fileInput>
     <div>
+      <Background />
+
       <FileList />
     </div>
+    // </Wrapper>
   );
 };
 

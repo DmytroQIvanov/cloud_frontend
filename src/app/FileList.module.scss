@@ -1,20 +1,23 @@
 //@include
 .fileList {
-  padding: 10px;
-  margin: 10px;
+  padding: 5px 0px;
+  margin: 2px 5px;
   width: 100%;
   @media (max-width: 500px) {
     padding: 0;
     margin: 0;
+    margin-top: 8px;
   }
 
   &_FirstBlock {
     display: grid;
     gap: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 6px;
     grid-template-columns: 70% 30%;
 
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
+      gap: 5px;
+      margin-bottom: 5px;
       display: flex;
       flex-direction: column-reverse;
 
@@ -22,16 +25,24 @@
   }
   &_List {
 
-    display: flex;
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr ;
     margin-top: 10px;
-    // gap: "5px",
+     gap: 5px;
     flex-wrap: wrap;
     justify-content: space-between;
 
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
+
+      grid-template-columns:1fr 1fr ;
       justify-content: center;
 
 
     }
+  }
+  &_HorizontalList{
+    gap: 3px;
+    display: flex;
+    flex-direction: column;
   }
 }

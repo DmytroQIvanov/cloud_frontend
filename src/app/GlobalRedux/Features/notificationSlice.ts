@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   INotification,
   onCreateNotificationDTO,
-} from "@/components/NotificationComponent/NotificationTypes";
+} from "@/_components/NotificationComponent/NotificationTypes";
 import RandomNumber from "@/Functions/RandomNumber";
 
 export interface NotificationState {

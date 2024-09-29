@@ -1,0 +1,70 @@
+
+
+.fileInput{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position:  relative;
+  width: 100%;
+  &_container{
+    &_absolute{
+      background-color: #2c2c2c;
+
+    }
+    height: 100%;
+    min-height: 70px;
+    backdrop-filter: blur(9px);
+    //width: 350px;
+    //height: 230px;
+    //min-width: 100px;
+    //min-height: 100px;
+    padding: 7px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    border-radius: 24px;
+
+    //margin: 10px 10px 10px 10px;
+    transition-duration: .4s !important;
+    &:hover{
+      box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0);
+      transition-duration: .4s !important;
+      background-color: rgba(44, 44, 44, 0.91);
+    }
+    &__active{
+      box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0);
+      transition-duration: .4s !important;
+      background-color: rgba(44, 44, 44, 0.91);
+      //background-color: #2c2c2c;
+
+    }
+
+    &_title{
+      gap:5px;
+      width: fit-content;
+      height: fit-content;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+      user-drag:none;
+      &Main{
+        padding: 0px 10px;
+        gap:5px;
+        width: fit-content;
+        height: fit-content;
+        margin: auto;
+        display: flex;
+        transition-duration: .3s;
+        span{
+          margin: auto;
+          font-size: 17px;
+          width: 100%;
+          text-align: center;
+          padding: 0px 6px;
+        }
+      }
+
+    }
+  }
+}

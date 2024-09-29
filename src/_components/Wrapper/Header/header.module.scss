@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap");
+
+.header {
+  width: auto;
+
+  &_container {
+    background-color: #151515;
+    border-bottom: 2px solid white;
+    width: 100%;
+    height: 70px;
+    padding: 10px;
+    //margin: 10px;
+    display: flex;
+    position: fixed;
+    top: 0px;
+    z-index: 100;
+    @media screen and (max-width: 600px) {
+      height: 55px;
+    }
+
+    a {
+      //font-family: "Protest Guerrilla", sans-serif;
+      //font-size: 16px;
+    }
+    @media (max-width: 600px) {
+      font-size: 12px;
+      a {
+        font-size: 12px;
+      }
+    }
+  &_sidebar{
+    &Icon {
+      &__active {
+      }
+      &__inactive {
+      }
+      &Div {
+      }
+    }
+  }
+    @media screen and (max-width: 600px) {
+      &_sidebar {
+        //position: absolute;
+        //right: 20px;
+        //margin: auto 10px auto auto;
+
+
+        //margin: auto 20px auto auto;
+        //display: flex;
+        //gap: 6px;
+        //position: absolute;
+        //display: flex;
+        //width: 100%;
+        //position: relative;
+        //top: 0px;
+        //display: flex;
+
+        &Icon {
+          margin: auto 15px auto auto;
+          display: flex;
+          flex-direction: column;
+          //gap: 8px;
+          transition-duration: 0.3s;
+          cursor: pointer;
+          width: 32px;
+          height: 25px;
+          position: relative;
+          //position: absolute;
+          //right: 20px;
+
+          &__active {
+            & :nth-child(1) {
+              transition-duration: 0.3s;
+              background-color: #c9c9c9 !important;
+              transform: rotate(135deg) !important;
+              width: 36px;
+              top: 11px;
+              //box-shadow: 3px -3px 3px 3px rgba(51, 51, 51, 0.44);
+            }
+            & :nth-child(2) {
+              transition-duration: 0.3s;
+              transform: rotate(-135deg) !important;
+              width: 36px;
+              top: 11px;
+            }
+            & :nth-child(3) {
+              transition-duration: 0.3s;
+              width: 0px;
+              top: 22px;
+              right: 0px;
+            }
+          }
+          &__inactive {
+            & :nth-child(1) {
+              transition-duration: 0.3s;
+              transform: rotate(0deg);
+              top: 0px;
+              //box-shadow: 3px -3px 3px 3px rgba(51, 51, 51, 0);
+            }
+            & :nth-child(2) {
+              transition-duration: 0.3s;
+              transform: rotate(0deg);
+              top: 11px;
+              //box-shadow: 3px -3px 3px 3px rgba(51, 51, 51, 0);
+            }
+            & :nth-child(3) {
+              transition-duration: 0.3s;
+              transform: rotate(0deg);
+              top: 22px;
+              //top: 24px;
+            }
+          }
+          &Div {
+            position: absolute;
+            width: 32px;
+            height: 3px;
+            background-color: white;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+  }
+  &_mockContainer {
+    height: 70px;
+    padding: 10px;
+    display: flex;
+    content: " ";
+    //margin: 10px;
+    visibility: hidden;
+    width: 100%;
+
+    @media screen and (max-width: 600px) {
+      height: 55px;
+    }
+  }
+  &_leftLinks {
+    display: flex;
+    margin: auto 0px auto auto;
+    @media (max-width: 600px) {
+      display: none;
+    }
+
+
+    &_link {
+      height: 100%;
+      width: 100%;
+      padding: 12px 18px;
+      font-size: 17px;
+      transition-duration: 0.3s;
+      &_active {
+        background-color: #ffffff;
+        color: black;
+        transition-duration: 0.3s;
+      }
+      &:hover {
+        background-color: rgba(239, 239, 239, 0.82);
+        color: black;
+        transition-duration: 0.3s;
+      }
+    }
+  }
+}

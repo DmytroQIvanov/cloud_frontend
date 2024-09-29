@@ -1,0 +1,74 @@
+@import "../../app/Styles/mixins";
+.faq{
+  @include defaultElem;
+  list-style: none;
+  height: auto;
+  display: flex;
+flex-direction: column;
+  &_title{
+    background-color: #292736;
+    border-radius: 15px;
+    padding: 5px;
+    width: auto;
+    text-align: center;
+    font-weight: bold;
+    font-size: 26px;
+    margin-bottom: 20px;
+    box-shadow: 4px 4px 4px 4px #1f1d27;
+  }
+  &_elem{
+    font-size: 20px;
+    transition-duration: .3s;
+    cursor: pointer;
+    margin: 10px;
+    text-align: center;
+    border-radius: 12px;
+    padding: 10px 10px 5px 10px;
+    box-shadow: 4px 4px 4px 4px #1f1d27;
+    //border-bottom: 2px solid white;
+
+    &:after{
+      content: " ";
+      display: block;
+      width: 100%;
+      background-color: #aaa4a4;
+
+      height: 3px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+    &_desc{
+        height: 0px;
+       font-size: 17px;
+      display: flex;
+
+      span{
+        text-align: center;
+        margin: auto;
+        //height: 100%;
+      }
+    }
+
+    //text-align: center;
+    &__active{
+      transition-duration: .3s;
+      .faq_elem_desc{
+        height: 55px;
+        margin: auto auto auto 15px;
+
+        transition-duration: .3s;
+        opacity: 100%;
+        visibility: visible;
+      }
+    }
+    &__inactive{
+      transition-duration: .3s;
+      .faq_elem_desc {
+        height: 0px;
+        transition-duration: .3s;
+        visibility: hidden;
+        opacity: 0%;
+      }
+    }
+  }
+}
