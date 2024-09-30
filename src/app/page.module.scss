@@ -1,3 +1,5 @@
+//@import "/src/app/Styles/colors";
+@import "Styles/colors";
 .page{
   margin-bottom: 20px;
     &_container {
@@ -49,13 +51,14 @@
       display: flex;
       flex-direction: column;
       border-radius: 5px;
-      background-color: #181723;
+      //background-color: #181723;
+      background-color: $mainColor_light;
       color: #d4d4d4;
       transition-duration: 0.2s;
       box-shadow: 3px 3px 15px 2px rgba(41, 41, 41, 0.75);
       &__active{
         transition-duration: 0.2s;
-        background-color: #2e2c3e;
+        background-color: $mainColor_lighter;
         transform: scale(1.05);
 
       }

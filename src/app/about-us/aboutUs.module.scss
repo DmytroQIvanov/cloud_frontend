@@ -1,4 +1,6 @@
 @import "../../app/Styles/mixins";
+@import "/src/app/Styles/colors";
+
 .aboutUs{
 
   @include defaultElem;
@@ -6,6 +8,7 @@
   display: flex;
   flex-direction: column;
   padding: 25px;
+  margin-bottom: 30px;
   @media (max-width: 700px) {
     padding: 15px;
 
@@ -18,7 +21,7 @@
     }
   }
   &_listContainer{
-    background-color: #1f1d27;
+    background-color: $mainColor_light;
     box-shadow: 5px 5px 8px 5px rgb(22, 20, 27);
     padding: 10px 10px 30px 10px;
 
@@ -30,7 +33,7 @@
     text-align: center;
     justify-content: center;
     width: 100%;
-    background-color: #252332;
+    background-color: $mainColor_lighter;
     box-shadow: 3px 3px 3px 3px rgba(25, 23, 30, 0.8);
     //text-align: center;
   }

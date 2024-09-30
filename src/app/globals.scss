@@ -1,3 +1,4 @@
+@import "src/app/Styles/colors";
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -87,7 +88,18 @@ body {
 }
 
 body {
+  /*font-family: fantasy;*/
   color: rgb(var(--foreground-rgb));
+  /*background-color: red;*/
+  /*background: linear-gradient(130deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);*/
+  /*background: linear-gradient(130deg, rgba(79,33,110,1) 0%, rgba(135,31,31,1) 50%, rgba(149,101,32,1) 100%);*/
+  /*background: linear-gradient(130deg, rgba(67,50,79,1) 0%, rgba(88,41,121,1) 50%, rgba(149,101,32,1) 100%);*/
+  /*background: linear-gradient(130deg, rgba(58,44,68,1) 0%, rgba(76,38,103,1) 46%, rgba(149,101,32,1) 100%);*/
+  /*background: linear-gradient(130deg, rgba(47,37,54,1) 0%, rgba(60,30,82,1) 46%, rgba(125,85,28,1) 100%);*/
+  /*background: linear-gradient(130deg, rgba(43,34,48,1) 0%, rgba(44,22,60,1) 46%, rgba(107,73,24,1) 100%);*/
+  /*background: linear-gradient(130deg, rgba(35,28,38,1) 0%, rgba(31,16,42,1) 46%, rgba(89,61,20,1) 100%);*/
+  /*background: linear-gradient(130deg, rgba(35,28,38,1) 0%, rgba(31,16,42,1) 30%, rgba(89,61,20,1) 67%);*/
+  background: $mainColor_gradient;
   /*background: linear-gradient(*/
   /*    to bottom,*/
   /*    transparent,*/

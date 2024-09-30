@@ -1,6 +1,9 @@
 //@import "../../mixins";
 //@import "../../screens";
 //@import "../../Styles";
+@import "../../app/Styles/mixins";
+@import "../../app/Styles/colors";
+
 .effect {
   height: 550px;
   width: 100%;
@@ -58,7 +61,7 @@
   &_borderElement {
     &Top {
 
-      background-color: #2e2c3e;
+      background-color: $mainColor_lighter;
       //background-color: #2c2c2c;
 
       border-top-left-radius:10px ;
@@ -80,7 +83,8 @@
       padding: 20px 10px;
     }
     &Bottom {
-      background-color:#2e2c3e;
+      background-color: $mainColor_lighter;
+
       //background-color: #2c2c2c;
       position: absolute;
       bottom: 0px;

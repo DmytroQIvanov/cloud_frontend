@@ -20,8 +20,8 @@ const initialState: NotificationState = {
   //   : "block",
 };
 
-export const sideBarSlice = createSlice({
-  name: "sidebar",
+export const projectSlice = createSlice({
+  name: "project",
   initialState,
 
   reducers: {
@@ -37,6 +37,6 @@ export const sideBarSlice = createSlice({
   },
 });
 
-export const { handleSideBar, handleChangeViewType } = sideBarSlice.actions;
+export const { handleSideBar, handleChangeViewType } = projectSlice.actions;
 
-export default sideBarSlice.reducer;
+export default projectSlice.reducer;

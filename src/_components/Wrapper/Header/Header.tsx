@@ -7,7 +7,7 @@ import Ukraine from "../../../../public/ukraine-flag-icon.svg";
 import { usePathname } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/GlobalRedux/store";
-import { handleSideBar } from "@/app/GlobalRedux/Features/sideBarSlice";
+import { handleSideBar } from "@/app/GlobalRedux/Features/projectSlice";
 export const links = [
   { link: "/", title: "Домашня", key: 1 },
   { link: "/links", title: "Посилання", key: 2 },

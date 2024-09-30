@@ -1,3 +1,4 @@
+@import "colors";
 @mixin borderWidth{
 
   width: 73%;
@@ -12,7 +13,8 @@
 @mixin defaultElem{
 
   width: 100%;
-  background-color: #2e2c3e;
+  //background-color: #2e2c3e;
+  background-color: $mainColor_lighter;
   margin-top: 20px;
   padding: 12px;
   border-radius: 10px;

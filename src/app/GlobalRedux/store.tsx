@@ -2,7 +2,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import fileReducer from "./Features/fileSlice";
 import notificationReducer from "./Features/notificationSlice";
-import sideBarReducer from "./Features/sideBarSlice";
+import sideBarReducer from "./Features/projectSlice";
 
 export const store = configureStore({
   reducer: {
