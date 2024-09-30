@@ -1,6 +1,6 @@
 // "use client";
 import type { Metadata } from "next";
-import "./globals.css";
+import "./globals.scss";
 import { Providers } from "@/app/GlobalRedux/provider";
 import Script from "next/script";
 import { Suspense } from "react";

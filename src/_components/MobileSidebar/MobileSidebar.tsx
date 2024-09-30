@@ -7,7 +7,7 @@ import ScrollTrigger from "../ScrollTrigger/ScrollTrigger";
 import { usePathname, useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/GlobalRedux/store";
-import { handleSideBar } from "@/app/GlobalRedux/Features/sideBarSlice";
+import { handleSideBar } from "@/app/GlobalRedux/Features/projectSlice";
 import { links } from "@/_components/Wrapper/Header/Header";
 import Link from "next/link";
 

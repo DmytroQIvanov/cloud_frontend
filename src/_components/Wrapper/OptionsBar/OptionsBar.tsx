@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./OptionsBar.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/GlobalRedux/store";
-import { handleChangeViewType } from "@/app/GlobalRedux/Features/sideBarSlice";
+import { handleChangeViewType } from "@/app/GlobalRedux/Features/projectSlice";
 const OptionsBar = () => {
   const dispatch = useDispatch();
   const viewType = useSelector(

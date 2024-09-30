@@ -189,7 +189,7 @@ export default async function Home() {
                   <b
                     style={{
                       padding: "3px",
-                      background: "#272635",
+                      background: "#3c2843",
                       borderRadius: "3px",
                     }}
                   >
@@ -198,7 +198,7 @@ export default async function Home() {
                   <b
                     style={{
                       padding: "3px",
-                      background: "#272635",
+                      background: "#3c2843",
                       borderRadius: "3px",
                     }}
                   >
@@ -225,7 +225,7 @@ export default async function Home() {
                   <b
                     style={{
                       padding: "3px",
-                      background: "#272635",
+                      background: "#3c2843",
                       borderRadius: "3px",
                     }}
                   >
@@ -234,7 +234,7 @@ export default async function Home() {
                   <b
                     style={{
                       padding: "3px",
-                      background: "#272635",
+                      background: "#3c2843",
                       borderRadius: "3px",
                     }}
                   >
