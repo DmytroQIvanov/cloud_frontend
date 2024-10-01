@@ -27,6 +27,7 @@ const Instruments = () => {
         {/*  Змінити розмір зображення*/}
         {/*</Link>*/}
         <Link href={"/instruments/your-ip"}>Дізнатись IP</Link>
+        <Link href={"https://transfer.quanticfiles.com"}>Трансфер файлів</Link>
       </div>
 
       {/*<div>*/}

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./header.module.scss";
 import Link from "next/link";
@@ -9,6 +9,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/GlobalRedux/store";
 import { handleSideBar } from "@/app/GlobalRedux/Features/projectSlice";
 export const links = [
+  { link: "/", title: "Домашня", key: 1 },
+  { link: "/space", title: "Сховище", key: 3 },
+  // { link: "/your-links", title: "Ваші лінки", key: 2 },
+  // { link: "/image-compress", title: "Стиснути зображення", key: 3 },
+  // { link: "/image-convert", title: "Змінити розширення" },
+  // { link: "/sign-doc", title: "Підписати документ" },
+  // { link: "/pricing", title: "Ціни" },
+  // { link: "/account", title: "Аккаунт" },
+  { link: "/instruments", title: "Інструменти" },
+  // { link: "/account", title: "Аккаунт" },
+  { link: "/about-us", title: "Про нас" },
+];
+
+export const transferLinks = [
   { link: "/", title: "Домашня", key: 1 },
   { link: "/links", title: "Посилання", key: 2 },
   // { link: "/acticles", title: "Статті", key: 3 },
@@ -28,6 +42,10 @@ const Header = () => {
   // const onSidebarIconClick = () => {
   //   setSidebarState((prev) => !prev);
   // };
+  const [host, setHost] = React.useState("");
+  useEffect(() => {
+    setHost(window && window.location.host);
+  }, []);
 
   const dispatch = useDispatch();
   const sidebarState = useSelector((elem: RootState) => elem.sideBar.sidebar);
@@ -79,16 +97,18 @@ const Header = () => {
         <div className={styles.header_leftLinks}>
           {/*<div>En</div>*/}
           {/*<div>Ua</div>*/}
-          {links.map((linkElem, index) => (
-            <div key={index}>
-              <Link
-                href={linkElem.link}
-                className={`${styles.header_leftLinks_link} ${pathName == linkElem.link ? styles.header_leftLinks_link_active : ""}`}
-              >
-                {linkElem.title}
-              </Link>
-            </div>
-          ))}
+          {(host === "transfer.quanticfiles.com" ? transferLinks : links).map(
+            (linkElem, index) => (
+              <div key={index}>
+                <Link
+                  href={linkElem.link}
+                  className={`${styles.header_leftLinks_link} ${pathName == linkElem.link ? styles.header_leftLinks_link_active : ""}`}
+                >
+                  {linkElem.title}
+                </Link>
+              </div>
+            ),
+          )}
         </div>
       </div>
     </div>

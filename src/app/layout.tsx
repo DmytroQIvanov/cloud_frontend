@@ -23,6 +23,7 @@ export default function RootLayout({
     <html lang="en">
       {/*<Suspense fallback={"test..."}>*/}
       <Script
+        defer
         src={
           "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249338276563886"
         }

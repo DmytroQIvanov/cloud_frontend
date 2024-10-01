@@ -2,18 +2,13 @@ import { NextFederationPlugin } from "@module-federation/nextjs-mf";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  async rewrites() {
-    return {
-      // fallback: [
-      //   // These rewrites are checked after both pages/public files
-      //   // and dynamic routes are checked
-      //   {
-      //     source: "/transfer",
-      //     destination: `https://transfer.quanticfiles.com/`,
-      //   },
-      // ],
-    };
-  },
+  rewrites: async () => [
+    {
+      source: "/transfer/:url",
+      destination: "/:url",
+    },
+  ],
+
   // reactStrictMode: true,
   //Inter
   // output: "export",
