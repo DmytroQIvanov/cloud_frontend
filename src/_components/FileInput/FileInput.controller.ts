@@ -21,11 +21,84 @@ const FileInputController = ({ onSend, inputType }: any) => {
   ]);
   const inputRef: any = useRef(null);
 
+  console.log(loadingStatus);
   // useEffect(() => {
   //   setInterval(() => {
   //     setImgInterval((prevState) => prevState + 1);
   //   }, 170);
   // }, []);
+  function upload(files: any) {
+    // Get selected files from the input element.
+    for (var i = 0; i < files.length; i++) {
+      var file = files[i];
+      // Retrieve a URL from our server.
+      retrieveNewURL(file, (file: any, url: any) => {
+        // Upload the file to the server.
+        uploadFile(file, url);
+      });
+    }
+  }
+  function retrieveNewURL(file: any, cb: any) {
+    console.log(file, file.name);
+    axios
+      .get(
+        `${process.env.BACKEND_DOMAIN}/link/presignedUrl?fileName=${file.name}`,
+        // {
+        //   credentials: "include",
+        // },
+      )
+      .then((response) => {
+        console.log(response);
+        cb(file, response.data);
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  }
+  function uploadFile(file: any, url: any) {
+    // if (document.querySelector("#status").innerText === "No uploads") {
+    //   document.querySelector("#status").innerHTML = "";
+    // }
+    const formData = new FormData();
+    // const uploaded = [...file];
+    formData.append(`file`, file);
+    // uploaded.some((elem: any) => {
+    //   formData.append(`file-${2}`, elem);
+    // });
+    setLoading(true);
+
+    axios
+      .put(url, file, {
+        method: "PUT",
+        headers: {
+          //   "Content-Type": "multipart/form-data",
+        },
+        onUploadProgress: (progressEvent) => {
+          // console.log(progressEvent);
+          setLoadingStatus([
+            {
+              progress: progressEvent.progress || 0,
+              bytes: progressEvent.bytes,
+              loaded: progressEvent.loaded,
+              total: progressEvent.total || 0,
+              rate: progressEvent.rate || 0,
+            },
+          ]);
+        },
+        // body: formData,
+      })
+      .then(() => {
+        // If multiple files are uploaded, append upload status on the next line.
+        // document.querySelector("#status").innerHTML +=
+        //   `<br>Uploaded ${file.name}.`;
+      })
+      .catch((e) => {
+        console.error(e);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }
 
   const handleImageUpload = async (files: any) => {
     const formData = new FormData();
@@ -51,35 +124,32 @@ const FileInputController = ({ onSend, inputType }: any) => {
 
         default:
           let user = JSON.parse(`${localStorage.getItem("user")}`);
-          // const array = [];
-          // param?.id && array.push(`id=${param.id}`);
-          // user?.id && array.push(`userId=${user.id}`);
-          response = await axios.post(
-            // `${process.env.BACKEND_DOMAIN}/link/add-file${array.length > 1 ? `?${array.map((elem) => `&${elem}`)}` : ""}`,
 
-            `${process.env.BACKEND_DOMAIN}/link/add-file?${param.id ? `id=${param.id}` : ""}${user?.id ? `&userId=${user?.id}` : ""}`,
-            formData,
-            {
-              signal: controller.signal,
+          upload(files);
+          // response = await axios.post(
+          //   `${process.env.BACKEND_DOMAIN}/link/add-file?${param.id ? `id=${param.id}` : ""}${user?.id ? `&userId=${user?.id}` : ""}`,
+          //   formData,
+          //   {
+          //     signal: controller.signal,
+          //
+          //     onUploadProgress: (progressEvent) => {
+          //       setLoadingStatus([
+          //         {
+          //           progress: progressEvent.progress || 0,
+          //           bytes: progressEvent.bytes,
+          //           loaded: progressEvent.loaded,
+          //           total: progressEvent.total || 0,
+          //           rate: progressEvent.rate || 0,
+          //         },
+          //       ]);
+          //     },
+          //   },
+          // );
+          // console.log("Enhanced image:", response.data);
 
-              onUploadProgress: (progressEvent) => {
-                setLoadingStatus([
-                  {
-                    progress: progressEvent.progress || 0,
-                    bytes: progressEvent.bytes,
-                    loaded: progressEvent.loaded,
-                    total: progressEvent.total || 0,
-                    rate: progressEvent.rate || 0,
-                  },
-                ]);
-              },
-            },
-          );
-          console.log("Enhanced image:", response.data);
-
-          if (response?.data?.user?.id) {
-            localStorage.setItem("user", JSON.stringify(response?.data?.user));
-          }
+          // if (response?.data?.user?.id) {
+          //   localStorage.setItem("user", JSON.stringify(response?.data?.user));
+          // }
           break;
       }
       dispatch(
@@ -99,21 +169,21 @@ const FileInputController = ({ onSend, inputType }: any) => {
 
       console.error("Error enhancing image:", error);
     } finally {
-      if (response && response.data.newLink) {
-        // redirect(`/link/${response.data.linkCode}`);
-        redirected = true;
-        router.push(`/link/${response.data.linkCode}`);
-      }
+      // if (response && response.data.newLink) {
+      //   // redirect(`/link/${response.data.linkCode}`);
+      //   redirected = true;
+      //   router.push(`/link/${response.data.linkCode}`);
+      // }
     }
-    if (response && response.data.linkCode && !redirected) {
-      const resp = await axios(
-        `${process.env.BACKEND_DOMAIN}/link/${response.data.linkCode}?userId=${JSON.parse(`${localStorage.getItem("user")}`)?.id}`,
-        {},
-      );
-      dispatch(getFile({ data: resp.data }));
-
-      onSend && onSend(resp.data);
-    }
+    // if (response && response.data.linkCode && !redirected) {
+    //   const resp = await axios(
+    //     `${process.env.BACKEND_DOMAIN}/link/${response.data.linkCode}?userId=${JSON.parse(`${localStorage.getItem("user")}`)?.id}`,
+    //     {},
+    //   );
+    //   dispatch(getFile({ data: resp.data }));
+    //
+    //   onSend && onSend(resp.data);
+    // }
     // setSelectedImages([]);
   };
 
