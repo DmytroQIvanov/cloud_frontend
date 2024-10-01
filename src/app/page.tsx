@@ -73,7 +73,7 @@ export default async function Home() {
               <BlockAnim />
             </ScrollTrigger>
           </div>
-          <ScrollTrigger defaultSide={"Left"}></ScrollTrigger>
+          {/*<ScrollTrigger defaultSide={"Left"}></ScrollTrigger>*/}
         </div>
         <FileInput start />
       </div>
