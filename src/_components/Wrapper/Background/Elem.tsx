@@ -6,24 +6,24 @@ import Image from "next/image";
 import { useWindowSize } from "@/Functions/useWindowSize";
 
 const BackgroundElem = ({ number, initial, img, onDelete, type }: any): any => {
-  const [pos, setPos] = useState(0);
+  // const [pos, setPos] = useState(0);
   // const windowSize = useWindowSize();
   const [randomPosition, setRandomPosition] = useState<any>({
     left: RandomNumber({
       min: -(window.innerWidth < 900
         ? window.innerWidth * 2.5
         : window.innerWidth * 0.8),
-      max: window.innerWidth,
+      max: window.innerWidth * 0.9,
     }),
     zIndex: RandomNumber({ min: -1, max: -20 }),
     // width: RandomNumber({ min: 80, max: window.innerWidth * 0.1 }),
-    width: RandomNumber({ min: 120, max: 240 }),
+    width: RandomNumber({ min: 110, max: 220 }),
     // width: RandomNumber({ min: 80, max: window.innerWidth * 0.4 }),
     // height: RandomNumber({ min: 80, max: window.innerHeight * 0.4 }),
-    height: RandomNumber({ min: 120, max: 240 }),
+    height: RandomNumber({ min: 110, max: 220 }),
     ...(initial
       ? {
-          bottom: RandomNumber({ min: -800, max: window.innerHeight }),
+          bottom: RandomNumber({ min: -800, max: window.innerHeight * 0.9 }),
         }
       : {
           bottom: -(window.innerHeight * 1.4),
@@ -32,24 +32,24 @@ const BackgroundElem = ({ number, initial, img, onDelete, type }: any): any => {
   // const [initialPosition, setInitialPosition] = useState<any>();
 
   const [image, setImage] = useState<any | null>(img());
-  useEffect(() => {
-    // console.log(randomPosition);
-    const interval = setInterval(() => {
-      // console.log("This will run every second!11");
-      // setPos((prevState) => prevState + 1);
-      setPos((prevState) => prevState + 0.5);
+  // useEffect(() => {
+  // console.log(randomPosition);
+  // const interval = setInterval(() => {
+  // console.log("This will run every second!11");
+  // setPos((prevState) => prevState + 1);
+  // setPos((prevState) => prevState + 0.5);
 
-      // setElements((prevState) => [
-      //   ...prevState,
-      //   <BackgroundElem
-      //       key={RandomNumber()}
-      //       number={RandomNumber({ min: 1, max: 8 })}
-      //       inital={false}
-      //   />,
-      // ]);
-    }, 1);
-    return () => clearInterval(interval);
-  }, []);
+  // setElements((prevState) => [
+  //   ...prevState,
+  //   <BackgroundElem
+  //       key={RandomNumber()}
+  //       number={RandomNumber({ min: 1, max: 8 })}
+  //       inital={false}
+  //   />,
+  // ]);
+  //   }, 1);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   // setInterval(() => {
   // }, 1);
@@ -72,7 +72,7 @@ const BackgroundElem = ({ number, initial, img, onDelete, type }: any): any => {
       // style={{ width: "1000px", height: "1000px" }}
     >
       {type == "video" ? (
-        <video width="320" height="240" preload="true" autoPlay>
+        <video width="320" height="240" preload="false" autoPlay>
           <source
             type="video/mp4"
             src={"../../../public/backgroundImages/video1.mp4"}
@@ -87,6 +87,7 @@ const BackgroundElem = ({ number, initial, img, onDelete, type }: any): any => {
             src={image}
             // quality={1}
             priority={false}
+            loading="lazy"
             width={randomPosition.width}
             height={randomPosition.height}
             style={{

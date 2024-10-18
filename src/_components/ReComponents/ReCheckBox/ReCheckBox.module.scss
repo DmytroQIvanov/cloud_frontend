@@ -1,0 +1,11 @@
+.reCheckBox {
+  display: flex;
+  font-size: 16px;
+  &_input{
+    padding: 10px;
+  }
+  &_placeholder{
+    margin: 0px 10px;
+    width: max-content;
+  }
+}

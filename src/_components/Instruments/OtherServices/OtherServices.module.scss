@@ -1,0 +1,37 @@
+@import "../../../app/Styles/colors";
+.otherServices {
+  grid-area: otherServices;
+  display: flex;
+  flex-direction: column;
+  @media (max-width: 750px) {
+    overflow: scroll;
+    //width: max-content;
+    flex-direction: row;
+    gap: 5px;
+  }
+  //gap: 12px;
+  &_elem{
+    background-color: $mainColor_lightest;
+    display: flex;
+    margin-bottom: 12px;
+    padding: 8px 10px;
+    text-align: center;
+    box-shadow: 4px 4px 5px 4px rgb(22, 20, 27);
+    font-size: 13px;
+    width: 150px;
+    cursor: pointer;
+    transition-duration: .3s;
+    @media (max-width: 750px) {
+      padding: 3px 4px;
+      font-size: 12px;
+      width: max-content;
+
+    }
+    &_active{
+      transition-duration: .3s;
+      background-color: $mainColor_light;
+
+    }
+
+  }
+}

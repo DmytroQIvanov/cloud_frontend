@@ -25,25 +25,27 @@ const NotFound = () => {
     return () => clearInterval(timeout);
   }, []);
   return (
-    <div style={{ width: "100%", height: "100%", display: "flex" }}>
-      <div
-        style={{
-          // display: "flex",
-          width: "fit-content",
-          margin: "auto",
-          height: "fit-content",
-          fontWeight: "bold",
-          fontSize: "28px",
-          textAlign: "center",
-        }}
-      >
-        <div> Ой... Вибачте, сторінка не найдена чи ще в розробці.</div>
-        <div>
-          {" "}
-          Вас буде автоматично направлено на домашню сторінку через {timer}...
+    <Wrapper>
+      <div style={{ width: "100%", height: "100%", display: "flex" }}>
+        <div
+          style={{
+            // display: "flex",
+            width: "fit-content",
+            margin: "auto",
+            height: "fit-content",
+            fontWeight: "bold",
+            fontSize: "28px",
+            textAlign: "center",
+          }}
+        >
+          <div> Ой... Вибачте, сторінка не найдена чи ще в розробці.</div>
+          <div>
+            {" "}
+            Вас буде автоматично направлено на домашню сторінку через {timer}...
+          </div>
         </div>
       </div>
-    </div>
+    </Wrapper>
   );
 };
 

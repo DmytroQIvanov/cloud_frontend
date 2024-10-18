@@ -1,9 +1,16 @@
 @import "../../app/Styles/mixins";
 
 .wrapper{
-  @include borderWidth;
+  &_fullPage{
+    @include borderWidth(98%);
+  }
+  &_partPage{
+    @include borderWidth(73%);
+
+  }
+
   &_children{
-    min-height: 80vh;
+    min-height: 85vh;
   }
 
 }

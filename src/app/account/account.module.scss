@@ -1,0 +1,10 @@
+@import "../../app/Styles/mixins";
+.account {
+  @include defaultElem;
+  gap:10px;
+  display: flex;
+  flex-direction: column;
+  a{
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,76 @@
+@import "../../../app/Styles/colors";
+
+.input {
+  position: relative;
+  width: 100%;
+  &_inputlg {
+    input {
+      padding: 14px;
+      font-size: 20px;
+      @media (max-width: 900px) {
+
+        padding: 12px;
+        font-size: 18px;
+      }
+
+    }
+  }
+  &_inputmd {
+    input {
+      padding: 10px;
+      font-size: 18px;
+
+      @media (max-width: 900px) {
+
+        padding: 8px;
+        font-size: 16px;
+      }
+    }
+  }
+  &_inputsm {
+    input {
+      padding: 8px;
+      font-size: 16px;
+
+      @media (max-width: 900px) {
+
+        padding: 7px;
+        font-size: 15px;
+      }
+    }
+  }
+
+  &_container {
+    display: flex;
+    width: 100%;
+    position: relative;
+    div {
+      width: 100%;
+    }
+  }
+  label {
+    //background-color: red;
+    margin-bottom: 10px !important;
+  }
+  input {
+    color: white;
+    margin-top: 10px;
+    //background-color: #424242;
+    background-color: $mainColor_lighter;
+    box-shadow: none;
+    border-radius: 12px;
+    border: none;
+    width: 100%;
+    @media (max-width: 600px) {
+      margin-top: 7px;
+      padding: 5px 6px;
+      font-size: 14px;
+    }
+
+    &:focus {
+      box-shadow: none;
+      -webkit-box-shadow: none;
+      outline: none;
+    }
+  }
+}

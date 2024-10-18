@@ -17,9 +17,10 @@ const Effect = ({
       <div className={styles.effect}>
         <div className={styles.effect_borderElementTop}>
           <div className={styles.effect_borderElementContent}>
-            {/*<h1>{t("main.title1")}</h1>*/}
             <ScrollTrigger>
-              <h1 style={{ textAlign: "center" }}>{titleTop}</h1>
+              <span className={styles.effect_borderElementContent_title}>
+                {titleTop}
+              </span>
             </ScrollTrigger>
             <ScrollTrigger defaultSide={"Left"}>
               <desc>{descriptionTop}</desc>
@@ -32,6 +33,7 @@ const Effect = ({
             style={{
               objectFit: "cover",
             }}
+            loading={"lazy"}
             alt={"Зображення легкості передачі файлів"}
             // title={"Зображення "}
             src={imgUrl}
@@ -40,8 +42,14 @@ const Effect = ({
         {(titleBottom || descriptionBottom) && (
           <div className={styles.effect_borderElementBottom}>
             <div className={styles.effect_borderElementContent}>
-              <h1>{titleBottom}</h1>
-              <desc>{descriptionBottom}</desc>
+              <ScrollTrigger>
+                <span className={styles.effect_borderElementContent_title}>
+                  {titleTop}
+                </span>
+              </ScrollTrigger>
+              <ScrollTrigger defaultSide={"Left"}>
+                <desc>{descriptionTop}</desc>
+              </ScrollTrigger>
             </div>
           </div>
         )}

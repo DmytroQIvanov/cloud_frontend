@@ -5,8 +5,8 @@ import { createPortal } from "react-dom";
 import CrossSVG from "../../../public/cross-svgrepo-com.svg";
 import Loaders from "@/_components/Loaders/Loaders";
 
-const FileModalController = () => {
-  const [image, setImage] = useState<any>();
+const FileModalController = (props: any | { initialFile: any }) => {
+  const [image, setImage] = useState<any>(props?.initialFile);
   const [modalActive, setModalActive] = useState(false);
   const [loading, setLoading] = useState(false);
   const handleChangeFile = (
@@ -24,6 +24,10 @@ const FileModalController = () => {
   useEffect(() => {
     ref.current = document.getElementById("myPortal");
   }, []);
+
+  useEffect(() => {
+    setImage(props?.initialFile);
+  }, [props?.initialFile]);
 
   useEffect(() => {
     window.addEventListener("keydown", (e) => {

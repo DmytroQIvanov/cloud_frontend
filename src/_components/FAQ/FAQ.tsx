@@ -44,22 +44,24 @@ const Faq = ({ extraQuestions }: { extraQuestions?: IQuestion[] }) => {
   return (
     <div>
       <div className={`${styles.faq} prevent-select`}>
-        <ul className={styles.faq_title}>Питання і відповіді:</ul>
-        {activeElements.map((elem, index) => (
-          <li
-            className={`${styles.faq_elem} ${activeElements[index].active ? styles.faq_elem__active : styles.faq_elem__inactive}`}
-            key={index}
-            onClick={() => {
-              onHandleChange(index);
-              // alert();
-            }}
-          >
-            <h3>{elem.title}</h3>
-            <desc className={styles.faq_elem_desc}>
-              <span>{elem.answer}</span>
-            </desc>
-          </li>
-        ))}
+        <div className={styles.faq_title}>Питання і відповіді:</div>
+        <ul>
+          {activeElements.map((elem, index) => (
+            <li
+              className={`${styles.faq_elem} ${activeElements[index].active ? styles.faq_elem__active : styles.faq_elem__inactive}`}
+              key={index}
+              onClick={() => {
+                onHandleChange(index);
+                // alert();
+              }}
+            >
+              <span>{elem.title}</span>
+              <desc className={styles.faq_elem_desc}>
+                <span>{elem.answer}</span>
+              </desc>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

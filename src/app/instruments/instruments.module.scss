@@ -1,0 +1,48 @@
+@import '../Styles/colors';
+@import '../Styles/mixins';
+.instruments {
+  @include defaultElem;
+  background-color: $mainColor_lighter;
+  &_title{
+    margin: 5px auto 20px;
+    display: flex;
+    width: fit-content;
+  }
+  &_container{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    @media (max-width: 950px) {
+      grid-template-columns: 1fr 1fr;
+
+    }
+
+    @media (max-width: 500px) {
+      grid-template-columns: 1fr;
+
+    }
+    &_elem{
+
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      padding: 5px;
+
+      background-color: $mainColor_light;
+      box-shadow: 5px 5px 8px 5px rgb(22, 20, 27);
+
+      //border-radius: 10px;
+      &_title{}
+      &_link{
+
+        padding: 10px;
+        margin: 3px 10px;
+        background-color: $mainColor_lighter;
+        box-shadow: 5px 5px 8px 5px rgb(22, 20, 27);
+
+        //border-radius: 10px;
+      }
+    }
+
+  }
+}

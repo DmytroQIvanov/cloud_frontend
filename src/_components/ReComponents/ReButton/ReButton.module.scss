@@ -1,0 +1,28 @@
+@import "../../../app/Styles/colors";
+.ReButton {
+
+  &_container{
+    &_button{
+      color: white;
+      cursor: pointer;
+
+      display: flex;
+      padding: 10px 20px;
+      border: 2px solid white;
+      border-radius: 5px;
+      background-color: rgba(241, 220, 201, 0);
+      transition-duration: .3s;
+      @media (max-width: 700px) {
+        padding: 13px 20px;
+        font-size: 13px;
+
+      }
+      &:hover{
+        background-color: $mainColor_light;
+        box-shadow: 5px 5px 7px 1px #FF8080, -9px 5px 7px 1px #FFE488, -7px -5px 7px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 7px 1px #E488FF, -10px 10px 7px 1px #FF616B, -10px -7px 10px 1px #8E5CFF, 5px 5px 7px 1px rgba(0,0,0,0);
+        transform: scale(1.05);
+
+      }
+    }
+  }
+}

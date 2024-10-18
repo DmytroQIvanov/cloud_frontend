@@ -5,24 +5,43 @@ import { addNotification } from "@/app/GlobalRedux/Features/notificationSlice";
 import { useDispatch } from "react-redux";
 import { IFile } from "@/_components/File/IFile";
 import { deleteFile } from "@/app/GlobalRedux/Features/fileSlice";
+import { deleteUserFile } from "@/app/GlobalRedux/Features/userSlice";
 
-const FileWrapperController = ({ file }: any) => {
+const FileWrapperController = ({ file, type }: any) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
 
   const onDelete = () => {
-    dispatch(deleteFile({ id: file.id }));
+    switch (type) {
+      case "cloud":
+        dispatch(deleteUserFile({ id: file.id }));
 
-    axios
-      .delete(`${process.env.BACKEND_DOMAIN}/link/test?fileId=${file.id}`)
-      .then(() =>
-        dispatch(
-          addNotification({
-            type: "green",
-            message: "Файл успішно видалений!",
-          }),
-        ),
-      );
+        axios
+          .delete(`${process.env.BACKEND_DOMAIN}/user/file/${file.id}`)
+          .then(() =>
+            dispatch(
+              addNotification({
+                type: "green",
+                message: "Файл успішно видалений!",
+              }),
+            ),
+          );
+        break;
+      case "transfer":
+        dispatch(deleteFile({ id: file.id }));
+
+        axios
+          .delete(`${process.env.BACKEND_DOMAIN}/link/test?fileId=${file.id}`)
+          .then(() =>
+            dispatch(
+              addNotification({
+                type: "green",
+                message: "Файл успішно видалений!",
+              }),
+            ),
+          );
+        break;
+    }
   };
 
   const onDownload = () => {
@@ -33,7 +52,7 @@ const FileWrapperController = ({ file }: any) => {
         message: "Файл завантажується на Ваш пк...",
       }),
     );
-    axios(file.url.file_url, {
+    axios(file.file_url, {
       responseType: "blob",
     })
       .then((response) => {

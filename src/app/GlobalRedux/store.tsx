@@ -3,12 +3,16 @@ import { configureStore } from "@reduxjs/toolkit";
 import fileReducer from "./Features/fileSlice";
 import notificationReducer from "./Features/notificationSlice";
 import sideBarReducer from "./Features/projectSlice";
+import userReducer from "./Features/userSlice";
+import instrumentReducer from "./Features/instrumentSlice";
 
 export const store = configureStore({
   reducer: {
     files: fileReducer,
     notifications: notificationReducer,
     sideBar: sideBarReducer,
+    user: userReducer,
+    instrument: instrumentReducer,
   },
 });
 

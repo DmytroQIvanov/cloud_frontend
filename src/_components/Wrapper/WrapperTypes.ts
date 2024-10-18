@@ -7,6 +7,7 @@ export interface IWrapperProp {
   ip?: any;
   agent?: any;
   forwarded?: any;
+  fullPage?: boolean;
   //     {
   //   onCreateNotification: (
   //     onCreateNotification: onCreateNotificationDTO,

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   robots: "noindex",
 };
 const Layout = ({ children }: any) => {
-  return <>{children}</>;
+  return <div>{children}</div>;
 };
 
 export default Layout;

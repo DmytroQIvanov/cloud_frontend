@@ -1,0 +1,42 @@
+@import "../../../app/Styles/colors";
+.customModal {
+  width: 100%;
+  &_cookie{
+    box-shadow: -2px -1px 6px 1px rgb(22, 20, 27);
+
+    display: flex;
+    position: fixed;
+    bottom: 0px;
+    z-index: 1000;
+    opacity: 1;
+    transition-duration: 0.2s;
+    width: 100%;
+    height: max-content;
+    padding: 12px;
+    background-color:$mainColor_lightest ;
+    color: white;
+    font-size: 13px;
+    gap: 10px;
+    @media (max-width: 700px) {
+      padding: 10px;
+      gap: 8px;
+      flex-direction: column;
+
+    }
+    &_buttons{
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin: auto;
+      @media (max-width: 700px) {
+        margin: 0px 10px;
+        gap: 30px;
+        justify-content: space-around;
+      }
+    }
+    &_inactive{
+      transition-duration: 0.2s;
+      opacity: 0;
+    }
+  }
+}

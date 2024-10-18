@@ -1,0 +1,13 @@
+@import "../../../app/Styles/mixins";
+
+.loadingPage{
+  @include defaultElem;
+  display: flex;
+  &_text{
+    margin: auto;
+    padding-bottom: 60px;
+    width: max-content;
+    height: max-content;
+    font-size: 35px;
+  }
+}

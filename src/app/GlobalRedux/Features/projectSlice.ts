@@ -10,11 +10,17 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface NotificationState {
   sidebar: boolean;
   fileListViewType: "horizontal" | "block";
+  language: "ru" | "en" | "ua";
+  // project: "transfer" | "instruments" | "cloud";
+  selectedFiles: any[];
+
   // sidebar: boolean;
 }
 const initialState: NotificationState = {
   sidebar: false,
   fileListViewType: "block",
+  language: "ua",
+  selectedFiles: [],
   // localStorage.getItem("fileListViewType") === "horizontal"
   //   ? "horizontal"
   //   : "block",

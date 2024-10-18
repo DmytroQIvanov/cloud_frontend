@@ -1,33 +1,36 @@
 import React from "react";
 import Link from "next/link";
+import styles from "./instruments.module.scss";
+import { InstrumentsArray } from "@/_components/Instruments/values";
+import GoogleHorizontal from "@/_components/GoogleAdsense/GoogleHorizontal";
 
 const Instruments = () => {
   return (
-    <div>
-      <div
-        style={{
-          marginTop: "10px",
-          padding: "20px",
-          display: "flex",
-          border: "2px solid white",
-          flexDirection: "column",
-          gap: "10px",
-          borderRadius: "15px",
-        }}
-      >
-        {/*<Link*/}
-        {/*  href={"/instruments/resize-image"}*/}
-        {/*  // style={{*/}
-        {/*  //   border: "2px solid white",*/}
-        {/*  // }}*/}
-        {/*>*/}
-        {/*  Стиснути зображення*/}
-        {/*</Link>{" "}*/}
-        {/*<Link href={"/instruments/compress-image"}>*/}
-        {/*  Змінити розмір зображення*/}
-        {/*</Link>*/}
-        <Link href={"/instruments/your-ip"}>Дізнатись IP</Link>
-        <Link href={"https://transfer.quanticfiles.com"}>Трансфер файлів</Link>
+    <div className={styles.instruments}>
+      <h1 className={styles.instruments_title}>Інструменти</h1>
+      <div className={styles.instruments_container}>
+        {InstrumentsArray.map((container) => (
+          <div
+            style={{}}
+            key={container.title}
+            className={styles.instruments_container_elem}
+          >
+            <Link href={container.link || ""} style={{ padding: "14px" }}>
+              {container.title}
+            </Link>
+            {container.array.map((instrument) => (
+              <Link
+                href={instrument.link}
+                key={instrument.link}
+                className={styles.instruments_container_elem_link}
+                style={{}}
+              >
+                {instrument.text}
+              </Link>
+            ))}
+          </div>
+        ))}
+        <GoogleHorizontal />
       </div>
 
       {/*<div>*/}

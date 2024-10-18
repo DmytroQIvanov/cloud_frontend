@@ -10,7 +10,7 @@ import { RootState } from "@/app/GlobalRedux/store";
 import { handleSideBar } from "@/app/GlobalRedux/Features/projectSlice";
 export const links = [
   { link: "/", title: "Домашня", key: 1 },
-  { link: "/space", title: "Сховище", key: 3 },
+  { link: "/storage", title: "Сховище", key: 3 },
   // { link: "/your-links", title: "Ваші лінки", key: 2 },
   // { link: "/image-compress", title: "Стиснути зображення", key: 3 },
   // { link: "/image-convert", title: "Змінити розширення" },
@@ -18,6 +18,7 @@ export const links = [
   // { link: "/pricing", title: "Ціни" },
   // { link: "/account", title: "Аккаунт" },
   { link: "/instruments", title: "Інструменти" },
+  { link: "/account", title: "Аккаунт", key: 3 },
   // { link: "/account", title: "Аккаунт" },
   { link: "/about-us", title: "Про нас" },
 ];
@@ -36,8 +37,38 @@ export const transferLinks = [
   // { link: "/account", title: "Аккаунт" },
   { link: "/about-us", title: "Про нас" },
 ];
+
+export const imageLinks = [
+  { link: "/", title: "Домашня", key: 1 },
+  {
+    link: "/instruments/compress-image",
+    title: "Стиснути",
+    key: 2,
+  },
+  {
+    link: "/instruments/resize-image",
+    title: "Змінити розмір",
+    key: 2,
+  },
+  {
+    link: "/instruments/rotate-image",
+    title: "Повернути",
+    key: 2,
+  },
+  // { link: "/acticles", title: "Статті", key: 3 },
+  // { link: "/your-links", title: "Ваші лінки", key: 2 },
+  // { link: "/image-compress", title: "Стиснути зображення", key: 3 },
+  // { link: "/image-convert", title: "Змінити розширення" },
+  // { link: "/sign-doc", title: "Підписати документ" },
+  // { link: "/pricing", title: "Ціни" },
+  // { link: "/account", title: "Аккаунт" },
+  { link: "/instruments", title: "Всі інструменти" },
+  // { link: "/account", title: "Аккаунт" },
+  { link: "/about-us", title: "Про нас" },
+];
 const Header = () => {
   const pathName = usePathname();
+  const language = useSelector((state: RootState) => state.sideBar.language);
   // const [sidebarState, setSidebarState] = useState<boolean>(false);
   // const onSidebarIconClick = () => {
   //   setSidebarState((prev) => !prev);
@@ -46,7 +77,14 @@ const Header = () => {
   useEffect(() => {
     setHost(window && window.location.host);
   }, []);
+  console.log("host", host);
 
+  const [currenLinks, setCurrenLinks] = useState<any[]>(links);
+  useEffect(() => {
+    host.includes("transfer") && setCurrenLinks(transferLinks);
+    host.includes("image") && setCurrenLinks(imageLinks);
+    host.includes("cloud") && setCurrenLinks(links);
+  }, [host]);
   const dispatch = useDispatch();
   const sidebarState = useSelector((elem: RootState) => elem.sideBar.sidebar);
   return (
@@ -54,15 +92,13 @@ const Header = () => {
       <div className={styles.header_mockContainer} />
       <div className={styles.header_container}>
         <div style={{ display: "flex" }}>
-          <Link
-            href={"/"}
-            style={{
-              margin: "auto 10px auto auto",
-              fontSize: "24px",
-              fontFamily: "Protest Guerrilla, sans-serif",
-            }}
-          >
-            Quantic Files
+          <Link href={"/"} className={styles.header_container_logo}>
+            <span>Quantic Files </span>
+            <div style={{ fontSize: "0.7em", textAlign: "right" }}>
+              {host.includes("transfer") && "transfer"}
+              {host.includes("cloud") && "cloud"}
+              {host.includes("image") && "image"}
+            </div>
           </Link>
           <Image
             src={Ukraine}
@@ -72,7 +108,9 @@ const Header = () => {
             className={"prevent-select"}
             style={{ margin: "auto" }}
           />
+          <span style={{ marginLeft: "6px" }}>{language}</span>
         </div>
+
         {/*--- MOBILE SIDEBAR ---*/}
         <div
           className={`${styles.header_container_sidebarIcon} ${
@@ -97,18 +135,16 @@ const Header = () => {
         <div className={styles.header_leftLinks}>
           {/*<div>En</div>*/}
           {/*<div>Ua</div>*/}
-          {(host === "transfer.quanticfiles.com" ? transferLinks : links).map(
-            (linkElem, index) => (
-              <div key={index}>
-                <Link
-                  href={linkElem.link}
-                  className={`${styles.header_leftLinks_link} ${pathName == linkElem.link ? styles.header_leftLinks_link_active : ""}`}
-                >
-                  {linkElem.title}
-                </Link>
-              </div>
-            ),
-          )}
+          {currenLinks.map((linkElem, index) => (
+            <div key={index}>
+              <Link
+                href={linkElem.link}
+                className={`${styles.header_leftLinks_link} ${pathName == linkElem.link ? styles.header_leftLinks_link_active : ""}`}
+              >
+                {linkElem.title}
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
     </div>

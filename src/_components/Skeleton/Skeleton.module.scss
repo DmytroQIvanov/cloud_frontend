@@ -1,7 +1,11 @@
+@import "../../app/Styles/colors";
+
 .skeleton {
   &_text{
     border-radius: 12px;
-    background-color: #403f47;
+    background-color: $mainColor_lighter;
+
+    //background-color: #403f47;
     height: 20px;
   }
 }

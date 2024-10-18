@@ -13,6 +13,8 @@ import Effect from "@/_components/Effect/Effect";
 import img from "../../public/karsten-winegeart-qklA-HTyZ6k-unsplash.jpg";
 import Link from "next/link";
 import Faq from "@/_components/FAQ/FAQ";
+import ReButton from "@/_components/ReComponents/ReButton/ReButton";
+import GoogleHorizontal from "@/_components/GoogleAdsense/GoogleHorizontal";
 //
 interface File {
   image_url: string;
@@ -27,238 +29,305 @@ export default async function Home() {
   // const [active]
   AxiosDefault();
   return (
-    // <Wrapper fileInput ip={ip}>
-    <main className={styles.page}>
-      <Background />
-      <div className={styles.page_container}>
-        {/*<div className={styles.page_container_main}>*/}
-        <div
-          style={{
-            textAlign: "center",
-          }}
-        >
-          <ScrollTrigger>
-            {/*<h1>Завантажуйте, переглядайте, передавайте будь-які файли!</h1>*/}
-            <h1>
-              Обмінюйтесь файлами і документами за посиланням: український
-              трансфер файлів!
-            </h1>
-          </ScrollTrigger>
-          {/*<h2>PDF,MP4,MP3</h2>*/}
-          <ScrollTrigger defaultSide={"Left"}>
-            <h2>JPEG,MP4,MP3</h2>
-          </ScrollTrigger>
+    <Wrapper>
+      <main className={styles.page}>
+        <Background />
+        <div className={styles.page_container}>
+          {/*<div className={styles.page_container_main}>*/}
           <div
             style={{
-              marginTop: "5px",
-              gap: "5px",
-              display: "flex",
-              margin: "auto",
               textAlign: "center",
-              flexDirection: "column",
-              fontWeight: "normal",
-              color: "rgba(205,205,205,0.96)",
-              // color: "#fff9",
+              backdropFilter: "blur(10px)",
             }}
           >
             <ScrollTrigger>
-              {/*<h3>Трансферінг файлів</h3>*/}
-              <h2>Діліться файлами з колегами!</h2>
-              <h3>Файл зберігається до 3 днів без реєстрації!</h3>
-              <h3>Сайт не працює під час відключень світла в Україні</h3>
-              <h3>Підтримай українське, підтримай Україну!</h3>
-              {/*<h3>Обмін файлами</h3>*/}
-              {/*<h3>Хмарне сховище</h3>*/}
-              {/*<h3>Передача файлів</h3>*/}
-              <BlockAnim />
+              {/*<h1>Завантажуйте, переглядайте, передавайте будь-які файли!</h1>*/}
+              <h1>Зберігайте файли і документи у хмарному сховищі</h1>
             </ScrollTrigger>
-          </div>
-          {/*<ScrollTrigger defaultSide={"Left"}></ScrollTrigger>*/}
-        </div>
-        <FileInput start />
-      </div>
-      <div
-        style={{
-          background: "#30303966",
-          padding: "5px",
-          borderRadius: "8px",
-          backdropFilter: "blur(10px)",
-          height: "150px",
-          marginBottom: "25px",
-          borderBottom: "9px solid #2f263ab0",
-        }}
-      >
-        <ScrollTrigger defaultSide={"Left"}>
-          <div
-            style={{
-              padding: "15px 10px",
-              display: "flex",
-            }}
-          >
-            <span
+            {/*<h2>PDF,MP4,MP3</h2>*/}
+            <ScrollTrigger defaultSide={"Left"}>
+              <h2>
+                Відправляйте і працюйте з будь-якими файлами онлайн!{" "}
+                <div>JPEG, MP4, MP3, PDF</div>
+              </h2>
+            </ScrollTrigger>
+            <div
               style={{
-                fontSize: "18px",
+                marginTop: "5px",
+                gap: "5px",
+                display: "flex",
+                margin: "auto",
                 textAlign: "center",
-                width: "100%",
-                margin: "20px auto",
+                flexDirection: "column",
+                fontWeight: "normal",
+                color: "rgba(205,205,205,0.96)",
+                // color: "#fff9",
               }}
             >
-              Зберігайте{" "}
-              <b
-                style={{
-                  padding: "3px",
-                  background: "#555555b3",
-                  borderRadius: "3px",
-                }}
-              >
-                7 днів
-              </b>{" "}
-              і передавайте безкоштовно до{" "}
-              <b
-                style={{
-                  padding: "3px",
-                  background: "#555555b3",
-                  borderRadius: "3px",
-                }}
-              >
-                20 ГБ
-              </b>{" "}
-              з максимальним об&apos;ємом файлу в{" "}
-              <b
-                style={{
-                  padding: "3px",
-                  background: "#555555b3",
-                  borderRadius: "3px",
-                }}
-              >
-                10 ГБ!
-              </b>{" "}
-            </span>
-          </div>
-        </ScrollTrigger>
-
-        {/*<div>Український файлообмінник</div>*/}
-        {/*<div>Альтернатива відомим компаніям</div>*/}
-        {/*<div>Спробуйте наші пропозиції!</div>*/}
-        {/*<div>Грайте і обмінюйтесь файлами в форумах</div>*/}
-        {/*<div>Спробуйте папки</div>*/}
-        {/*<div>Переглядайте активність ваших файлів!</div>*/}
-        {/*<div>Зберігайте Вашу підпис</div>*/}
-        {/*</div>*/}
-      </div>
-
-      <Effect
-        titleTop={"Екосистема"}
-        descriptionTop={
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <span>
-              Користуйтесь усіма інструментами в нашій екосистемі. Це ж так
-              зручно!
-            </span>
-            {/*<Link href={"/instruments/image"}>- Змінюйте зображення</Link>*/}
-            {/*<Link href={"/instruments/doc"}>- Працюйте з документами</Link>*/}
-          </div>
-        }
-        //
-        titleBottom={"Файлообмінник"}
-        descriptionBottom={"Користуйтесь українським файлообмінником"}
-        imgUrl={
-          // "https://gdb.rferl.org/058a0000-0aff-0242-08ec-08dae78d2203_w1200_r1.jpg"
-          // "/public/backgroundImages/img1.jpg"
-          img
-        }
-      />
-      <div style={{ marginTop: "20px", width: "100%" }}>
-        <BlockAnim
-          title={"Наші пропозиції:"}
-          initialArray={[
-            {
-              title: "Без реєстрації",
-              text: (
+              <ScrollTrigger>
+                {/*<h3>Трансферінг файлів</h3>*/}
+                <h2>Діліться файлами з колегами!</h2>
+                {/*<h3>Файл зберігається до 7 днів без реєстрації!</h3>*/}
+                <h3>Сайт не працює під час відключень світла в Україні</h3>
+                {/*<h3>Підтримай українське, підтримай Україну!</h3>*/}
                 <div
                   style={{
-                    textAlign: "center",
-                    gap: "10px",
                     display: "flex",
-                    flexDirection: "column",
+                    gap: "10px",
+                    justifyContent: "center",
                   }}
                 >
-                  <span>
-                    Обмінюйтесь зображеннями, документами, відео без реєстрації!
-                  </span>
-                  <b
-                    style={{
-                      padding: "3px",
-                      background: "#3c2843",
-                      borderRadius: "3px",
-                    }}
-                  >
-                    5 гігабайтів сховища
-                  </b>{" "}
-                  <b
-                    style={{
-                      padding: "3px",
-                      background: "#3c2843",
-                      borderRadius: "3px",
-                    }}
-                  >
-                    3 години використання
-                  </b>{" "}
+                  <Link href={"https://transfer.quanticfiles.com"}>
+                    <ReButton
+                      text={"Трансфер файлів"}
+                      style={{ margin: "10px auto" }}
+                    />
+                  </Link>
+                  <Link href={"https://cloud.quanticfiles.com"} rel="canonical">
+                    <ReButton
+                      text={"Хмарне сховище"}
+                      style={{ margin: "10px auto" }}
+                    />
+                  </Link>
+
+                  <Link href={"https://image.quanticfiles.com/"}>
+                    <ReButton
+                      text={"Робота з зображеннями"}
+                      style={{ margin: "10px auto" }}
+                    />
+                  </Link>
                 </div>
-              ),
-            },
-            {
-              title: "З Реєстрацією",
-              text: (
-                <div
+                {/*<h3>Обмін файлами</h3>*/}
+                {/*<h3>Хмарне сховище</h3>*/}
+                {/*<h3>Передача файлів</h3>*/}
+                <BlockAnim
+                  title={"Використовуйте усі переваги нашого сервісу"}
+                  initialArray={[
+                    {
+                      title: "Екосистема",
+                      text: "Наш проект планує мати сайт і мобільний додаток для трансферінгу, хостингу і зберігання файлів",
+                    },
+                    {
+                      title: "Інструменти",
+                      text: "Проект швидко доповнюється інструментами для роботи з файлами в навчальному і корпоративному світі",
+                    },
+                    {
+                      title: "Дизайн",
+                      text: "Ми постійно старанно працюємо над розвитком інтуітивно зрозумілого інтерфейсу",
+                    },
+                  ]}
+                />
+              </ScrollTrigger>
+            </div>
+            {/*<ScrollTrigger defaultSide={"Left"}></ScrollTrigger>*/}
+          </div>
+          <div>ssssss </div>
+          {/*<FileInput start inputType={"cloud"} />*/}
+        </div>
+        {/*<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>*/}
+        <div
+          style={{
+            background: "#30303966",
+            padding: "5px",
+            borderRadius: "8px",
+            backdropFilter: "blur(10px)",
+            height: "150px",
+            marginBottom: "25px",
+            borderBottom: "9px solid #2f263ab0",
+          }}
+        >
+          <ScrollTrigger defaultSide={"Left"}>
+            <div
+              style={{
+                padding: "15px 10px",
+                display: "flex",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: "18px",
+                  textAlign: "center",
+                  width: "100%",
+                  margin: "20px auto",
+                }}
+              >
+                Зберігайте{" "}
+                <b
                   style={{
-                    textAlign: "center",
-                    gap: "10px",
-                    display: "flex",
-                    flexDirection: "column",
+                    padding: "3px",
+                    background: "#555555b3",
+                    borderRadius: "3px",
                   }}
                 >
-                  <span>
-                    Зареєструйтесь через Google і отримайте додатковий
-                    функціонал
-                  </span>
-                  <b
-                    style={{
-                      padding: "3px",
-                      background: "#3c2843",
-                      borderRadius: "3px",
-                    }}
-                  >
-                    50 гігабайтів сховища!
-                  </b>{" "}
-                  <b
-                    style={{
-                      padding: "3px",
-                      background: "#3c2843",
-                      borderRadius: "3px",
-                    }}
-                  >
-                    24 години використання
-                  </b>{" "}
-                </div>
-              ),
-            },
-            // {
-            //   title: "",
-            //   text: "",
-            // },
-            // {
-            //   title: "",
-            //   text: "",
-            // },
-          ]}
+                  7 днів
+                </b>{" "}
+                і передавайте безкоштовно до{" "}
+                <b
+                  style={{
+                    padding: "3px",
+                    background: "#555555b3",
+                    borderRadius: "3px",
+                  }}
+                >
+                  20 ГБ
+                </b>{" "}
+                з максимальним об&apos;ємом файлу в{" "}
+                <b
+                  style={{
+                    padding: "3px",
+                    background: "#555555b3",
+                    borderRadius: "3px",
+                  }}
+                >
+                  10 ГБ!
+                </b>{" "}
+              </span>
+            </div>
+          </ScrollTrigger>
+
+          {/*<div>Український файлообмінник</div>*/}
+          {/*<div>Альтернатива відомим компаніям</div>*/}
+          {/*<div>Спробуйте наші пропозиції!</div>*/}
+          {/*<div>Грайте і обмінюйтесь файлами в форумах</div>*/}
+          {/*<div>Спробуйте папки</div>*/}
+          {/*<div>Переглядайте активність ваших файлів!</div>*/}
+          {/*<div>Зберігайте Вашу підпис</div>*/}
+          {/*</div>*/}
+        </div>
+
+        <GoogleHorizontal />
+        <Effect
+          titleTop={"Екосистема"}
+          descriptionTop={
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <span>
+                Користуйтесь усіма інструментами в нашій екосистемі. Це ж так
+                зручно!
+              </span>
+              {/*<Link href={"/instruments/image"}>- Змінюйте зображення</Link>*/}
+              {/*<Link href={"/instruments/doc"}>- Працюйте з документами</Link>*/}
+            </div>
+          }
+          //
+          titleBottom={"Файлообмінник"}
+          descriptionBottom={"Користуйтесь українським файлообмінником"}
+          imgUrl={
+            // "https://gdb.rferl.org/058a0000-0aff-0242-08ec-08dae78d2203_w1200_r1.jpg"
+            // "/public/backgroundImages/img1.jpg"
+            img
+          }
         />
-      </div>
-      <Faq />
-    </main>
+        <div style={{ marginTop: "20px", width: "100%" }}>
+          <BlockAnim
+            title={"Наші пропозиції:"}
+            initialArray={[
+              {
+                title: "Без реєстрації",
+                text: (
+                  <div
+                    style={{
+                      textAlign: "center",
+                      gap: "10px",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <span>
+                      Обмінюйтесь зображеннями, документами, відео без
+                      реєстрації!
+                    </span>
+                    <b
+                      style={{
+                        padding: "3px",
+                        background: "#3c2843",
+                        borderRadius: "3px",
+                      }}
+                    >
+                      5 гігабайтів сховища
+                    </b>{" "}
+                    <b
+                      style={{
+                        padding: "3px",
+                        background: "#3c2843",
+                        borderRadius: "3px",
+                      }}
+                    >
+                      3 години використання
+                    </b>{" "}
+                  </div>
+                ),
+              },
+              {
+                title: "З Реєстрацією",
+                text: (
+                  <div
+                    style={{
+                      textAlign: "center",
+                      gap: "10px",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <span>
+                      Зареєструйтесь через Google і отримайте додатковий
+                      функціонал
+                    </span>
+                    <b
+                      style={{
+                        padding: "3px",
+                        background: "#3c2843",
+                        borderRadius: "3px",
+                      }}
+                    >
+                      50 гігабайтів сховища!
+                    </b>{" "}
+                    <b
+                      style={{
+                        padding: "3px",
+                        background: "#3c2843",
+                        borderRadius: "3px",
+                      }}
+                    >
+                      24 години використання
+                    </b>{" "}
+                  </div>
+                ),
+              },
+              // {
+              //   title: "",
+              //   text: "",
+              // },
+              // {
+              //   title: "",
+              //   text: "",
+              // },
+            ]}
+          />
+        </div>
+
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249338276563886"
+          crossOrigin="anonymous"
+        ></script>
+        <ins
+          className="adsbygoogle"
+          style={{ display: "block" }}
+          data-ad-client="ca-pub-7249338276563886"
+          data-ad-slot="5938507447"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+
+        <Faq />
+      </main>
+    </Wrapper>
   );
 }
 
+// Home.getLayout = function getLayout(page: any) {
+//   return <Wrapper>{page}</Wrapper>;
+// };
 // export async function getStaticProps() {
 //     const resp = await axios("http://localhost:8080/file-upload/all",{})
 //

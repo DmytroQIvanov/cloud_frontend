@@ -4,8 +4,8 @@ const AboutUs = () => {
   return (
     <div className={styles.aboutUs}>
       <h1>
-        Quantic Files - українська компанія, яка спеціалізується наданні послуг
-        в сфері трансферінгу / передачі файлів між користувачами
+        Quantic Files - українська компанія, файлообмінник, яка надає послуги в
+        сфері трансферінгу / передачі файлів
       </h1>
       <desc
         className={styles.aboutUs_listContainer}

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import styles from "./ControlBlock.module.scss";
-import CustomInput from "@/_components/CustomInput/CustomInput";
+import CustomInput from "@/_components/ReComponents/CustomInput/CustomInput";
 import { usePathname } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/GlobalRedux/store";

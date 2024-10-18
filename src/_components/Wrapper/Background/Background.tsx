@@ -87,22 +87,25 @@ const Background = () => {
     onAddElem(true);
     onAddElem(true);
     onAddElem(true);
-    onAddElem(true);
-    onAddElem(true);
-    onAddElem(true);
-    onAddElem(true);
-    onAddElem(true);
-    onAddElem(true);
-    onAddElem(true);
-    onAddElem(true);
-    onAddElem(true);
-    onAddElem(true);
-    onAddElem(true);
-    onAddElem(true);
-    onAddElem(true);
-    onAddElem(true);
-    onAddElem(true);
-    onAddElem(true);
+    // onAddElem(true);
+    // onAddElem(true);
+    window.innerWidth > 900 &&
+      (() => {
+        // onAddElem(true);
+        // onAddElem(true);
+        // onAddElem(true);
+        // onAddElem(true);
+        // onAddElem(true);
+        onAddElem(true);
+        onAddElem(true);
+        onAddElem(true);
+        onAddElem(true);
+        onAddElem(true);
+        onAddElem(true);
+        onAddElem(true);
+        onAddElem(true);
+        onAddElem(true);
+      })();
   }, []);
 
   const [elements, setElements] = useState<any[]>([
@@ -140,9 +143,12 @@ const Background = () => {
     setElements((prevState) => prevState.filter((elem) => elem.id !== id));
   };
   useEffect(() => {
-    const interval = setInterval(() => {
-      onAddElem();
-    }, 500);
+    const interval = setInterval(
+      () => {
+        onAddElem();
+      },
+      window.innerWidth > 900 ? 500 : 600,
+    );
     // }, 800);
     return () => clearInterval(interval);
   }, []);

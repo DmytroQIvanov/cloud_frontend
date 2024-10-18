@@ -2,12 +2,12 @@ import { NextFederationPlugin } from "@module-federation/nextjs-mf";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  rewrites: async () => [
-    {
-      source: "/transfer/:url",
-      destination: "/:url",
-    },
-  ],
+  // rewrites: async () => [
+  //   {
+  // source: "/transfer/:url",
+  // destination: "/:url",
+  // },
+  // ],
 
   // reactStrictMode: true,
   //Inter
@@ -122,6 +122,7 @@ const nextConfig = {
   env: {
     BACKEND_DOMAIN: process.env.BACKEND_DOMAIN,
     FRONTEND_DOMAIN: process.env.FRONTEND_DOMAIN,
+    FRONTEND_TRANSFER_DOMAIN: process.env.FRONTEND_TRANSFER_DOMAIN,
   },
 };
 

@@ -1,0 +1,82 @@
+@import "../../../app/Styles/colors";
+@import "../../../app/Styles/mixins";
+.uploadedFiles {
+@include defaultElem;
+
+
+  display: grid;
+  //grid-template-columns:max-content max-content 2fr 1fr;
+  gap: 15px;
+  grid-template-areas:
+    "otherServices imagesContainer activeFile controlBlock";
+
+
+  grid-template-columns: max-content max-content 1fr max-content;
+  //grid-template-rows: 1fr;
+  @media (max-width: 750px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr max-content max-content;
+    grid-template-areas:
+    "activeFile activeFile controlBlock"
+    "imagesContainer imagesContainer imagesContainer"
+    "otherServices otherServices otherServices"
+    //"otherServices otherServices otherServices";
+
+    //grid-template-columns:max-content max-content;
+    //display: ;
+  }
+  &_otherServices{
+    grid-area: otherServices;
+  }
+  &_activeFile{
+    width: 100%;
+    height: 90%;
+    grid-area: activeFile;
+    //display: flex;
+  }
+  &_controlBlock{
+    grid-area: controlBlock;
+  }
+  &_container{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 14px;
+    grid-area: imagesContainer;
+    @media (max-width: 750px) {
+
+      flex-direction: row;
+    }
+
+
+    //overflow: scroll;
+    &_addFile{
+      background-color: $mainColor_light;
+      border-radius: 15px;
+      cursor: pointer;
+      transition-duration: .2s;
+      &:hover{
+        transition-duration: .2s;
+        transform: scale(1.1);
+      }
+    }
+    &_elem{
+      position: relative;
+      cursor: pointer;
+      width: 160px;
+      display: flex;
+      height: 125px;
+      &_text{
+        background-color: rgba(31, 29, 39, 0.5);
+        //border-radius-topright: 10px;
+        border-top-right-radius: 3px;
+        padding: 1px 3px 1px 2px;
+        color: #cccccc;
+        //background: rgb(24,19,25);
+        //background: linear-gradient(30deg, rgba(24,19,25,1) 0%, rgba(21,11,28,0.9654062308517157) 15%, rgba(0,0,0,0.3127451664259454) 87%);padding: 2px;
+        //background: linear-gradient(30deg, rgba(24,19,25,1) 0%, rgba(21,11,28,0.6768908246892507) 3%, rgba(0,0,0,0) 87%); //backdrop-filter: blur(2px);
+        position: absolute; bottom: 0; z-index: 100;
+      }
+    }
+  }
+}

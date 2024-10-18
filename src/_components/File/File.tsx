@@ -23,6 +23,7 @@ const File = ({
   handleChangeModalFile,
   blurHash,
   files,
+  type,
 }: any) => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -35,10 +36,10 @@ const File = ({
     if (file.mimetype?.includes("image")) {
       return (
         <ImageNode
-          blurHash={blurHash}
-          files={files}
+          // files={files}
           // fileUrl={fileUrl}
           loading={loading}
+          onClick={() => {}}
           setLoading={setLoading}
           file={file}
           handleChangeModalFile={handleChangeModalFile}
@@ -60,6 +61,7 @@ const File = ({
   return (
     <FileWrapper
       file={file}
+      type={type}
       // fileUrl={fileUrl}
       handleChangeModalFile={handleChangeModalFile}
     >

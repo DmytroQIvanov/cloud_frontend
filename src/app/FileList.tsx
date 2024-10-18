@@ -16,41 +16,72 @@ import { getFile } from "@/app/GlobalRedux/Features/fileSlice";
 import styles from "./FileList.module.scss";
 import OptionsBar from "@/_components/Wrapper/OptionsBar/OptionsBar";
 import { RootState } from "@/app/GlobalRedux/store";
-import GoogleAdsense from "@/_components/GoogleAdsense/GoogleAdsense";
+// import GoogleAdsense from "@/_components/GoogleAdsense/GoogleAdsense";
 import NavComponent from "../_components/Wrapper/NavComponent";
+import { addNotification } from "@/app/GlobalRedux/Features/notificationSlice";
+import { handleAddFiles } from "@/app/GlobalRedux/Features/userSlice";
 
-const FileList = () => {
+const FileList = ({ type = "transfer" }: { type?: "cloud" | "transfer" }) => {
   const pathname = usePathname();
   const dispatch = useDispatch();
   const files = useSelector((state: RootState) => state.files.fileData);
+  const user = useSelector((state: RootState) => state.user);
   const viewType = useSelector(
     (select: RootState) => select.sideBar.fileListViewType,
   );
   const params = useParams();
   const route = useRouter();
   console.log("files,11", files);
+  console.log("user", user);
   // const [files, setFiles] = useState<any>();
 
   useEffect(() => {
-    let userID = JSON.parse(`${localStorage.getItem("user")}`)?.id || "";
-    if (params?.id) {
-      axios(`${process.env.BACKEND_DOMAIN}/link/${params.id}?userId=${userID}`)
-        .then((value) => {
-          if (!value.data) {
-            route.push("/");
-          }
-          console.log("value.data", value.data);
-          // dispatch(getFile({ payload: value.data }));
-          dispatch(getFile({ data: value.data }));
-          // setFiles(value.data);
-        })
-        .catch(() => {
-          route.push("/");
-        });
+    let userID = JSON?.parse(`${localStorage.getItem("user")}`)?.id || "";
+    switch (type) {
+      case "cloud":
+        if (userID) {
+          axios(
+            `${process.env.BACKEND_DOMAIN}/user/get-user-files?userId=${userID}`,
+          )
+            .then((value) => {
+              console.log("value.data", value.data);
+              dispatch(handleAddFiles(value.data));
+            })
+            .catch(() => {
+              dispatch(
+                addNotification({
+                  type: "red",
+                  message: "Щось пішло не так...",
+                }),
+              );
+            });
+        }
+        break;
+      case "transfer":
+        if (params?.id) {
+          axios(
+            `${process.env.BACKEND_DOMAIN}/link/${params.id}?userId=${userID}`,
+          )
+            .then((value) => {
+              if (!value.data) {
+                route.push("/");
+              }
+              console.log("value.data", value.data);
+              // dispatch(getFile({ payload: value.data }));
+              dispatch(getFile({ data: value.data }));
+              // setFiles(value.data);
+            })
+            .catch(() => {
+              route.push("/");
+            });
+        }
+        break;
+      default:
+        break;
     }
   }, []);
 
-  const { ImageModal, handleChangeFile } = FileModalController();
+  const { ImageModal, handleChangeFile } = FileModalController({});
   // const [fileViewType, setFileViewType] = useState(
   //   localStorage?.getItem("fileViewType") || "hor",
   // );
@@ -59,6 +90,11 @@ const FileList = () => {
   //   localStorage.setItem("fileViewType", type);
   //   setFileViewType(type);
   // };
+  let fileArray =
+    type === "transfer"
+      ? (files && files.files.length > 0 && files.files) || []
+      : user.filesWithUrls;
+
   return (
     <div
       className={styles.fileList}
@@ -68,10 +104,11 @@ const FileList = () => {
         }
       }
     >
-      <GoogleAdsense pId={"7249338276563886"} />
+      {/*<GoogleAdsense pId={"7249338276563886"} />*/}
       <div className={styles.fileList_FirstBlock}>
         <ControlBlock />
-        {files.author && <FileInput />}
+        {/*{files.author  && <FileInput />}*/}
+        <FileInput inputType={type} />
       </div>
       {/*{fileViewType}*/}
       {/*<CustomInput placeholder={"Test value"} />*/}
@@ -79,30 +116,29 @@ const FileList = () => {
       <div
         className={`${viewType === "block" ? styles.fileList_List : styles.fileList_HorizontalList}`}
       >
-        {files &&
-          files.files.length > 0 &&
-          files.files.map((file: any, i: number) => {
-            return (
-              <div key={file.id}>
-                {viewType === "block" ? (
-                  <File
-                    files={files}
-                    // fileUrl={file.url.image_url}
-                    file={file}
-                    blurHash={file.blurHash}
-                    handleChangeModalFile={handleChangeFile}
-                  />
-                ) : (
-                  <HorizontalFile
-                    // fileUrl={file.url.image_url}
-                    file={file}
-                    blurHash={file.blurHash}
-                    handleChangeModalFile={handleChangeFile}
-                  />
-                )}
-              </div>
-            );
-          })}
+        {fileArray?.map((file: any, i: number) => {
+          return (
+            <div key={file.id}>
+              {viewType === "block" ? (
+                <File
+                  files={files}
+                  // fileUrl={file.url.image_url}
+                  file={file}
+                  blurHash={file.blurHash}
+                  handleChangeModalFile={handleChangeFile}
+                  type={type}
+                />
+              ) : (
+                <HorizontalFile
+                  // fileUrl={file.url.image_url}
+                  file={file}
+                  blurHash={file.blurHash}
+                  handleChangeModalFile={handleChangeFile}
+                />
+              )}
+            </div>
+          );
+        })}
       </div>
       {/*<SendInput onSend={setFiles} />*/}
       {ImageModal()}

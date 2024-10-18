@@ -1,0 +1,46 @@
+@import "../../../app/Styles/mixins";
+
+.finishPage{
+  @include defaultElem();
+  &_container{
+    width: 100%;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: max-content 1fr max-content;
+
+    grid-template-areas:
+    "otherServices imagesContainer downloadBtns";
+
+    @media (max-width: 750px) {
+
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr max-content max-content;
+      grid-template-areas:
+    "imagesContainer imagesContainer "
+    "downloadBtns downloadBtns "
+    "otherServices otherServices ";
+    }
+
+
+  }
+  &_downloadBtns{
+    grid-area: downloadBtns;
+  }
+  &_filesContainer{
+    //height: inherit;
+    grid-area: imagesContainer;
+    //overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    //width: 30vw;
+    &_elem{
+      height: 200px;
+      width: 100%;
+      display: grid;
+      grid-template-rows: 1fr max-content;
+    }
+  }
+
+
+}
