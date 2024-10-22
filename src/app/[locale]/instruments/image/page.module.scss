@@ -1,0 +1,5 @@
+@import "../../../Styles/colors";
+@import "../../../Styles/mixins";
+.page{
+  @include defaultElem
+}

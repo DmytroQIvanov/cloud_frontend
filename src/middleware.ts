@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 const PUBLIC_FILE = /\.(.*)$/;
-
+import { createI18nMiddleware } from "next-international/middleware";
 const array = ["instruments", "faq", "about-us", "links"];
 
 import { match } from "@formatjs/intl-localematcher";
@@ -12,11 +12,15 @@ let headers = { "accept-language": "en-US,en;q=0.5" };
 // let languages = new Negotiator({ headers }).languages();
 let locales = ["ru", "en", "ua"];
 let defaultLocale = "en-US";
-
+const I18nMiddleware = createI18nMiddleware({
+  locales: ["en", "ua"],
+  defaultLocale: "en",
+});
 // match(languages, locales, defaultLocale); // -> 'en-US'
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
   // alert();
+  // return I18nMiddleware(request);
   const { pathname } = request.nextUrl;
   let language;
   const pathnameHasLocale = locales.some((locale) => {
@@ -43,16 +47,27 @@ export function middleware(request: NextRequest) {
     request.url,
   );
   console.log(request.nextUrl.pathname);
-  if (pathnameHasLocale) {
-    console.log("true");
-    // if (request.nextUrl.locale === "default") {
-    const locale = request.cookies.get("NEXT_LOCALE")?.value || "en";
+  // if (pathnameHasLocale) {
+  //   console.log("true");
+  //   // if (request.nextUrl.locale === "default") {
+  //   const locale = request.cookies.get("NEXT_LOCALE")?.value || "en";
+  //
+  //   // `/${locale}${request.nextUrl.pathname}${request.nextUrl.search}`,
+  //   return NextResponse.rewrite(
+  //     new URL(`${request.url.replace(`/${language}`, ``)}`, `/${language}`),
+  //   );
+  // }
 
-    // `/${locale}${request.nextUrl.pathname}${request.nextUrl.search}`,
+  // if (
+  //   request.headers.get("host") === "transfer.quanticfiles.com" &&
+  //   !array.some((elem) => request.nextUrl.pathname.includes(elem))
+  // ) {
+  if (!pathnameHasLocale)
     return NextResponse.rewrite(
-      new URL(`${request.url.replace(`/${language}`, "")}`),
+      new URL(`/en${request.nextUrl.pathname}`, request.url),
     );
-  }
+  // }
+
   if (
     request.headers.get("host") === "transfer.quanticfiles.com" &&
     !array.some((elem) => request.nextUrl.pathname.includes(elem))
@@ -70,7 +85,9 @@ export function middleware(request: NextRequest) {
       new URL(`/image${request.nextUrl.pathname}`, request.url),
     );
   }
-  if (pathnameHasLocale) return;
+  if (pathnameHasLocale) return I18nMiddleware(request);
+  //
+  // return I18nMiddleware(request);
   // return NextResponse.redirect(request.nextUrl);
 }
 export const config = {

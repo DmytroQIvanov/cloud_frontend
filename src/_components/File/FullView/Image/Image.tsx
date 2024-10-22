@@ -4,7 +4,7 @@ import Image from "next/image";
 import FileModalController from "@/_components/ImageModal/ImageModal";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { IFile } from "@/app/transfer/link/[id]/file/[fileId]/page";
+import { IFile } from "@/app/[locale]/transfer/link/[id]/file/[fileId]/page";
 
 const FullViewImage = (props: IFile) => {
   const { file_url, name } = props;

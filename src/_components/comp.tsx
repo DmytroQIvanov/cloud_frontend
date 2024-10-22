@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { NextRequest } from "next/server";
 // import styles from "@/app/instruments/your-ip/YourIP.module.scss";
-import styles from "@/app/instruments/your-ip/YourIP.module.scss";
+import styles from "@/app/[locale]/instruments/your-ip/YourIP.module.scss";
 import axios from "axios";
 import { addNotification } from "@/app/GlobalRedux/Features/notificationSlice";
 import Image from "next/image";

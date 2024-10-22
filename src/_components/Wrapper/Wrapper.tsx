@@ -16,6 +16,8 @@ import { handleAddUser } from "@/app/GlobalRedux/Features/userSlice";
 import CustomModal from "@/_components/ReComponents/CustomModal/CustomModal";
 import GoogleAdsense from "@/_components/GoogleAdsense/GoogleAdsense";
 import Script from "next/script";
+import { Provider } from "@/app/dictionaries/provider";
+import { useParams } from "next/navigation";
 const cookiesPermissionsArray = ["all", "notAllowed"];
 
 const Wrapper = (props: IWrapperProp) => {
@@ -68,11 +70,14 @@ const Wrapper = (props: IWrapperProp) => {
         localStorage.removeItem("user");
       });
   }, []);
+
+  const params = useParams();
   return (
     // WrapperNode: ({ children }: any) => (
+
     <div style={{ height: "100%" }}>
       <Head>
-        {/*<title>Test</title>*/}
+        <title>Test</title>
         <GoogleAdsense pId={"7249338276563886"} />
       </Head>
 
@@ -91,7 +96,7 @@ const Wrapper = (props: IWrapperProp) => {
       {/*    style={{ display: "none", visibility: "hidden" }}*/}
       {/*  ></iframe>*/}
       {/*</noscript>*/}
-      {header && <Header />}
+      <Provider locale={`${params.locale}`}>{header && <Header />}</Provider>
       {
         CustomModal({
           type: "cookie",

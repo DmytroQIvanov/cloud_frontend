@@ -1,8 +1,25 @@
 @import "/src/app/Styles/colors";
+
+@keyframes headerStart {
+  from {
+    transform: translateY(-100px);
+    //background-color: red;
+    //filter: brightness(75%);
+  }
+  to {
+    transform: translateY(0);
+    //background-color: orange;
+    /* unset properties i.e. 'filter' will revert to default values */
+  }
+}
 .header {
   width: auto;
 
+
+
   &_container {
+    animation: .3s linear headerStart ;
+
     //background-color: #2e253c;
     background-color: $mainColor;
     //background: linear-gradient(130deg, rgba(35,28,38,1) 0%, rgba(31,16,42,1) 30%, rgba(89,61,20,1) 67%);
@@ -21,6 +38,18 @@
     z-index: 100;
     &_logo{
 
+      &_img{
+        height: 50px;
+        width: max-content;
+        @media (max-width: 600px) {
+          height: 36px;
+
+        }
+        img{
+        height: 100%;
+          width: max-content;
+        };
+      }
       margin: auto 10px auto auto;
       font-size: 24px;
       font-family: Protest Guerrilla, sans-serif;

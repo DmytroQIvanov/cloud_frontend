@@ -3,10 +3,12 @@ import type { Metadata } from "next";
 import "./globals.scss";
 import { Providers } from "@/app/GlobalRedux/provider";
 import Script from "next/script";
-import { Suspense } from "react";
+import { ReactNode, Suspense } from "react";
 import Wrapper from "@/_components/Wrapper/Wrapper";
 import Loading from "@/app/loading";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { useI18n } from "@/app/dictionaries/client";
+import { getI18n } from "@/app/dictionaries/server";
 
 //user-agent https://quanticfiles.com/instruments/instruments/rotate-image
 export const metadata: Metadata = {
@@ -16,12 +18,15 @@ export const metadata: Metadata = {
   keywords:
     "Трансферінг, Файлообмінник, Облако, Завантажити, Файли, Зображення, Відео, Безкоштовно",
 };
-
-export default function RootLayout({
+// const PageContext: any = createContext(null);
+export default async function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
+  // const t: any = useI18n();
+  const t = await getI18n();
+
   return (
     <html lang="en">
       <GoogleAnalytics gaId="GTM-5FPSTNC2" />
@@ -38,7 +43,9 @@ export default function RootLayout({
       {/*</Head>*/}
       <body>
         <Providers>
+          {/*<PageContext value={t}>*/}
           <Suspense fallback={<Loading />}>{children}</Suspense>
+          {/*</PageContext>*/}
         </Providers>
       </body>
       {/*</Suspense>*/}

@@ -8,6 +8,7 @@ const nextConfig = {
   // destination: "/:url",
   // },
   // ],
+  transpilePackages: ["next-international", "international-types"],
 
   // reactStrictMode: true,
   //Inter

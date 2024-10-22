@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./FAQ.module.scss";
+import { getDictionary } from "@/app/dictionaries/dictionaries";
 interface IQuestion {
   title: string;
   answer: string;
@@ -26,6 +27,8 @@ const questionArray: IQuestion[] = [
   },
 ];
 const Faq = ({ extraQuestions }: { extraQuestions?: IQuestion[] }) => {
+  // const dict = await getDictionary(props.params.lang || "en"); // en
+
   const [activeElements, setActiveElements] = useState([
     ...questionArray,
     ...(extraQuestions || []),
