@@ -5,7 +5,7 @@ import { Providers } from "@/app/GlobalRedux/provider";
 import Script from "next/script";
 import { ReactNode, Suspense } from "react";
 import Wrapper from "@/_components/Wrapper/Wrapper";
-import Loading from "@/app/loading";
+// import Loading from "@/app/[locale]/loading";
 
 //user-agent
 export const metadata: Metadata = {
@@ -22,8 +22,8 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <Wrapper>
-      <div>{children}</div>
-    </Wrapper>
+    // <Wrapper>
+    <div>{children}</div>
+    // </Wrapper>
   );
 }

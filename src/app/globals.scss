@@ -83,6 +83,7 @@
 
 html,
 body {
+  //scroll-behavior: smooth;
   color: white;
   max-width: 100vw;
   //overflow-x: hidden;
@@ -90,6 +91,7 @@ body {
 }
 
 body {
+  scroll-behavior: smooth;
   //overflow: hidden;
 
   /*font-family: fantasy;*/

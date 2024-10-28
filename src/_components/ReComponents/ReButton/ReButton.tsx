@@ -2,14 +2,14 @@
 import React from "react";
 import styles from "./ReButton.module.scss";
 import { Input, InputProps } from "@nextui-org/input";
-import { ButtonProps } from "@react-types/button";
+// import { ButtonProps } from "@react-types/button";
 
-interface IReButtonProps extends ButtonProps {
-  text: string;
-  style?: React.CSSProperties;
-  onClick?: (value: any) => void;
-}
-const ReButton = (props: IReButtonProps) => {
+// interface IReButtonProps extends ButtonProps {
+//   text: string;
+//   style?: React.CSSProperties;
+//   onClick?: (value: any) => void;
+// }
+const ReButton = (props: any) => {
   const { text } = props;
   return (
     <div className={styles.ReButton}>

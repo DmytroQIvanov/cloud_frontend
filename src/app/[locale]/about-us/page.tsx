@@ -2,12 +2,12 @@ import React from "react";
 import styles from "./aboutUs.module.scss";
 import { getDictionary } from "@/app/dictionaries/dictionaries";
 const AboutUs = async (props: any) => {
-  const dict = await getDictionary(props.params.lang || "en"); // en
+  // const dict = await getDictionary(props.params.lang || "en"); // en
 
   return (
     <div className={styles.aboutUs}>
       <h1>
-        {dict.test}
+        {/*{dict.test}*/}
         Quantic Files - українська компанія, файлообмінник, яка надає послуги в
         сфері трансферінгу / передачі файлів
       </h1>

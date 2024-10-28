@@ -5,9 +5,7 @@ import Wrapper from "@/_components/Wrapper/Wrapper";
 const Page = () => {
   return (
     <div>
-      <Wrapper>
-        <FileList type={"cloud"} />
-      </Wrapper>
+      <FileList type={"cloud"} />
     </div>
   );
 };

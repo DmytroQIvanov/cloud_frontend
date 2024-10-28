@@ -1,5 +1,5 @@
 // "use client";
-import styles from "../page.module.scss";
+import styles from "./page.module.scss";
 import FileList from "@/app/FileList";
 import FileInput from "@/_components/FileInput/FileInput";
 import Background from "@/_components/Wrapper/Background/Background";
@@ -16,6 +16,8 @@ import Faq from "@/_components/FAQ/FAQ";
 import ReButton from "@/_components/ReComponents/ReButton/ReButton";
 import GoogleHorizontal from "@/_components/GoogleAdsense/GoogleHorizontal";
 import { getDictionary } from "@/app/dictionaries/dictionaries";
+import { getI18n } from "@/app/dictionaries/server";
+import React from "react";
 //
 interface File {
   image_url: string;
@@ -28,11 +30,13 @@ export default async function Home(props: any) {
   // const ip = header;
   // console.log(header);
   // const [active]
+  const t = await getI18n();
   AxiosDefault();
-  const dict = await getDictionary(props.params.lang || "en"); // en
+  // console.log("t11", t);
+  // const dict = await getDictionary(props.params.lang || "en"); // en
 
   return (
-    <Wrapper>
+    <div>
       <main className={styles.page}>
         <Background />
         <div className={styles.page_container}>
@@ -41,32 +45,31 @@ export default async function Home(props: any) {
             style={{
               textAlign: "center",
               backdropFilter: "blur(10px)",
+              borderRadius: "7px",
+              padding: "3px",
             }}
           >
-            <div
-              style={{
-                width: "100px",
-                height: "30px",
-                color: "black",
-                borderRadius: "20px",
-                backgroundColor: "#dfbe29",
-                // boxShadow: "3px 3px 3px 3px #ffd725",
-              }}
-            >
-              test
-            </div>
+            {/*<div*/}
+            {/*  style={{*/}
+            {/*    width: "100px",*/}
+            {/*    height: "30px",*/}
+            {/*    color: "black",*/}
+            {/*    borderRadius: "20px",*/}
+            {/*    backgroundColor: "#dfbe29",*/}
+            {/*    // boxShadow: "3px 3px 3px 3px #ffd725",*/}
+            {/*  }}*/}
+            {/*>*/}
+            {/*  test*/}
+            {/*</div>*/}
             <ScrollTrigger>
-              {/*<h1>Завантажуйте, переглядайте, передавайте будь-які файли!</h1>*/}
               <h1>
-                {dict.test} ---Зберігайте файли і документи у хмарному сховищі
+                {t("homePage.title")}
+                {/*Універсальні рішення для роботи з зображеннями, файлообміну та*/}
+                {/*хмарного зберігання*/}
               </h1>
             </ScrollTrigger>
-            {/*<h2>PDF,MP4,MP3</h2>*/}
             <ScrollTrigger defaultSide={"Left"}>
-              <h2>
-                Відправляйте і працюйте з будь-якими файлами онлайн!{" "}
-                <div>JPEG, MP4, MP3, PDF</div>
-              </h2>
+              <h2>{t("homePage.subTitle")}</h2>
             </ScrollTrigger>
             <div
               style={{
@@ -83,9 +86,9 @@ export default async function Home(props: any) {
             >
               <ScrollTrigger>
                 {/*<h3>Трансферінг файлів</h3>*/}
-                <h2>Діліться файлами з колегами!</h2>
+                {/*<h2>Діліться файлами з колегами!</h2>*/}
                 {/*<h3>Файл зберігається до 7 днів без реєстрації!</h3>*/}
-                <h3>Сайт не працює під час відключень світла в Україні</h3>
+                {/*<h3>Сайт не працює під час відключень світла в Україні</h3>*/}
                 {/*<h3>Підтримай українське, підтримай Україну!</h3>*/}
                 <div
                   style={{
@@ -96,20 +99,20 @@ export default async function Home(props: any) {
                 >
                   <Link href={"https://transfer.quanticfiles.com"}>
                     <ReButton
-                      text={"Трансфер файлів"}
+                      text={t("homePage.transferBtn")}
                       style={{ margin: "10px auto" }}
                     />
                   </Link>
                   <Link href={"https://cloud.quanticfiles.com"} rel="canonical">
                     <ReButton
-                      text={"Хмарне сховище"}
+                      text={t("homePage.cloudBtn")}
                       style={{ margin: "10px auto" }}
                     />
                   </Link>
 
                   <Link href={"https://image.quanticfiles.com/"}>
                     <ReButton
-                      text={"Робота з зображеннями"}
+                      text={t("homePage.imageBtn")}
                       style={{ margin: "10px auto" }}
                     />
                   </Link>
@@ -138,7 +141,7 @@ export default async function Home(props: any) {
             </div>
             {/*<ScrollTrigger defaultSide={"Left"}></ScrollTrigger>*/}
           </div>
-          <div>ssssss </div>
+          {/*<div>ssssss </div>*/}
           {/*<FileInput start inputType={"cloud"} />*/}
         </div>
         {/*<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>*/}
@@ -321,24 +324,11 @@ export default async function Home(props: any) {
             ]}
           />
         </div>
-
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7249338276563886"
-          crossOrigin="anonymous"
-        ></script>
-        <ins
-          className="adsbygoogle"
-          style={{ display: "block" }}
-          data-ad-client="ca-pub-7249338276563886"
-          data-ad-slot="5938507447"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        ></ins>
+        <GoogleHorizontal />
 
         <Faq />
       </main>
-    </Wrapper>
+    </div>
   );
 }
 

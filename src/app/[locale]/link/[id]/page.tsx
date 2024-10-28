@@ -12,13 +12,11 @@ const Test = () => {
   // const router = useRouter();
 
   return (
-    <Wrapper>
-      <div>
-        <Background />
+    <div>
+      <Background />
 
-        <FileList />
-      </div>
-    </Wrapper>
+      <FileList />
+    </div>
   );
 };
 

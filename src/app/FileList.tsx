@@ -20,6 +20,7 @@ import { RootState } from "@/app/GlobalRedux/store";
 import NavComponent from "../_components/Wrapper/NavComponent";
 import { addNotification } from "@/app/GlobalRedux/Features/notificationSlice";
 import { handleAddFiles } from "@/app/GlobalRedux/Features/userSlice";
+import { Provider } from "@/app/dictionaries/provider";
 
 const FileList = ({ type = "transfer" }: { type?: "cloud" | "transfer" }) => {
   const pathname = usePathname();
@@ -104,11 +105,11 @@ const FileList = ({ type = "transfer" }: { type?: "cloud" | "transfer" }) => {
         }
       }
     >
-      {/*<GoogleAdsense pId={"7249338276563886"} />*/}
       <div className={styles.fileList_FirstBlock}>
         <ControlBlock />
-        {/*{files.author  && <FileInput />}*/}
-        <FileInput inputType={type} />
+        <Provider>
+          <FileInput inputType={type} />
+        </Provider>
       </div>
       {/*{fileViewType}*/}
       {/*<CustomInput placeholder={"Test value"} />*/}

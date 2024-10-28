@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import styles from "./FAQ.module.scss";
 import { getDictionary } from "@/app/dictionaries/dictionaries";
+import { getI18n } from "react-i18next";
 interface IQuestion {
   title: string;
   answer: string;
@@ -28,6 +29,7 @@ const questionArray: IQuestion[] = [
 ];
 const Faq = ({ extraQuestions }: { extraQuestions?: IQuestion[] }) => {
   // const dict = await getDictionary(props.params.lang || "en"); // en
+  // const t = await getI18n();
 
   const [activeElements, setActiveElements] = useState([
     ...questionArray,

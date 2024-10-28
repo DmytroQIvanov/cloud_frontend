@@ -1,10 +1,10 @@
 //@import "/src/app/Styles/colors";
-@import "Styles/colors";
+@import "../Styles/colors";
 .page{
   margin-bottom: 20px;
     &_container {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
+      //display: grid;
+      //grid-template-columns: 2fr 1fr;
       margin: 30px auto;
       //height: 90Vh;
       h1{

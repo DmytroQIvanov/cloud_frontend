@@ -1,8 +1,18 @@
 import header from "@/app/dictionaries/en/Wrapper/header";
+import homePage from "@/app/dictionaries/en/Home/homePage";
+import footer from "@/app/dictionaries/en/Footer";
+import transferHomePage from "@/app/dictionaries/en/Home/transferHomePage";
+import fileInput from "@/app/dictionaries/en/ReComponents/FileInput";
+import instruments from "@/app/dictionaries/en/Instruments";
 
 export default {
   header: header,
+  footer,
 
+  homePage,
+  transferHomePage,
+  instruments,
+  fileInput,
   welcome: "Hello {name}!",
   "about.you": "Hello {name}! You have {age} yo",
   "scope.test": "A scope",

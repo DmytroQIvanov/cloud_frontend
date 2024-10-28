@@ -15,11 +15,11 @@ import { useDispatch } from "react-redux";
 import { handleAddUser } from "@/app/GlobalRedux/Features/userSlice";
 import CustomModal from "@/_components/ReComponents/CustomModal/CustomModal";
 import GoogleAdsense from "@/_components/GoogleAdsense/GoogleAdsense";
-import Script from "next/script";
 import { Provider } from "@/app/dictionaries/provider";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 const cookiesPermissionsArray = ["all", "notAllowed"];
 
+const fullViewUrls = ["/instruments"];
 const Wrapper = (props: IWrapperProp) => {
   const {
     header = true,
@@ -37,19 +37,11 @@ const Wrapper = (props: IWrapperProp) => {
   const dispatch = useDispatch();
   const [cookiePermission, setCookiePermission] = useState<any>();
   const [showCookieModal, setShowCookieModal] = useState<boolean>();
+  const pathname = usePathname();
 
-  // console.log(
-  //   "user-agent",
-  //   agent,
-  // forwarded,
-  // ip?.filter((elem: any) => elem[0] == "user-agent")[0][1],
-  // ip && ip?.get("user-agent"),
-  // );
-  // console.log("user-agent", ip);
-  // console.log("x-forwarded-for", ip && ip?.get("x-forwarded-for"));
+  // const [firstRender, setFirstRender] = useState<boolean>(false);
+
   useEffect(() => {
-    // setCookiePermission(localStorage.getItem("cookiePermission"));
-
     setShowCookieModal(!localStorage.getItem("cookiePermission"));
     let localUser = localStorage.getItem("user");
 
@@ -70,33 +62,30 @@ const Wrapper = (props: IWrapperProp) => {
         localStorage.removeItem("user");
       });
   }, []);
-
+  // const pathname = usePathname();
+  // const [anim, setAnim] = useState(true);
+  // useEffect(() => {
+  //   const timeoutId = setTimeout(() => {
+  //     setAnim(false);
+  //   }, 2200);
+  //
+  //   return () => clearTimeout(timeoutId);
+  // }, [anim]);
+  //
+  // useEffect(() => {
+  //   setAnim(true);
+  // }, [pathname]);
   const params = useParams();
   return (
     // WrapperNode: ({ children }: any) => (
 
     <div style={{ height: "100%" }}>
       <Head>
-        <title>Test</title>
+        {/*<title>Test</title>*/}
         <GoogleAdsense pId={"7249338276563886"} />
       </Head>
 
-      {/*<Script*/}
-      {/*  src={`<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':*/}
-      {/*      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],*/}
-      {/*      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=*/}
-      {/*      'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&gtm_auth=L0xWMXC6gznexngWt8z41A&gtm_preview=env-1&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);*/}
-      {/*  })(window,document,'script','dataLayer','GTM-5FPSTNC2');</script>`}*/}
-      {/*></Script>*/}
-      {/*<noscript>*/}
-      {/*  <iframe*/}
-      {/*    src="https://www.googletagmanager.com/ns.html?id=GTM-5FPSTNC2&gtm_auth=L0xWMXC6gznexngWt8z41A&gtm_preview=env-1&gtm_cookies_win=x"*/}
-      {/*    height="0"*/}
-      {/*    width="0"*/}
-      {/*    style={{ display: "none", visibility: "hidden" }}*/}
-      {/*  ></iframe>*/}
-      {/*</noscript>*/}
-      <Provider locale={`${params.locale}`}>{header && <Header />}</Provider>
+      <Provider>{header && <Header />}</Provider>
       {
         CustomModal({
           type: "cookie",
@@ -104,10 +93,10 @@ const Wrapper = (props: IWrapperProp) => {
           onClose: setShowCookieModal,
         }).ModalNode
       }
-      <MobileSidebar />
-      {/*{NotificationContainer()}*/}
+      <Provider>
+        <MobileSidebar />
+      </Provider>
       {NotificationContainer}
-      {/*<NotificationContainer/>*/}
       <div id={"myPortal"} />
       {fileInput && false && (
         <div
@@ -122,14 +111,32 @@ const Wrapper = (props: IWrapperProp) => {
         </div>
       )}
       <div
-        className={`${styles.wrapper} ${fullPage ? styles.wrapper_fullPage : styles.wrapper_partPage}`}
+        className={`${styles.wrapper} ${fullPage || pathname.includes(fullViewUrls[0]) ? styles.wrapper_fullPage : styles.wrapper_partPage} `}
+        // style={
+        //   anim
+        //     ? {
+        //         transform: "translateX(-120px)",
+        //         // transitionDuration: "0.9s",
+        //
+        //         // animation: ".6s ease-in-out childrenFirstRender forwards",
+        //       }
+        //     : {
+        //         // animationDelay: 0,
+        //         transitionDuration: "0.9s",
+        //         transform: "translateX(0px)",
+        //       }
+        // }
       >
-        <div style={{ width: "100%" }} className={styles.wrapper_children}>
+        <div
+          className={`${styles.wrapper_children} 
+          `}
+        >
           {children}
         </div>
       </div>
       {/*{children && children({ onCreateNotification })}*/}
-      {bottom && <Footer />}
+
+      <Provider>{bottom && <Footer />}</Provider>
     </div>
     // ),
   );

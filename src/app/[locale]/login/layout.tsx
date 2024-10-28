@@ -10,11 +10,7 @@ export const metadata: Metadata = {
   keywords: "Трансферінг, обмін файлів, компанія, українська",
 };
 const Layout = ({ children }: any) => {
-  return (
-    <div>
-      <Wrapper>{children}</Wrapper>
-    </div>
-  );
+  return <div>{children}</div>;
 };
 
 export default Layout;

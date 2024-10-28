@@ -10,15 +10,21 @@ import {
 import Header from "@/_components/Wrapper/Header/Header";
 import Head from "next/head";
 
-// export const metadata: Metadata = {
-//   title: "Quantic Files - часті запитання",
-//   description: "Перелік частих запитань",
-//   // robots: "noindex",
-//
-//   keywords: "Трансферінг, обмін файлів, компанія, українська",
-// };
+export async function generateMetadata(
+  { params, searchParams }: any,
+  parent: any,
+) {
+  return {
+    title: "Quantic Files - часті запитання",
+    description: "Перелік частих запитань",
+    keywords: "Трансферінг, обмін файлів, компанія, українська",
+    alternates: {
+      canonical: "https://quanticfiles.com/faq",
+    },
+  };
+}
 const Layout = async ({ children }: any) => {
-  const t = await getI18n();
+  const t: any = await getI18n();
   return (
     <>
       {/*<Head>*/}
@@ -27,7 +33,9 @@ const Layout = async ({ children }: any) => {
       {/*<meta property="og:title" content="My page title" key="title" />*/}
       {/*</Head>*/}
       <div>
-        <Wrapper>{children}</Wrapper>
+        {/*<Wrapper>*/}
+        {children}
+        {/*</Wrapper>*/}
       </div>
     </>
   );

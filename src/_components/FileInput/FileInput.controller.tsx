@@ -19,6 +19,7 @@ const FileInputController = ({
   inputType = "transfer",
   start,
 }: any) => {
+  console.log("sss", inputType);
   const param = useParams();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -59,6 +60,7 @@ const FileInputController = ({
         case "flip-image":
         case "flop-image":
         case "metadata-image":
+        case "image":
           response = await axios
             .post(
               // `${process.env.BACKEND_DOMAIN}/instruments/add-file${searchParams.get("containerId") ? `?containerId=${searchParams.get("containerId")}` : ""}`,
@@ -83,6 +85,7 @@ const FileInputController = ({
             .then((elem) => {
               switch (inputType) {
                 case "resize-image":
+                case "image":
                   router.push(
                     "/instruments/resize-image/" + elem.data.container.id,
                   );

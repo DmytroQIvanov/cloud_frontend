@@ -51,8 +51,8 @@ const CustomInput = ({
               // position: "",
               // right: "-35px",
               cursor: "pointer",
-              margin: "auto 0 0 10px",
-              // width: "auto",
+              margin: "auto 10px 0 10px",
+              width: "auto",
               // height: "100%",
             }}
             onClick={() => {

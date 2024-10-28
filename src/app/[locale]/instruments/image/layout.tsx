@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   keywords:
     "Зображення, робота з зображеннями, файлообмінник, обмін файлів, компанія, українська",
 };
+
 const Layout = ({ children }: any) => {
   return (
     <div>

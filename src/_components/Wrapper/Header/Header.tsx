@@ -10,9 +10,15 @@ import { RootState } from "@/app/GlobalRedux/store";
 import { handleSideBar } from "@/app/GlobalRedux/Features/projectSlice";
 import LogoImg from "../../../../public/logo.svg";
 import { getDictionary } from "@/app/dictionaries/dictionaries";
-import { useI18n, useCurrentLocale } from "@/app/dictionaries/client";
+import {
+  useI18n,
+  useCurrentLocale,
+  useChangeLocale,
+} from "@/app/dictionaries/client";
 import { Provider } from "@/app/dictionaries/provider";
-import { getI18n } from "@/app/dictionaries/server";
+import { getCurrentLocale, getI18n } from "@/app/dictionaries/server";
+import ReCheckBox from "@/_components/ReComponents/ReCheckBox/ReCheckBox";
+import ReDropMenu from "@/_components/ReComponents/ReDropMenu/ReDropMenu";
 export const links = [
   { link: "/", title: "home", key: 1 },
   { link: "/storage", title: "storage", key: 3 },
@@ -49,7 +55,10 @@ export const imageLinks = [
   { link: "/about-us", title: "aboutUs" },
 ];
 
-const HeaderComp = () => {
+const Header = (props: any) => {
+  // const t = await getI18n();
+
+  // const t = props.t;
   const pathName = usePathname();
   const t: any = useI18n();
 
@@ -61,6 +70,8 @@ const HeaderComp = () => {
   //   setSidebarState((prev) => !prev);
   // };
   const [host, setHost] = React.useState("");
+  const [firstRender, setFirstRender] = useState(false);
+  useEffect(() => {}, []);
   useEffect(() => {
     setHost(window && window.location.host);
   }, []);
@@ -72,12 +83,13 @@ const HeaderComp = () => {
     host.includes("image") && setCurrenLinks(imageLinks);
     host.includes("cloud") && setCurrenLinks(links);
   }, [host]);
+  const changeLocale = useChangeLocale(/* { preserveSearchParams: true } */);
   const dispatch = useDispatch();
   const sidebarState = useSelector((elem: RootState) => elem.sideBar.sidebar);
-
   return (
     <div className={styles.header}>
       <div className={styles.header_mockContainer} />
+
       <div className={styles.header_container}>
         <div style={{ display: "flex" }}>
           <div className={styles.header_container_logo_img}>
@@ -124,13 +136,15 @@ const HeaderComp = () => {
           />
         </div>
         <div className={styles.header_leftLinks}>
+          <ReDropMenu value={currentLocale} onChange={changeLocale} />
+          {/*<Re  />*/}
           {/*<div>En</div>*/}
           {/*<div>Ua</div>*/}
           {currenLinks.map((linkElem, index) => (
             <div key={index}>
               <Link
                 href={linkElem.link}
-                className={`${styles.header_leftLinks_link} ${pathName == linkElem.link ? styles.header_leftLinks_link_active : ""}`}
+                className={`${styles.header_leftLinks_link} ${pathName.includes(linkElem.link) ? styles.header_leftLinks_link_active : ""}`}
               >
                 {t("header." + linkElem.title)}
               </Link>
@@ -140,10 +154,6 @@ const HeaderComp = () => {
       </div>
     </div>
   );
-};
-const Header = async (props: any) => {
-  // const t = await getI18n();
-  return <HeaderComp {...props} />;
 };
 
 export default Header;

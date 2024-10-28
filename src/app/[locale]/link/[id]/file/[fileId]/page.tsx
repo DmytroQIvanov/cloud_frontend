@@ -1,30 +1,5 @@
 "use client";
 import React, { useCallback, useEffect, useState } from "react";
-// import NavComponent from "../../../../../_components/Wrapper/NavComponent";
-// import { Document, Page as Page2, pdfjs } from "react-pdf";
-// import { Document, Page as Page2, pdfjs } from "react-pdf";
-// import { Document, pdfjs } from "react-pdf";
-// pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-// import dynamic from "next/dynamic";
-// import { Page as Pag2, Text, View, StyleSheet } from "@react-pdf/renderer";
-// import { PDFCanvas } from "@/_components/PDFCanvas/PDFCanvas";
-// const PDFDownloadLink = dynamic(
-//   () => import("@react-pdf/renderer").then((mod) => mod.PDFDownloadLink),
-//   {
-//     ssr: false,
-//     loading: () => <p>Loading...</p>,
-//   },
-// );
-// import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-// import "react-pdf/dist/esm/Page/TextLayer.css";
-// import "react-pdf/dist/cjs/Page/TextLayer.css";
-// import "react-pdf/dist/esm/Page/TextLayer.css";
-// import "react-pdf/dist/Page/TextLayer.css";
-
-// import "react-pdf/dist/esm/Page/TextLayer";
-// import "react-pdf/dist/esm/Page/TextLayer.css";
-
-// import { pdfjs } from "react-pdf";
 import axios from "axios";
 import PdfEditor from "@/_components/File/FullView/PDF/PDF";
 import { useParams, useRouter } from "next/navigation";
@@ -73,23 +48,21 @@ const Page = () => {
     }
   }, [file]);
   return (
-    <Wrapper>
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "relative",
-          display: "flex",
-          paddingBottom: "20px",
-        }}
-      >
-        {/*---WRAPPER--*/}
-        {/*<div style={{ display: "flex", flexDirection: "column" }}>*/}
-        {file && returnNode()}
-        {/*</div>*/}
-        {/*<NavComponent />*/}
-      </div>
-    </Wrapper>
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        position: "relative",
+        display: "flex",
+        paddingBottom: "20px",
+      }}
+    >
+      {/*---WRAPPER--*/}
+      {/*<div style={{ display: "flex", flexDirection: "column" }}>*/}
+      {file && returnNode()}
+      {/*</div>*/}
+      {/*<NavComponent />*/}
+    </div>
   );
 };
 

@@ -1,23 +1,32 @@
 // "use client";
 import type { Metadata } from "next";
-import "./globals.scss";
+import "../globals.scss";
 import { Providers } from "@/app/GlobalRedux/provider";
 import Script from "next/script";
 import { ReactNode, Suspense } from "react";
 import Wrapper from "@/_components/Wrapper/Wrapper";
-import Loading from "@/app/loading";
+// import Loading from "@/app/[locale]/loading";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { useI18n } from "@/app/dictionaries/client";
 import { getI18n } from "@/app/dictionaries/server";
 
 //user-agent https://quanticfiles.com/instruments/instruments/rotate-image
-export const metadata: Metadata = {
-  title: "Quantic Files - обмін і передача файлів, трансферінг за посиланням",
-  description:
-    "Передавайте файли великих розмірів за посиланням. Український безкоштовний файлоообмінник. Переносьте Фотографії, Відео, Документи, великі файли на інші пристрої",
-  keywords:
-    "Трансферінг, Файлообмінник, Облако, Завантажити, Файли, Зображення, Відео, Безкоштовно",
-};
+export async function generateMetadata(
+  { params, searchParams }: any,
+  parent: any,
+) {
+  return {
+    title: "Quantic Files - обмін і передача файлів, трансферінг за посиланням",
+    description:
+      "Передавайте файли великих розмірів за посиланням. Український безкоштовний файлоообмінник. Переносьте Фотографії, Відео, Документи, великі файли на інші пристрої",
+    keywords:
+      "Трансферінг, Файлообмінник, Облако, Завантажити, Файли, Зображення, Відео, Безкоштовно",
+
+    // alternates: {
+    //     canonical: "https://quanticfiles.com/instruments/your-ip",
+    // },
+  };
+}
 // const PageContext: any = createContext(null);
 export default async function RootLayout({
   children,
@@ -25,7 +34,7 @@ export default async function RootLayout({
   children: ReactNode;
 }>) {
   // const t: any = useI18n();
-  const t = await getI18n();
+  // const t = await getI18n();
 
   return (
     <html lang="en">
@@ -43,8 +52,12 @@ export default async function RootLayout({
       {/*</Head>*/}
       <body>
         <Providers>
-          {/*<PageContext value={t}>*/}
-          <Suspense fallback={<Loading />}>{children}</Suspense>
+          <Wrapper>
+            {/*<PageContext value={t}>*/}
+            {/*<Suspense fallback={<Loading />}>*/}
+            {children}
+          </Wrapper>
+          {/*</Suspense>*/}
           {/*</PageContext>*/}
         </Providers>
       </body>

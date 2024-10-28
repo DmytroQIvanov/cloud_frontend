@@ -62,7 +62,7 @@ const ControlBlock = () => {
     }
     return <div>{resultNode}</div>;
   };
-  const locationHref = process.env.FRONTEND_DOMAIN + pathname;
+  const locationHref = process.env.FRONTEND_TRANSFER_DOMAIN + pathname;
   return (
     <div className={styles.controlBlock}>
       {/*-----------------*/}
@@ -71,7 +71,18 @@ const ControlBlock = () => {
 
       <div className={styles.controlBlock_leftBlock}>
         {filesData && (
-          <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "5px",
+              position: "absolute",
+              right: "10px",
+              bottom: "10px",
+              fontSize: "13px",
+              color: "darkgrey",
+            }}
+          >
             <SkeletonText loading={loading}>
               Створено{" "}
               {/*{new Date(filesData?.createdAt).toDateString()}{" "}*/}

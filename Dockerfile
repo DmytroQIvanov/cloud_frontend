@@ -68,17 +68,24 @@
 
 
 FROM node:lts as dependencies
+
 WORKDIR /quanticfiles
-COPY package.json package-lock.json ./
-RUN npm install --frozen-lockfile
+COPY package.json ./
+#COPY package.json pnpm-lock.yaml ./
+#COPY package.json package-lock.json ./
+RUN npm install -g pnpm
+RUN pnpm install
 
 FROM node:lts as builder
 WORKDIR /quanticfiles
 COPY . .
 COPY --from=dependencies /quanticfiles/node_modules ./node_modules
-RUN npm run build
+RUN npm install -g pnpm
+RUN pnpm run build
 
 FROM node:lts as runner
+RUN npm install -g pnpm
+
 WORKDIR /quanticfiles
 ENV NODE_ENV production
 
@@ -92,4 +99,4 @@ COPY --from=builder /quanticfiles/next.config.mjs ./next.config.mjs
 COPY --from=builder /quanticfiles/node_modules ./node_modules
 
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["pnpm", "start"]

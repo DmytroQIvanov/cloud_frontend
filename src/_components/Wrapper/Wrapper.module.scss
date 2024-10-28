@@ -1,6 +1,28 @@
 @import "../../app/Styles/mixins";
 
+@keyframes childrenFirstRender {
+  from {
+
+    //transform: translateX(-120px);
+    //left: -100px;
+    opacity: 0;
+    display: flex;
+    //background-color: red;
+    //filter: brightness(75%);
+  }
+  to {
+    //transform: translateX(0);
+    left: 0px;
+    //opacity: 100%;
+    //display: flex;
+
+    //width: 100%;
+    //background-color: orange;
+    /* unset properties i.e. 'filter' will revert to default values */
+  }
+}
 .wrapper{
+  //display: flex;
   &_fullPage{
     @include borderWidth(98%);
   }
@@ -10,6 +32,14 @@
   }
 
   &_children{
+    //animation: .6s ease-in-out childrenFirstRender forwards;
+    width: 100%;
+    //overflow: visible;
+
+    &_anim{
+      animation: 2.6s ease-in-out childrenFirstRender forwards;
+
+    }
     min-height: 85vh;
   }
 

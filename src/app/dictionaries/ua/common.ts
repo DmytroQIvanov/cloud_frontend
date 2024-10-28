@@ -1,9 +1,20 @@
 // import header from "/Wrapper/header";
 import header from "@/app/dictionaries/ua/Wrapper/header";
+import homePage from "@/app/dictionaries/ua/Home/homePage";
+import footer from "@/app/dictionaries/ua/Footer";
+import transferHomePage from "@/app/dictionaries/ua/Home/transferHomePage";
+import fileInput from "@/app/dictionaries/ua/ReComponents/FileInput";
+import instruments from "@/app/dictionaries/ua/Instruments";
 
 // import wrapper from "./Wrapper";
 export default {
   header: header,
+  footer,
+  homePage,
+  transferHomePage,
+
+  fileInput,
+  instruments,
   welcome: "Hello {name}!",
   "about.you": "Hello {name}! You have {age} yo",
   "scope.test": "A scope",

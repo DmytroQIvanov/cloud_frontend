@@ -12,11 +12,11 @@ export const {
 } = createI18nClient(
   {
     en: async () => {
-      await new Promise((resolve) => setTimeout(resolve, 100));
+      await new Promise((resolve) => setTimeout(resolve, 2));
       return import("./en/common");
     },
     ua: async () => {
-      await new Promise((resolve) => setTimeout(resolve, 100));
+      await new Promise((resolve) => setTimeout(resolve, 2));
       return import("./ua/common");
     },
   },

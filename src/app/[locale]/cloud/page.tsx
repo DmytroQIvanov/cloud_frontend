@@ -13,6 +13,8 @@ import Effect from "@/_components/Effect/Effect";
 import img from "../../../../public/karsten-winegeart-qklA-HTyZ6k-unsplash.jpg";
 import Link from "next/link";
 import Faq from "@/_components/FAQ/FAQ";
+import GoogleHorizontal from "@/_components/GoogleAdsense/GoogleHorizontal";
+import React from "react";
 //
 interface File {
   image_url: string;
@@ -27,7 +29,7 @@ export default async function Home() {
   // const [active]
   AxiosDefault();
   return (
-    // <Wrapper fileInput ip={ip}>
+    // <Wrapper fileInput>
     <main className={styles.page}>
       <Background />
       <div className={styles.page_container}>
@@ -65,8 +67,8 @@ export default async function Home() {
               {/*<h3>Трансферінг файлів</h3>*/}
               <h2>Діліться файлами з колегами!</h2>
               <h3>Файл зберігається до 3 днів без реєстрації!</h3>
-              <h3>Сайт не працює під час відключень світла в Україні</h3>
-              <h3>Підтримай українське, підтримай Україну!</h3>
+              {/*<h3>Сайт не працює під час відключень світла в Україні</h3>*/}
+              {/*<h3>Підтримай українське, підтримай Україну!</h3>*/}
               {/*<h3>Обмін файлами</h3>*/}
               {/*<h3>Хмарне сховище</h3>*/}
               {/*<h3>Передача файлів</h3>*/}
@@ -77,6 +79,8 @@ export default async function Home() {
         </div>
         <FileInput start />
       </div>
+      <GoogleHorizontal />
+
       <div
         style={{
           background: "#30303966",
@@ -254,8 +258,11 @@ export default async function Home() {
           ]}
         />
       </div>
+      <GoogleHorizontal />
+
       <Faq />
     </main>
+    // </Wrapper>
   );
 }
 

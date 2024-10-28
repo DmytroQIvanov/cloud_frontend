@@ -11,7 +11,9 @@ export const metadata: Metadata = {
 const Layout = ({ children }: any) => {
   return (
     <div>
-      <Wrapper>{children}</Wrapper>
+      {/*<Wrapper>*/}
+      {children}
+      {/*</Wrapper>*/}
     </div>
   );
 };

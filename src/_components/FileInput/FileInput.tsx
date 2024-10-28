@@ -7,6 +7,8 @@ import axios from "axios";
 import { addNotification } from "@/app/GlobalRedux/Features/notificationSlice";
 import { useDispatch } from "react-redux";
 import fileInputController from "@/_components/FileInput/FileInput.controller";
+import { getI18n } from "@/app/dictionaries/server";
+import { useI18n } from "@/app/dictionaries/client";
 const FileInput = ({ onSend, start, fileOutDrop, inputType }: any) => {
   const {
     refs: { inputRef },
@@ -20,6 +22,8 @@ const FileInput = ({ onSend, start, fileOutDrop, inputType }: any) => {
     },
     reactNodes: { fileInput, FileInputClickWrapper },
   } = fileInputController({ onSend, inputType, start });
+
+  const t = useI18n();
 
   const dispatch = useDispatch();
   return (
@@ -60,24 +64,38 @@ const FileInput = ({ onSend, start, fileOutDrop, inputType }: any) => {
               <span>
                 {loading ? (
                   <div>
-                    {"Файли завантажуються " +
-                      Math.round(loadingStatus[0].progress * 100) +
-                      "%"}
+                    {t("fileInput.loading1", {
+                      procent: Math.round(loadingStatus[0].progress * 100),
+                    })}
+                    {/*{"Файли завантажуються " +*/}
+                    {/*  Math.round(loadingStatus[0].progress * 100) +*/}
+                    {/*  "%"}*/}
                     <div>
-                      {`${Math.round((loadingStatus[0].rate / 1048576) * 100) / 100}
-                  мегабайт/сек`}{" "}
-                      з{" "}
-                      {Math.round((loadingStatus[0].total / 1048576) * 100) /
-                        100}{" "}
-                      мегабайт
+                      {t("fileInput.loading2", {
+                        megabiteSec:
+                          Math.round((loadingStatus[0].rate / 1048576) * 100) /
+                          100,
+                        megabiteAll:
+                          Math.round((loadingStatus[0].total / 1048576) * 100) /
+                          100,
+                      })}
+                      {/*    {`${Math.round((loadingStatus[0].rate / 1048576) * 100) / 100}*/}
+                      {/*мегабайт/сек`}{" "}*/}
+                      {/*    з{" "}*/}
+                      {/*    {Math.round((loadingStatus[0].total / 1048576) * 100) /*/}
+                      {/*      100}{" "}*/}
+                      {/*    мегабайт*/}
                     </div>
 
-                    <div>Клацніть для відміни</div>
+                    <div>
+                      {t("fileInput.clickToCancel")}
+                      {/*Клацніть для відміни*/}
+                    </div>
                   </div>
                 ) : dragStarted ? (
-                  "Кидайте!"
+                  t("fileInput.drop")
                 ) : (
-                  "Клікніть сюди чи перетягніть файл"
+                  t("fileInput.initialTitle")
                 )}
               </span>
               <Image

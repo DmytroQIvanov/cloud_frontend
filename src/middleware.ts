@@ -3,9 +3,19 @@ import type { NextRequest } from "next/server";
 
 const PUBLIC_FILE = /\.(.*)$/;
 import { createI18nMiddleware } from "next-international/middleware";
-const array = ["instruments", "faq", "about-us", "links"];
+import { links } from "@/_components/Wrapper/Header/Header";
+const array = [
+  "instruments",
+  "faq",
+  "about-us",
+  "links",
+  "account",
+  "storage",
+  "articles",
+  "link",
+];
 
-import { match } from "@formatjs/intl-localematcher";
+// import { match } from "@formatjs/intl-localematcher";
 // import Negotiator from "negotiator";
 
 let headers = { "accept-language": "en-US,en;q=0.5" };
@@ -14,16 +24,21 @@ let locales = ["ru", "en", "ua"];
 let defaultLocale = "en-US";
 const I18nMiddleware = createI18nMiddleware({
   locales: ["en", "ua"],
-  defaultLocale: "en",
+  defaultLocale: "ua",
 });
 // match(languages, locales, defaultLocale); // -> 'en-US'
-// This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
-  // alert();
-  // return I18nMiddleware(request);
   const { pathname } = request.nextUrl;
   let language;
-  const pathnameHasLocale = locales.some((locale) => {
+  let refererLanguage;
+
+  const referer = request.headers.get("referer");
+  const refererBoolean = locales.some((locale) => {
+    let result = referer?.includes(`/${locale}`);
+    if (result) refererLanguage = locale;
+    return result;
+  });
+  let pathnameHasLocale = locales.some((locale) => {
     let result =
       pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`;
     if (result) language = locale;
@@ -47,6 +62,8 @@ export function middleware(request: NextRequest) {
     request.url,
   );
   console.log(request.nextUrl.pathname);
+  // return I18nMiddleware(request);
+  // const response = I18nMiddleware(request);
   // if (pathnameHasLocale) {
   //   console.log("true");
   //   // if (request.nextUrl.locale === "default") {
@@ -62,33 +79,115 @@ export function middleware(request: NextRequest) {
   //   request.headers.get("host") === "transfer.quanticfiles.com" &&
   //   !array.some((elem) => request.nextUrl.pathname.includes(elem))
   // ) {
-  if (!pathnameHasLocale)
-    return NextResponse.rewrite(
-      new URL(`/en${request.nextUrl.pathname}`, request.url),
-    );
-  // }
 
-  if (
-    request.headers.get("host") === "transfer.quanticfiles.com" &&
-    !array.some((elem) => request.nextUrl.pathname.includes(elem))
-  ) {
-    return NextResponse.rewrite(
-      new URL(`/transfer${request.nextUrl.pathname}`, request.url),
-    );
-  }
-
-  if (
-    request.headers.get("host") === "image.quanticfiles.com" &&
-    !array.some((elem) => request.nextUrl.pathname.includes(elem))
-  ) {
-    return NextResponse.rewrite(
-      new URL(`/image${request.nextUrl.pathname}`, request.url),
-    );
-  }
-  if (pathnameHasLocale) return I18nMiddleware(request);
-  //
   // return I18nMiddleware(request);
-  // return NextResponse.redirect(request.nextUrl);
+
+  let response;
+
+  //----------------
+  //---FIRST PART---
+  //----------------
+  if (!pathnameHasLocale && !refererBoolean) {
+    if (
+      request.headers.get("host") === "transfer.quanticfiles.com" &&
+      !array.some((elem) => request.nextUrl.pathname.includes(elem))
+    ) {
+      response = NextResponse.rewrite(
+        new URL(
+          `/${refererBoolean ? refererLanguage : "ua"}/transfer${request.nextUrl.pathname}`,
+          request.url,
+        ),
+      );
+    }
+
+    if (
+      request.headers.get("host") === "cloud.quanticfiles.com" &&
+      !array.some((elem) => request.nextUrl.pathname.includes(elem))
+    ) {
+      response = NextResponse.rewrite(
+        new URL(
+          `/${refererBoolean ? refererLanguage : "ua"}/cloud${request.nextUrl.pathname}`,
+          request.url,
+        ),
+      );
+    }
+
+    if (
+      request.headers.get("host") === "image.quanticfiles.com" &&
+      !array.some((elem) => request.nextUrl.pathname.includes(elem))
+    ) {
+      response = NextResponse.rewrite(
+        new URL(
+          `/${refererBoolean ? refererLanguage : "ua"}/image${request.nextUrl.pathname}`,
+          request.url,
+        ),
+      );
+    }
+    response = NextResponse.rewrite(
+      new URL(
+        `/${refererBoolean ? refererLanguage : "ua"}${request.nextUrl.pathname}`,
+        request.url,
+      ),
+    );
+  }
+
+  if (pathnameHasLocale) {
+    if (
+      request.headers.get("host") === "transfer.quanticfiles.com" &&
+      !array.some((elem) => request.nextUrl.pathname.includes(elem))
+    ) {
+      console.log(
+        "request.url----------",
+        `${language}/transfer${request.nextUrl.pathname}`,
+      );
+      response = NextResponse.rewrite(
+        new URL(
+          `${language}/transfer${request.nextUrl.pathname.replace(`/${language}`, "")}`,
+          request.url,
+        ),
+      );
+    }
+
+    if (
+      request.headers.get("host") === "cloud.quanticfiles.com" &&
+      !array.some((elem) => request.nextUrl.pathname.includes(elem))
+    ) {
+      response = NextResponse.rewrite(
+        new URL(
+          `${language}/cloud${request.nextUrl.pathname.replace(`/${language}`, "")}`,
+          request.url,
+        ),
+      );
+    }
+
+    if (
+      request.headers.get("host") === "image.quanticfiles.com" &&
+      !array.some((elem) => request.nextUrl.pathname.includes(elem))
+    ) {
+      response = NextResponse.rewrite(
+        new URL(
+          `${language}/image${request.nextUrl.pathname.replace(`/${language}`, "")}`,
+          request.url,
+        ),
+      );
+    }
+  }
+  if (refererBoolean && !pathnameHasLocale) {
+    response = NextResponse.redirect(
+      new URL(
+        `/${refererLanguage}${request.nextUrl.pathname}`,
+        // `${refererBoolean ? `/${refererLanguage}` : ""}${request.nextUrl.pathname}`,
+        request.url,
+      ),
+    );
+  }
+
+  if (!response) response = NextResponse.next();
+  // response.headers.set("x-default-locale", defaultLocale);
+  // response.headers.set("accept-language", "en");
+  response?.headers.set("x-next-locale", language || "ua");
+
+  return response;
 }
 export const config = {
   matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],

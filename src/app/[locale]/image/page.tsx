@@ -13,6 +13,9 @@ import Effect from "@/_components/Effect/Effect";
 import img from "../../../../public/karsten-winegeart-qklA-HTyZ6k-unsplash.jpg";
 import Link from "next/link";
 import Faq from "@/_components/FAQ/FAQ";
+import GoogleHorizontal from "@/_components/GoogleAdsense/GoogleHorizontal";
+import React from "react";
+import { Provider } from "@/app/dictionaries/provider";
 //
 interface File {
   image_url: string;
@@ -65,18 +68,38 @@ export default async function Home() {
               {/*<h3>Трансферінг файлів</h3>*/}
               <h2>Стискайте фото!</h2>
               <h3>Зміна розміру зображення</h3>
-              <h3>Сайт не працює під час відключень світла в Україні</h3>
-              <h3>Підтримай українське, підтримай Україну!</h3>
+              {/*<h3>Сайт не працює під час відключень світла в Україні</h3>*/}
+              {/*<h3>Підтримай українське, підтримай Україну!</h3>*/}
               {/*<h3>Обмін файлами</h3>*/}
               {/*<h3>Хмарне сховище</h3>*/}
               {/*<h3>Передача файлів</h3>*/}
-              <BlockAnim />
+              <BlockAnim
+                title={"Використовуйте усі переваги нашого сервісу"}
+                initialArray={[
+                  {
+                    title: "Редагування зображень",
+                    text: "З легкістю редагуйте фотографії. Широкий спектр інструментів: від базових фільтрів до професійних функцій",
+                  },
+                  {
+                    title: "Зберігання та організація",
+                    text: "Легко зберігайте та організовуйте всі ваші зображення в одному місці.",
+                  },
+                  {
+                    title: "Дизайн",
+                    text: "Ми постійно старанно працюємо над розвитком інтуітивно зрозумілого інтерфейсу",
+                  },
+                ]}
+              />
             </ScrollTrigger>
           </div>
           {/*<ScrollTrigger defaultSide={"Left"}></ScrollTrigger>*/}
         </div>
-        <FileInput start />
+        <Provider>
+          <FileInput inputType={"image"} start />
+        </Provider>
       </div>
+      <GoogleHorizontal />
+
       <div
         style={{
           background: "#30303966",
@@ -249,6 +272,8 @@ export default async function Home() {
           ]}
         />
       </div>
+      <GoogleHorizontal />
+
       <Faq />
     </main>
   );

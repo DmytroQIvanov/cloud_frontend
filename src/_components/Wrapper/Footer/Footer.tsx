@@ -1,8 +1,14 @@
 import React from "react";
 import styles from "./Footer.module.scss";
 import Link from "next/link";
+import { getI18n } from "@/app/dictionaries/server";
+import { useI18n } from "@/app/dictionaries/client";
 
-const Footer = () => {
+const Footer = ({}: any) => {
+  // const t = await getI18n();
+  // console.log(",,,", props);
+  const t: any = useI18n();
+
   return (
     <div style={{ position: "relative" }}>
       <footer className={styles.footer}>
@@ -12,41 +18,42 @@ const Footer = () => {
               <div className={styles.footer_elem1}>
                 <div className={styles.footer_block}>
                   <div className={styles.footer_title}>
-                    {/*{t("footer.legalInformation")}*/}
-                    Legal information
+                    {t("footer.legalInformation")}
                   </div>
-                  <div
+                  <span
                     onClick={() => {
                       // onPageAnim({url: "/public-offer"});
                     }}
                     style={{ cursor: "pointer" }}
                   >
-                    Public Offer
-                    {/*{t("footer.publicOffer")}*/}
-                  </div>
-                  <span>Terms & Conditions</span>
-                  <span>Privacy Policy</span>
+                    {t("footer.publicOffer")}
+                  </span>
+                  <span>{t("footer.termsConditions")}</span>
+                  <span>{t("footer.privacyPolicy")}</span>
                   <Link
                     href={
                       "/"
                       // "https://opendatabot.ua/pdf/company/4899/45270705-4899812-3869722-951ebb6f71fd78161381af1eb5f58482.pdf"
                     }
                   >
-                    EXTRACT
+                    {/*EXTRACT*/}
                     {/*{t("footer.extract")}*/}
                   </Link>
                   {/*<span>Політика використання файлів cookie</span>*/}
-                  <span>{/*{t("footer.policyOnTheSecurity")}*/}</span>
+                  {/*<span>/!*{t("footer.policyOnTheSecurity")}*!/</span>*/}
                 </div>
                 <div className={styles.footer_block}>
                   <div className={styles.footer_title}>
                     {/*{t("footer.contactInformation")}*/}
-                    CONTACT INFO
+
+                    {t("footer.contactInfo")}
+
+                    {/*CONTACT INFO*/}
                   </div>
                   <div>
                     <div className={styles.footer_secondText}>
                       {/*{t("footer.workingHours")}*/}
-                      WORKING HOURS
+                      {/*WORKING HOURS*/}
                     </div>
                     <span>admin@quanticfiles.com</span>
                   </div>
@@ -54,16 +61,16 @@ const Footer = () => {
 
                   <span>
                     {/*{t("footer.callYouBack")}*/}
-                    CALL YOU BACK
+                    {/*CALL YOU BACK*/}
                   </span>
                 </div>
                 <div className={styles.footer_block}>
-                  <div className={styles.footer_title}>ПОСИЛАННЯ</div>
+                  <div className={styles.footer_title}>{t("footer.links")}</div>
 
-                  <Link href={"/faq"}>FAQ</Link>
-                  <Link href={"/links"}>Ваші посилання</Link>
-                  <Link href={"/articles"}>Статті</Link>
-                  <Link href={"/about-us"}>Про нас</Link>
+                  <Link href={"/faq"}>{t("footer.faq")}</Link>
+                  <Link href={"/links"}>{t("footer.yourLinks")}</Link>
+                  <Link href={"/articles"}>{t("footer.articles")}</Link>
+                  <Link href={"/about-us"}>{t("footer.aboutUs")}</Link>
                 </div>
                 <div className={styles.footer_elem3}>
                   <div />
@@ -94,4 +101,9 @@ const Footer = () => {
   );
 };
 
+// export async function getServerSideProps(context) {
+//   return {
+//     props: context,
+//   };
+// }
 export default Footer;

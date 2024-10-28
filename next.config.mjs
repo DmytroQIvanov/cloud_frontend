@@ -9,6 +9,14 @@ const nextConfig = {
   // },
   // ],
   transpilePackages: ["next-international", "international-types"],
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: "/image",
+  //       destination: "/",
+  //     },
+  //   ];
+  // },
 
   // reactStrictMode: true,
   //Inter

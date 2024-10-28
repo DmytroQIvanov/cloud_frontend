@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import styles from "@/app/page.module.scss";
+import styles from "@/app/[locale]/page.module.scss";
 
 const BlockAnim = ({
   initialArray,

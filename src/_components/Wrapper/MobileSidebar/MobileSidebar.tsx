@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 import React, { useEffect, useState } from "react";
 import styles from "./MobileSidebar.module.scss";
 // import { Link, useLocation } from "react-router-dom";
@@ -14,6 +14,7 @@ import {
   transferLinks,
 } from "@/_components/Wrapper/Header/Header";
 import Link from "next/link";
+import { useI18n } from "@/app/dictionaries/client";
 
 export const MobileSidebar = ({
   // sidebarState,
@@ -22,7 +23,8 @@ export const MobileSidebar = ({
   onPageAnim,
   currentPage,
 }: any) => {
-  const { t } = useTranslation();
+  const t: any = useI18n();
+
   const pathname = usePathname();
   const router = useRouter();
   const dispatch = useDispatch();
@@ -59,7 +61,7 @@ export const MobileSidebar = ({
     host.includes("cloud") && setCurrenLinks(links);
   }, [host]);
   return (
-    <div className={styles.mobileSidebar}>
+    <nav className={styles.mobileSidebar}>
       <div
         className={`${styles.mobileSidebar_mainContainer} ${
           sidebarState
@@ -82,7 +84,7 @@ export const MobileSidebar = ({
                 }
               >
                 <ScrollTrigger endless={true}>
-                  <Link href={elem.link}>{t(elem.title)}</Link>
+                  <Link href={elem.link}>{t("header." + elem.title)}</Link>
                 </ScrollTrigger>
                 {/*<img src={elem?.icon} />*/}
               </div>
@@ -98,6 +100,6 @@ export const MobileSidebar = ({
         }`}
         onClick={() => dispatch(handleSideBar(!sidebarState))}
       />
-    </div>
+    </nav>
   );
 };

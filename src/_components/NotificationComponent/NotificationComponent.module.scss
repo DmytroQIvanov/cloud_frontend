@@ -1,3 +1,4 @@
+@import "../../app/Styles/colors";
 .notificationComponent{
   position: fixed;
   top: 55px;
@@ -20,7 +21,8 @@
     //width: 220px;
     //height: 90px;
     border-radius: 10px;
-    background-color: rgba(41, 40, 40, 0.85);
+    //background-color: rgba(41, 40, 40, 0.85);
+    background-color: $mainColor_lighter;
     padding: 12px;
     position: relative;
     box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
