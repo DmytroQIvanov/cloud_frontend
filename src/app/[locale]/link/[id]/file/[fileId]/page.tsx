@@ -20,7 +20,6 @@ export interface IFile {
 const Page = () => {
   const params = useParams();
   const router = useRouter();
-  // params.fileId;
 
   const [file, setFile] = useState<any>();
   useEffect(() => {
@@ -58,9 +57,7 @@ const Page = () => {
       }}
     >
       {/*---WRAPPER--*/}
-      {/*<div style={{ display: "flex", flexDirection: "column" }}>*/}
       {file && returnNode()}
-      {/*</div>*/}
       {/*<NavComponent />*/}
     </div>
   );

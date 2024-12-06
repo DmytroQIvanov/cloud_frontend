@@ -1,35 +1,31 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import axios from "axios";
 import ReButton from "@/_components/ReComponents/ReButton/ReButton";
 import GetFilePage from "@/_components/Instruments/GetFilePage/GetFilePage";
+import { useI18n } from "@/app/dictionaries/client";
+import { getI18n } from "@/app/dictionaries/server";
 
-const ResizeImage = () => {
-  const [file, setFile] = useState<any>();
-
-  // useEffect(() => {
-  // }, []);
+const BlurImage = async () => {
+  const t = await getI18n();
 
   return (
-    <div
-      style={
-        {
-          // display: "flex",
-          // flexDirection: "column",
-          // margin: "auto",
-          // width: "fit-content",
-          // textAlign: "center",
-        }
-      }
-    >
+    <div>
       <GetFilePage
         type={"blur-image"}
-        title={"Заблюрить JPEG, WEBP, PNG зображення"}
-        description={"Розмити зображення"}
+        title={t("instruments.blurImage.title", {
+          links: (
+            <>
+              <Link href={"/public"}>JPEG</Link>,{" "}
+              <Link href={"/public"}>PNG</Link>,{" "}
+              <Link href={"/public"}>SVG</Link>
+            </>
+          ),
+        })}
+        description={t("instruments.blurImage.description")}
       />
     </div>
   );
 };
 
-export default ResizeImage;
+export default BlurImage;

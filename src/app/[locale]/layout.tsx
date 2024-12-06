@@ -9,6 +9,7 @@ import Wrapper from "@/_components/Wrapper/Wrapper";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { useI18n } from "@/app/dictionaries/client";
 import { getI18n } from "@/app/dictionaries/server";
+import GoogleAdsense from "@/_components/GoogleAdsense/GoogleAdsense";
 
 //user-agent https://quanticfiles.com/instruments/instruments/rotate-image
 export async function generateMetadata(
@@ -39,6 +40,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <GoogleAnalytics gaId="GTM-5FPSTNC2" />
+      <GoogleAdsense pId={"7249338276563886"} />
       <GoogleAnalytics gaId="G-BWP2BPCWDX" />
       {/*<Suspense fallback={"test..."}>*/}
       {/*<Script*/}

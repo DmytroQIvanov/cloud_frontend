@@ -7,11 +7,13 @@ import styles from "./links.module.scss";
 import SkeletonText from "@/_components/Skeleton/SkeletonText";
 import ReButton from "@/_components/ReComponents/ReButton/ReButton";
 import Wrapper from "@/_components/Wrapper/Wrapper";
+import { useI18n } from "@/app/dictionaries/client";
 
 const Links = () => {
   const link = useSelector((state: RootState) => state.files.fileData);
   const user = useSelector((state: RootState) => state.user);
 
+  // const t = useI18n();
   return (
     <div
       className={styles.links}

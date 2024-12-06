@@ -1,15 +1,12 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import axios from "axios";
 import ReButton from "@/_components/ReComponents/ReButton/ReButton";
 import GetFilePage from "@/_components/Instruments/GetFilePage/GetFilePage";
+import { getI18n } from "@/app/dictionaries/server";
 
-const ResizeImage = () => {
-  const [file, setFile] = useState<any>();
-
-  // useEffect(() => {
-  // }, []);
+const ResizeImage = async () => {
+  const t = await getI18n();
 
   return (
     <div
@@ -25,8 +22,16 @@ const ResizeImage = () => {
     >
       <GetFilePage
         type={"rotate-image"}
-        title={"Повернути JPG, PNG, WEBP зображення"}
-        description={"Розверніть зображення і поставте колір фону!"}
+        title={t("instruments.rotateImage.title", {
+          links: (
+            <>
+              <Link href={"/public"}>JPEG</Link>,{" "}
+              <Link href={"/public"}>PNG</Link>,{" "}
+              <Link href={"/public"}>SVG</Link>
+            </>
+          ),
+        })}
+        description={t("instruments.rotateImage.description")}
       />
     </div>
   );

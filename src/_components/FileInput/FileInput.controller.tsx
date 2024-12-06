@@ -17,6 +17,8 @@ import { handleChangeContainer } from "@/app/GlobalRedux/Features/instrumentSlic
 const FileInputController = ({
   onSend,
   inputType = "transfer",
+  fileAcceptType = "*/*",
+
   start,
 }: any) => {
   console.log("sss", inputType);
@@ -275,14 +277,18 @@ const FileInputController = ({
     },
   };
 
-  const fileInput = () => {
+  const fileInput = ({
+    fileAcceptType = "*/*",
+  }: {
+    fileAcceptType: string;
+  }) => {
     return (
       <>
         <input
           onChange={(event) => handleImageUpload(event.target.files)}
           ref={inputRef}
           type="file"
-          accept="*/*"
+          accept={fileAcceptType}
           multiple={true}
           style={{
             width: "0px",
@@ -313,7 +319,7 @@ const FileInputController = ({
         }}
         style={{ height: "inherit" }}
       >
-        {fileInput()}
+        {fileInput({ fileAcceptType })}
         {children}
       </div>
     );

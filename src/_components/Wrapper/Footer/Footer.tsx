@@ -4,6 +4,10 @@ import Link from "next/link";
 import { getI18n } from "@/app/dictionaries/server";
 import { useI18n } from "@/app/dictionaries/client";
 
+const links = [];
+const transferLinks = [];
+const imageLinks = [];
+const cloudLinks = [];
 const Footer = ({}: any) => {
   // const t = await getI18n();
   // console.log(",,,", props);

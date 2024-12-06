@@ -3,6 +3,7 @@ Disallow: /?
 Disallow: /links
 Disallow: /storage
 Disallow: /offer-contract
+Disallow: https://minio.quanticfiles.com
 
 
 Sitemap: https://quanticfiles.com/sitemap.xml

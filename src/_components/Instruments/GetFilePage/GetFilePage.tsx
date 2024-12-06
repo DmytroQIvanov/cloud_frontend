@@ -32,7 +32,7 @@ const GetFilePage = (
       </div>
       <div className={styles.fileInput_fileInputContainer}>
         <Provider>
-          <FileInput inputType={props?.type ?? "resize-image"} />
+          <FileInput inputType={props?.type ?? "resize-image"} start />
         </Provider>
       </div>
       <div className={styles.fileInput_optionsContainer}>

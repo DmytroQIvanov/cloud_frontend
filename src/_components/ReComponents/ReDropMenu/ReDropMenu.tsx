@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
+import styles from "./ReDropMenu.module.scss";
 
 const ReDropMenu = ({ value, onChange }: { value: any; onChange: any }) => {
   const [localSelectedValue, setLocalSelectedValue] =
@@ -15,8 +16,12 @@ const ReDropMenu = ({ value, onChange }: { value: any; onChange: any }) => {
     setLocalSelectedValue(event.target.value);
   };
   return (
-    <div>
-      <select value={localSelectedValue} onChange={onHandleChange}>
+    <div className={styles.reDropMenuContainer}>
+      <select
+        value={localSelectedValue}
+        className={styles.reDropMenuContainer_select}
+        onChange={onHandleChange}
+      >
         <option value="ua">ua</option>
         <option value="en">en</option>
       </select>

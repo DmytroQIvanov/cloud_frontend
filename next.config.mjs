@@ -42,6 +42,7 @@ const nextConfig = {
     //     },
     //   }),
     // );
+    // config.
 
     // config.externals = [...config.externals, { canvas: "canvas" }]; // required for the canvas to work
     return config;

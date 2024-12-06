@@ -9,7 +9,13 @@ import { useDispatch } from "react-redux";
 import fileInputController from "@/_components/FileInput/FileInput.controller";
 import { getI18n } from "@/app/dictionaries/server";
 import { useI18n } from "@/app/dictionaries/client";
-const FileInput = ({ onSend, start, fileOutDrop, inputType }: any) => {
+const FileInput = ({
+  onSend,
+  start,
+  fileOutDrop,
+  inputType,
+  fileAcceptType,
+}: any) => {
   const {
     refs: { inputRef },
     states: { dragStarted, router, loading, param, loadingStatus },
@@ -21,7 +27,7 @@ const FileInput = ({ onSend, start, fileOutDrop, inputType }: any) => {
       controller,
     },
     reactNodes: { fileInput, FileInputClickWrapper },
-  } = fileInputController({ onSend, inputType, start });
+  } = fileInputController({ onSend, inputType, start, fileAcceptType });
 
   const t = useI18n();
 
@@ -79,18 +85,9 @@ const FileInput = ({ onSend, start, fileOutDrop, inputType }: any) => {
                           Math.round((loadingStatus[0].total / 1048576) * 100) /
                           100,
                       })}
-                      {/*    {`${Math.round((loadingStatus[0].rate / 1048576) * 100) / 100}*/}
-                      {/*мегабайт/сек`}{" "}*/}
-                      {/*    з{" "}*/}
-                      {/*    {Math.round((loadingStatus[0].total / 1048576) * 100) /*/}
-                      {/*      100}{" "}*/}
-                      {/*    мегабайт*/}
                     </div>
 
-                    <div>
-                      {t("fileInput.clickToCancel")}
-                      {/*Клацніть для відміни*/}
-                    </div>
+                    <div>{t("fileInput.clickToCancel")}</div>
                   </div>
                 ) : dragStarted ? (
                   t("fileInput.drop")
@@ -116,15 +113,24 @@ const FileInput = ({ onSend, start, fileOutDrop, inputType }: any) => {
             color: "gray",
           }}
         >
-          Відправляючи ці файли, ви погоджуєтеся з умовами{" "}
-          <a href={"/offer-contract"} style={{ textDecoration: "underline" }}>
-            договору оферти
-          </a>{" "}
-          та{" "}
-          <a href={"/offer-contract"} style={{ textDecoration: "underline" }}>
-            політикою конфіденційності
-          </a>
-          .
+          {t("fileInput.description", {
+            link1: (
+              <a
+                href={"/offer-contract"}
+                style={{ textDecoration: "underline" }}
+              >
+                {t("fileInput.descriptionLink1")}
+              </a>
+            ),
+            link2: (
+              <a
+                href={"/offer-contract"}
+                style={{ textDecoration: "underline" }}
+              >
+                {t("fileInput.descriptionLink2")}
+              </a>
+            ),
+          })}
         </span>
       )}
       {/*{fileInput()}*/}

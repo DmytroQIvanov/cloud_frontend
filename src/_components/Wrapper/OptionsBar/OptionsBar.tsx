@@ -16,16 +16,21 @@ const OptionsBar = () => {
         {/*{viewType}*/}
 
         <button
-          style={{ padding: "6px 30px" }}
+          className={styles.optionsBar_container_item}
+          style={{ flexDirection: "column" }}
           onClick={() => dispatch(handleChangeViewType("horizontal"))}
         >
-          Hor
+          <div className={styles.optionsBar_container_item_subItem} />
+          <div className={styles.optionsBar_container_item_subItem} />
         </button>
         <button
-          style={{ padding: "6px 30px" }}
+          style={{ flexDirection: "row" }}
+          className={styles.optionsBar_container_item}
           onClick={() => dispatch(handleChangeViewType("block"))}
         >
-          Box
+          <div className={styles.optionsBar_container_item_subItem} />
+          <div className={styles.optionsBar_container_item_subItem} />
+          <div className={styles.optionsBar_container_item_subItem} />
         </button>
       </div>
     </div>

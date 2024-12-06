@@ -1,8 +1,11 @@
 @import "../app/Styles/mixins";
 .fileList {
-  padding: 5px 0px;
-  margin: 15px 0px;
+  //padding: 5px 0px;
+  margin: 10px 0px;
   width: 100%;
+  color: #cbc9c9;
+
+
   @media (max-width: 500px) {
     padding: 0;
     margin: 0;

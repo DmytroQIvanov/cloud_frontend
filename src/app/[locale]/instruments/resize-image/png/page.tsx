@@ -11,15 +11,9 @@ const ResizeImage = async () => {
   return (
     <div>
       <GetFilePage
-        title={t("instruments.resizeImage.title")}
+        title={t("instruments.resizeImage.title2", { format: "png" })}
         description={t("instruments.resizeImage.description", {
-          links: (
-            <>
-              <Link href={"resize-image/jpeg"}>JPEG</Link>,{" "}
-              <Link href={"resize-image/png"}>PNG</Link>,{" "}
-              <Link href={"/public"}>SVG</Link>
-            </>
-          ),
+          links: <>{/*<Link href={"/public"}>JPEG</Link>,{" "}*/}</>,
         })}
       />
     </div>

@@ -15,9 +15,6 @@ const array = [
   "link",
 ];
 
-// import { match } from "@formatjs/intl-localematcher";
-// import Negotiator from "negotiator";
-
 let headers = { "accept-language": "en-US,en;q=0.5" };
 // let languages = new Negotiator({ headers }).languages();
 let locales = ["ru", "en", "ua"];
@@ -62,26 +59,6 @@ export function middleware(request: NextRequest) {
     request.url,
   );
   console.log(request.nextUrl.pathname);
-  // return I18nMiddleware(request);
-  // const response = I18nMiddleware(request);
-  // if (pathnameHasLocale) {
-  //   console.log("true");
-  //   // if (request.nextUrl.locale === "default") {
-  //   const locale = request.cookies.get("NEXT_LOCALE")?.value || "en";
-  //
-  //   // `/${locale}${request.nextUrl.pathname}${request.nextUrl.search}`,
-  //   return NextResponse.rewrite(
-  //     new URL(`${request.url.replace(`/${language}`, ``)}`, `/${language}`),
-  //   );
-  // }
-
-  // if (
-  //   request.headers.get("host") === "transfer.quanticfiles.com" &&
-  //   !array.some((elem) => request.nextUrl.pathname.includes(elem))
-  // ) {
-
-  // return I18nMiddleware(request);
-
   let response;
 
   //----------------
@@ -98,9 +75,7 @@ export function middleware(request: NextRequest) {
           request.url,
         ),
       );
-    }
-
-    if (
+    } else if (
       request.headers.get("host") === "cloud.quanticfiles.com" &&
       !array.some((elem) => request.nextUrl.pathname.includes(elem))
     ) {
@@ -110,9 +85,7 @@ export function middleware(request: NextRequest) {
           request.url,
         ),
       );
-    }
-
-    if (
+    } else if (
       request.headers.get("host") === "image.quanticfiles.com" &&
       !array.some((elem) => request.nextUrl.pathname.includes(elem))
     ) {
@@ -122,13 +95,13 @@ export function middleware(request: NextRequest) {
           request.url,
         ),
       );
-    }
-    response = NextResponse.rewrite(
-      new URL(
-        `/${refererBoolean ? refererLanguage : "ua"}${request.nextUrl.pathname}`,
-        request.url,
-      ),
-    );
+    } else
+      response = NextResponse.rewrite(
+        new URL(
+          `/${refererBoolean ? refererLanguage : "ua"}${request.nextUrl.pathname}`,
+          request.url,
+        ),
+      );
   }
 
   if (pathnameHasLocale) {
@@ -146,9 +119,7 @@ export function middleware(request: NextRequest) {
           request.url,
         ),
       );
-    }
-
-    if (
+    } else if (
       request.headers.get("host") === "cloud.quanticfiles.com" &&
       !array.some((elem) => request.nextUrl.pathname.includes(elem))
     ) {
@@ -158,9 +129,7 @@ export function middleware(request: NextRequest) {
           request.url,
         ),
       );
-    }
-
-    if (
+    } else if (
       request.headers.get("host") === "image.quanticfiles.com" &&
       !array.some((elem) => request.nextUrl.pathname.includes(elem))
     ) {
@@ -171,8 +140,7 @@ export function middleware(request: NextRequest) {
         ),
       );
     }
-  }
-  if (refererBoolean && !pathnameHasLocale) {
+  } else if (refererBoolean && !pathnameHasLocale) {
     response = NextResponse.redirect(
       new URL(
         `/${refererLanguage}${request.nextUrl.pathname}`,

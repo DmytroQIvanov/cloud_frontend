@@ -1,7 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import axios from "axios";
-import ReButton from "@/_components/ReComponents/ReButton/ReButton";
 import GetFilePage from "@/_components/Instruments/GetFilePage/GetFilePage";
 import { getI18n } from "@/app/dictionaries/server";
 
@@ -11,13 +9,13 @@ const ResizeImage = async () => {
   return (
     <div>
       <GetFilePage
-        title={t("instruments.compressImage.title")}
+        title={t("instruments.compressImage.title2", { format: "png" })}
         description={t("instruments.compressImage.description", {
           links: (
             <>
-              <Link href={"compress-image/jpeg"}>JPEG</Link>,{" "}
-              <Link href={"compress-image/png"}>PNG</Link>,{" "}
-              <Link href={"/public"}>SVG</Link>
+              {/*<Link href={"/public"}>JPEG</Link>,{" "}*/}
+              {/*<Link href={"/public"}>PNG</Link>,{" "}*/}
+              {/*<Link href={"/public"}>SVG</Link>*/}
             </>
           ),
         })}

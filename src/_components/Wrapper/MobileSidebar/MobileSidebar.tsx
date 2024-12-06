@@ -14,7 +14,12 @@ import {
   transferLinks,
 } from "@/_components/Wrapper/Header/Header";
 import Link from "next/link";
-import { useI18n } from "@/app/dictionaries/client";
+import {
+  useChangeLocale,
+  useCurrentLocale,
+  useI18n,
+} from "@/app/dictionaries/client";
+import ReDropMenu from "@/_components/ReComponents/ReDropMenu/ReDropMenu";
 
 export const MobileSidebar = ({
   // sidebarState,
@@ -29,6 +34,8 @@ export const MobileSidebar = ({
   const router = useRouter();
   const dispatch = useDispatch();
   const sidebarState = useSelector((elem: RootState) => elem.sideBar.sidebar);
+  const currentLocale = useCurrentLocale();
+  const changeLocale = useChangeLocale(/* { preserveSearchParams: true } */);
 
   const [host, setHost] = useState("");
   useEffect(() => {

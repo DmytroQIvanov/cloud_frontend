@@ -1,12 +1,14 @@
+@import "src/app/Styles/colors";
 .file{
   margin-top: 5px;
   &_container{
     height: 175px;
     width: 100%;
-    border: 2px solid white;
+
+    //border: 2px solid white;
     position: relative;
     transition-duration: .2s;
-    background-color: black;
+    background-color: $mainColor_light;
     cursor: pointer;
     z-index: 10;
     //box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);

@@ -58,11 +58,13 @@ export const imageLinks = [
 const Header = (props: any) => {
   // const t = await getI18n();
 
+  const currentLocale = useCurrentLocale();
   // const t = props.t;
   const pathName = usePathname();
+  const pathNameWithoutLang = pathName.includes(`/${currentLocale}`)
+    ? pathName.replace(`/${currentLocale}`, "")
+    : pathName;
   const t: any = useI18n();
-
-  const currentLocale = useCurrentLocale();
 
   const language = useSelector((state: RootState) => state.sideBar.language);
   // const [sidebarState, setSidebarState] = useState<boolean>(false);
@@ -83,7 +85,7 @@ const Header = (props: any) => {
     host.includes("image") && setCurrenLinks(imageLinks);
     host.includes("cloud") && setCurrenLinks(links);
   }, [host]);
-  const changeLocale = useChangeLocale(/* { preserveSearchParams: true } */);
+  const changeLocale = useChangeLocale({ preserveSearchParams: true });
   const dispatch = useDispatch();
   const sidebarState = useSelector((elem: RootState) => elem.sideBar.sidebar);
   return (
@@ -114,6 +116,9 @@ const Header = (props: any) => {
           <span style={{ marginLeft: "6px" }}>{currentLocale}</span>
         </div>
 
+        <div className={`${styles.header_locale}`}>
+          <ReDropMenu value={currentLocale} onChange={changeLocale} />
+        </div>
         {/*--- MOBILE SIDEBAR ---*/}
         <div
           className={`${styles.header_container_sidebarIcon} ${
@@ -136,15 +141,12 @@ const Header = (props: any) => {
           />
         </div>
         <div className={styles.header_leftLinks}>
-          <ReDropMenu value={currentLocale} onChange={changeLocale} />
-          {/*<Re  />*/}
-          {/*<div>En</div>*/}
-          {/*<div>Ua</div>*/}
+          {/*<ReDropMenu value={currentLocale} onChange={changeLocale} />*/}
           {currenLinks.map((linkElem, index) => (
             <div key={index}>
               <Link
                 href={linkElem.link}
-                className={`${styles.header_leftLinks_link} ${pathName.includes(linkElem.link) ? styles.header_leftLinks_link_active : ""}`}
+                className={`${styles.header_leftLinks_link} ${pathNameWithoutLang == linkElem.link ? styles.header_leftLinks_link_active : ""}`}
               >
                 {t("header." + linkElem.title)}
               </Link>

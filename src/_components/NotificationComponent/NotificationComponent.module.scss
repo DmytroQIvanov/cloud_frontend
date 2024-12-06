@@ -1,7 +1,7 @@
 @import "../../app/Styles/colors";
 .notificationComponent{
   position: fixed;
-  top: 55px;
+  top: 70px;
   right: 30px;
   width: max-content;
   z-index: 10000;
@@ -16,6 +16,8 @@
     flex-direction: column;
     transition-duration: .3s;
     gap: 10px;
+    position: relative;
+    width: 100%;
   }
   &_item{
     //width: 220px;
@@ -23,15 +25,20 @@
     border-radius: 10px;
     //background-color: rgba(41, 40, 40, 0.85);
     background-color: $mainColor_lighter;
-    padding: 12px;
+    padding: 8px;
     position: relative;
     box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.75);
+    display: flex;
+    transition-duration: .6s ;
 
+    min-width: 220px;
+    min-height: 75px;
     &_cross{
       position: absolute;
-      top:5px;
-      right: 5px;
+      top:8px;
+      right: 8px;
       cursor: pointer;
+      width: 18px;
     }
     &_red{
       border-bottom: 5px solid #772727;
@@ -49,12 +56,6 @@
       border-bottom: 5px solid #365580;
 
     }
-    display: flex;
-    transition-duration: .6s ;
-    //height: 0px;
-
-    min-width: 220px;
-    min-height: 75px;
     //transform: translateY(0px) scaleY(1);
     &__active{
       opacity: 100%;
@@ -69,6 +70,25 @@
       opacity: 0%;
       visibility: hidden;
       transition-duration: .6s ;
+    }
+  }
+
+  @media (max-width: 800px) {
+    top: auto;
+
+    bottom: 10px;
+    //right: 20px;
+    width: 100%;
+    left: 0px;
+    padding: 10px;
+    &_item{
+      display: flex;
+      //width: 100%;
+
+      //min-width: 100%;
+      min-height: 75px;
+      &_cross{
+      }
     }
   }
 }

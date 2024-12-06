@@ -5,22 +5,24 @@ import axios from "axios";
 import SendInput from "@/app/sendInput";
 import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
-import File from "@/_components/File/File";
-import FileModalController from "@/_components/ImageModal/ImageModal";
 import { usePathname } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import HorizontalFile from "@/_components/File/Horizontal/HorizontalFile";
-import FileInput from "@/_components/FileInput/FileInput";
-import ControlBlock from "@/_components/ControlBlock/ControlBlock";
 import { getFile } from "@/app/GlobalRedux/Features/fileSlice";
-import styles from "./FileList.module.scss";
-import OptionsBar from "@/_components/Wrapper/OptionsBar/OptionsBar";
 import { RootState } from "@/app/GlobalRedux/store";
-// import GoogleAdsense from "@/_components/GoogleAdsense/GoogleAdsense";
-import NavComponent from "../_components/Wrapper/NavComponent";
 import { addNotification } from "@/app/GlobalRedux/Features/notificationSlice";
 import { handleAddFiles } from "@/app/GlobalRedux/Features/userSlice";
 import { Provider } from "@/app/dictionaries/provider";
+
+// --- COMPONENTS ---
+import FileInput from "@/_components/FileInput/FileInput";
+import OptionsBar from "@/_components/Wrapper/OptionsBar/OptionsBar";
+import File from "@/_components/File/File";
+import FileModalController from "@/_components/ImageModal/ImageModal";
+import HorizontalFile from "@/_components/File/Horizontal/HorizontalFile";
+import ControlBlock from "@/_components/ControlBlock/ControlBlock";
+
+// --- STYLES ---
+import styles from "./FileList.module.scss";
 
 const FileList = ({ type = "transfer" }: { type?: "cloud" | "transfer" }) => {
   const pathname = usePathname();
@@ -32,9 +34,8 @@ const FileList = ({ type = "transfer" }: { type?: "cloud" | "transfer" }) => {
   );
   const params = useParams();
   const route = useRouter();
-  console.log("files,11", files);
-  console.log("user", user);
-  // const [files, setFiles] = useState<any>();
+  // console.log("files,11", files);
+  // console.log("user", user);
 
   useEffect(() => {
     let userID = JSON?.parse(`${localStorage.getItem("user")}`)?.id || "";
@@ -97,14 +98,7 @@ const FileList = ({ type = "transfer" }: { type?: "cloud" | "transfer" }) => {
       : user.filesWithUrls;
 
   return (
-    <div
-      className={styles.fileList}
-      style={
-        {
-          // border: "2px solid white",
-        }
-      }
-    >
+    <div className={styles.fileList}>
       <div className={styles.fileList_FirstBlock}>
         <ControlBlock />
         <Provider>

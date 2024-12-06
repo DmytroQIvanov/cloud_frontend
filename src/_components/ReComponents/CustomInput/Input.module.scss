@@ -3,6 +3,8 @@
 .input {
   position: relative;
   width: 100%;
+  color: #bdbdbd;
+
   &_inputlg {
     input {
       padding: 14px;
@@ -53,7 +55,9 @@
     margin-bottom: 10px !important;
   }
   input {
-    color: white;
+    //color: white;
+    color: #cbc9c9;
+
     margin-top: 10px;
     //background-color: #424242;
     background-color: $mainColor_lighter;

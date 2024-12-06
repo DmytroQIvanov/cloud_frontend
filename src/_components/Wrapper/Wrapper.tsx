@@ -80,10 +80,10 @@ const Wrapper = (props: IWrapperProp) => {
     // WrapperNode: ({ children }: any) => (
 
     <div style={{ height: "100%" }}>
-      <Head>
-        {/*<title>Test</title>*/}
-        <GoogleAdsense pId={"7249338276563886"} />
-      </Head>
+      {/*<Head>*/}
+      {/*<title>Test</title>*/}
+      {/*<GoogleAdsense pId={"7249338276563886"} />*/}
+      {/*</Head>*/}
 
       <Provider>{header && <Header />}</Provider>
       {

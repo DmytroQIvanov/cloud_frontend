@@ -1,15 +1,20 @@
 export default {
+  mainTitle: "Інструменти",
+
   resizeImage: {
     title: "Змінити розмір зображення",
+    title2: "Змінити розмір {format} зображення",
     description:
       "Змініть розмір {links} зображення! Використовуйте зручні існтрументи! {test}",
   },
   blurImage: {
-    title: "",
-    description: "",
+    title: "Заблюрить {links} зображення ",
+    description: "Розмити зображення!",
   },
   compressImage: {
     title: "Стиснути зображення",
+    title2: "Стиснути {format} зображення",
+
     description: "Змінити вагу {links} зображення",
   },
   flipImage: {
@@ -27,13 +32,20 @@ export default {
   image: {
     title: "",
     description: "",
+    // resizeImage,
   },
   rotateImage: {
-    title: "",
-    description: "",
+    title: "Повернути {links} зображення",
+    description: "Розверніть зображення і виставте колір фону!",
   },
   yourIp: {
     title: "",
     description: "",
+  },
+
+  allInstruments: {
+    mainServices: {
+      title: "",
+    },
   },
 } as const;

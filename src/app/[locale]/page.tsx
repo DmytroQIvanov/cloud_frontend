@@ -49,18 +49,6 @@ export default async function Home(props: any) {
               padding: "3px",
             }}
           >
-            {/*<div*/}
-            {/*  style={{*/}
-            {/*    width: "100px",*/}
-            {/*    height: "30px",*/}
-            {/*    color: "black",*/}
-            {/*    borderRadius: "20px",*/}
-            {/*    backgroundColor: "#dfbe29",*/}
-            {/*    // boxShadow: "3px 3px 3px 3px #ffd725",*/}
-            {/*  }}*/}
-            {/*>*/}
-            {/*  test*/}
-            {/*</div>*/}
             <ScrollTrigger>
               <h1>
                 {t("homePage.title")}

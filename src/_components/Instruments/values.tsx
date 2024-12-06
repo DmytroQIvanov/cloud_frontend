@@ -11,6 +11,7 @@ export const InstrumentsArray = [
     array: [
       {
         link: "/instruments/resize-image",
+
         text: "Змінити розмір зображення",
         instrument: "resize-image",
       },

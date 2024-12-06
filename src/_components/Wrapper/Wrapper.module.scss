@@ -6,13 +6,14 @@
     //transform: translateX(-120px);
     //left: -100px;
     opacity: 0;
-    display: flex;
+    //display: flex;
     //background-color: red;
     //filter: brightness(75%);
   }
   to {
     //transform: translateX(0);
-    left: 0px;
+    opacity: 100%;
+    //left: 0px;
     //opacity: 100%;
     //display: flex;
 
@@ -35,12 +36,15 @@
     //animation: .6s ease-in-out childrenFirstRender forwards;
     width: 100%;
     //overflow: visible;
+    animation: .6s ease-in-out childrenFirstRender forwards;
 
     &_anim{
       animation: 2.6s ease-in-out childrenFirstRender forwards;
 
     }
     min-height: 85vh;
+
+    //0px !important
   }
 
 }

@@ -12,17 +12,7 @@ const ResizeImage = () => {
   // }, []);
 
   return (
-    <div
-      style={
-        {
-          // display: "flex",
-          // flexDirection: "column",
-          // margin: "auto",
-          // width: "fit-content",
-          // textAlign: "center",
-        }
-      }
-    >
+    <div>
       <GetFilePage
         type={"convert-image"}
         title={

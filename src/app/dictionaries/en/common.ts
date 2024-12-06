@@ -1,17 +1,23 @@
 import header from "@/app/dictionaries/en/Wrapper/header";
 import homePage from "@/app/dictionaries/en/Home/homePage";
-import footer from "@/app/dictionaries/en/Footer";
+import footer from "@/app/dictionaries/en/Wrapper/Footer";
 import transferHomePage from "@/app/dictionaries/en/Home/transferHomePage";
 import fileInput from "@/app/dictionaries/en/ReComponents/FileInput";
 import instruments from "@/app/dictionaries/en/Instruments";
+import links from "@/app/dictionaries/en/Pages/links";
 
 export default {
+  //Wrapper
   header: header,
   footer,
+
+  //Pages
 
   homePage,
   transferHomePage,
   instruments,
+  links,
+
   fileInput,
   welcome: "Hello {name}!",
   "about.you": "Hello {name}! You have {age} yo",

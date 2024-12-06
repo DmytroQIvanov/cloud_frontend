@@ -80,13 +80,13 @@ export default async function Home() {
               >
                 <Link href={"https://cloud.quanticfiles.com"}>
                   <ReButton
-                    text={"Хмарне сховище файлів"}
+                    text={t("homePage.cloudBtn")}
                     style={{ margin: "10px auto" }}
                   />
                 </Link>
-                <Link href={"/links"}>
+                <Link href={"https://cloud.quanticfiles.com"}>
                   <ReButton
-                    text={"Ваші посилання"}
+                    text={t("homePage.imageBtn")}
                     style={{ margin: "10px auto" }}
                   />
                 </Link>

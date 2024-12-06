@@ -15,6 +15,7 @@ import Link from "next/link";
 import Faq from "@/_components/FAQ/FAQ";
 import GoogleHorizontal from "@/_components/GoogleAdsense/GoogleHorizontal";
 import React from "react";
+import { Provider } from "@/app/dictionaries/provider";
 //
 interface File {
   image_url: string;
@@ -77,7 +78,10 @@ export default async function Home() {
           </div>
           {/*<ScrollTrigger defaultSide={"Left"}></ScrollTrigger>*/}
         </div>
-        <FileInput start />
+
+        <Provider>
+          <FileInput start />
+        </Provider>
       </div>
       <GoogleHorizontal />
 
