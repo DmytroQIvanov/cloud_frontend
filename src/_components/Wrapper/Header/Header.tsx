@@ -89,7 +89,7 @@ const Header = (props: any) => {
   const dispatch = useDispatch();
   const sidebarState = useSelector((elem: RootState) => elem.sideBar.sidebar);
   return (
-    <div className={styles.header}>
+    <div className={`${styles.header} prevent-select`}>
       <div className={styles.header_mockContainer} />
 
       <div className={styles.header_container}>
@@ -117,7 +117,14 @@ const Header = (props: any) => {
         </div>
 
         <div className={`${styles.header_locale}`}>
-          <ReDropMenu value={currentLocale} onChange={changeLocale} />
+          <ReDropMenu
+            value={currentLocale}
+            onChange={changeLocale}
+            options={[
+              { title: "en", value: "en" },
+              { title: "ua", value: "ua" },
+            ]}
+          />
         </div>
         {/*--- MOBILE SIDEBAR ---*/}
         <div

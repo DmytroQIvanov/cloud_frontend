@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   description: "",
   keywords: "",
   robots: "noindex",
+
+  alternates: {
+    canonical: "https://storage.quanticfiles.com",
+  },
 };
 const Layout = ({ children }: any) => {
   return <div>{children}</div>;

@@ -13,6 +13,7 @@ const BlurImage = async () => {
     <div>
       <GetFilePage
         type={"blur-image"}
+        fileAcceptType={"image/*"}
         title={t("instruments.blurImage.title", {
           links: (
             <>

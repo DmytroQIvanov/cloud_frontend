@@ -13,6 +13,7 @@ const Footer = ({}: any) => {
   // console.log(",,,", props);
   const t: any = useI18n();
 
+  // "/public
   return (
     <div style={{ position: "relative" }}>
       <footer className={styles.footer}>

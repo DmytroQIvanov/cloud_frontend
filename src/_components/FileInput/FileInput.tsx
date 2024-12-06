@@ -34,7 +34,7 @@ const FileInput = ({
   const dispatch = useDispatch();
   return (
     <div className={styles.fileInput}>
-      <FileInputClickWrapper>
+      <FileInputClickWrapper fileAcceptType={fileAcceptType}>
         <div
           className={`${styles.fileInput_container} ${dragStarted || loading ? styles.fileInput_container__active : ""} ${fileOutDrop ? styles.fileInput_container_absolute : ""} prevent-select`}
           {...dragObj}

@@ -2,7 +2,15 @@
 import React, { useEffect } from "react";
 import styles from "./ReDropMenu.module.scss";
 
-const ReDropMenu = ({ value, onChange }: { value: any; onChange: any }) => {
+const ReDropMenu = ({
+  value,
+  onChange,
+  options,
+}: {
+  value: any;
+  onChange: any;
+  options: { title: string; value: string }[];
+}) => {
   const [localSelectedValue, setLocalSelectedValue] =
     React.useState<any>(value);
 
@@ -22,8 +30,9 @@ const ReDropMenu = ({ value, onChange }: { value: any; onChange: any }) => {
         className={styles.reDropMenuContainer_select}
         onChange={onHandleChange}
       >
-        <option value="ua">ua</option>
-        <option value="en">en</option>
+        {options?.map((option: any) => (
+          <option value={option.value}>{option.title}</option>
+        ))}
       </select>
     </div>
   );

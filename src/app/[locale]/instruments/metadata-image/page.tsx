@@ -6,24 +6,10 @@ import ReButton from "@/_components/ReComponents/ReButton/ReButton";
 import GetFilePage from "@/_components/Instruments/GetFilePage/GetFilePage";
 
 const ResizeImage = () => {
-  const [file, setFile] = useState<any>();
-
-  // useEffect(() => {
-  // }, []);
-
   return (
-    <div
-      style={
-        {
-          // display: "flex",
-          // flexDirection: "column",
-          // margin: "auto",
-          // width: "fit-content",
-          // textAlign: "center",
-        }
-      }
-    >
+    <div>
       <GetFilePage
+        fileAcceptType={"image/*"}
         type={"metadata-image"}
         title={"Отримати метадані JPEG, WEBP, PNG зображень"}
         description={"Отримайте всі приховані метадані з ваших фото!"}

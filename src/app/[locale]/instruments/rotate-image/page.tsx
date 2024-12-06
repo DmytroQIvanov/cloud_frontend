@@ -9,25 +9,15 @@ const ResizeImage = async () => {
   const t = await getI18n();
 
   return (
-    <div
-      style={
-        {
-          // display: "flex",
-          // flexDirection: "column",
-          // margin: "auto",
-          // width: "fit-content",
-          // textAlign: "center",
-        }
-      }
-    >
+    <div>
       <GetFilePage
         type={"rotate-image"}
+        fileAcceptType={"image/*"}
         title={t("instruments.rotateImage.title", {
           links: (
             <>
-              <Link href={"/public"}>JPEG</Link>,{" "}
-              <Link href={"/public"}>PNG</Link>,{" "}
-              <Link href={"/public"}>SVG</Link>
+              <Link href={"/"}>JPEG</Link>, <Link href={"/"}>PNG</Link>,{" "}
+              <Link href={"/"}>SVG</Link>
             </>
           ),
         })}

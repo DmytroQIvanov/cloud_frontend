@@ -12,6 +12,7 @@ const ResizeImage = async () => {
     <div>
       <GetFilePage
         title={t("instruments.compressImage.title")}
+        fileAcceptType={"image/*"}
         description={t("instruments.compressImage.description", {
           links: (
             <>

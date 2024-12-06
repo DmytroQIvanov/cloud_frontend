@@ -17,7 +17,7 @@ import { handleChangeContainer } from "@/app/GlobalRedux/Features/instrumentSlic
 const FileInputController = ({
   onSend,
   inputType = "transfer",
-  fileAcceptType = "*/*",
+  // fileAcceptType = "*/*",
 
   start,
 }: any) => {
@@ -277,11 +277,7 @@ const FileInputController = ({
     },
   };
 
-  const fileInput = ({
-    fileAcceptType = "*/*",
-  }: {
-    fileAcceptType: string;
-  }) => {
+  const fileInput = ({ fileAcceptType }: { fileAcceptType: string }) => {
     return (
       <>
         <input
@@ -301,7 +297,7 @@ const FileInputController = ({
     );
   };
 
-  const FileInputClickWrapper = ({ children }: any) => {
+  const FileInputClickWrapper = ({ children, fileAcceptType }: any) => {
     return (
       <div
         onClick={() => {

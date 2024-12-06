@@ -9,14 +9,12 @@ import Wrapper from "@/_components/Wrapper/Wrapper";
 
 //user-agent
 export const metadata: Metadata = {
-  title:
-    "Quantic Files - стиснення, змінення розміру, обробка, редагування фото",
-  description:
-    "Стискайте, змінюйте розмір, повертайте зображення. Робота з фото. Редагуйте зображення",
-  keywords: "Стиснути, фото, зображення, завантажити, передати, безкоштовно",
+  title: "Quantic Files - трансфер файлів, файлообмінник",
+  description: "Передавайте файли між пристроями",
+  keywords: "трансфер файлів, файлообмінник",
 
   alternates: {
-    canonical: "https://image.quanticfiles.com",
+    canonical: "https://transfer.quanticfiles.com",
   },
 };
 

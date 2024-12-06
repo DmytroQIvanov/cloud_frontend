@@ -15,6 +15,7 @@ const ResizeImage = () => {
     <div>
       <GetFilePage
         type={"convert-image"}
+        fileAcceptType={"image/*"}
         title={
           <>
             Конвертувати{" "}

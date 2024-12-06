@@ -12,18 +12,9 @@ const ResizeImage = () => {
   // }, []);
 
   return (
-    <div
-      style={
-        {
-          // display: "flex",
-          // flexDirection: "column",
-          // margin: "auto",
-          // width: "fit-content",
-          // textAlign: "center",
-        }
-      }
-    >
+    <div>
       <GetFilePage
+        fileAcceptType={"image/*"}
         type={"flop-image"}
         title={"Джеркально розгорнути JPEG, WEBP, PNG зображення"}
         description={"Розгортайте зображення вертикально і горизонтально"}

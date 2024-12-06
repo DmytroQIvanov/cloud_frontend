@@ -11,6 +11,7 @@ const ResizeImage = async () => {
   return (
     <div>
       <GetFilePage
+        fileAcceptType={"image/*"}
         title={t("instruments.resizeImage.title")}
         description={t("instruments.resizeImage.description", {
           links: (

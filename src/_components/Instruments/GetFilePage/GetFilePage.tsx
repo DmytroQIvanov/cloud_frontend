@@ -12,6 +12,7 @@ const GetFilePage = (
     title?: string | ReactNode;
     description?: string | ReactNode;
     type?: string;
+    fileAcceptType?: string;
   } | null,
 ) => {
   return (
@@ -32,7 +33,11 @@ const GetFilePage = (
       </div>
       <div className={styles.fileInput_fileInputContainer}>
         <Provider>
-          <FileInput inputType={props?.type ?? "resize-image"} start />
+          <FileInput
+            inputType={props?.type ?? "resize-image"}
+            start
+            fileAcceptType={props?.fileAcceptType}
+          />
         </Provider>
       </div>
       <div className={styles.fileInput_optionsContainer}>
